@@ -59,13 +59,6 @@ void deleteElement(Element** list) {
 	free(pointer);
 }
 
-void seek(Element* list, int index) {
-	Element* pointer = list;
-	for(int i = 0; i < index; i++) {
-		pointer = pointer->next;
-	}
-}
-
 void seekElement(Element* list, int index) {
 	if((index > lengthList(list)) || (index < 1)) {
 		printf("Error: Wrong Data\n");
