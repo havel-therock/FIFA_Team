@@ -1,0 +1,13 @@
+Lista 1 -skończona wraz z makefile. Jeśli korzystacie z virtualnej maszyny może być, że trzeba będzie dodać coś :/ 
+Przykładowe użycie
+$ make
+$ java main --type quick --comp '>='
+
+Lista 2- brakuje tylko wykresu ale to trzeba raczej indywidualnie ja tego nie robiłem. Mam głeboką nadzieję, że ktoś się podzieli :) 
+
+Przykładowe użycie
+$ make
+$ java AISD22 --type quick --comp '>='
+$ java AISD22 --stat staty 2
+
+Z mejkiem jak modyfikujecie uważajcie bo jest wrażliwy na białe znaki spacja czy tab robi różnice.
