@@ -1,3 +1,6 @@
+/**
+ * @author Jakub Duda
+ */
 Lista 1 -skończona wraz z makefile. Jeśli korzystacie z virtualnej maszyny może być, że trzeba będzie dodać coś :/ 
 Przykładowe użycie
 $ make
