@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<p>Suma dwóch elementów: </p>
+	<div id="suma"></div>
+	<script type="text/javascript">
+
+		function sum(x,y){
+			var sum = x+y;
+			return x+y;
+		}
+		document.getElementById("suma").innerHTML =sum(1, 123);
+	</script> 
+	<p>Suma wielu elementów: </p>
+	<div id="sumaAll"></div>
+	<script type="text/javascript">
+						
+		function sumAll() {
+			var i;
+			var sum = 0;
+			for (i = 0; i < arguments.length; i++) {
+				sum += arguments[i];
+			}
+			return sum;
+		}
+		document.getElementById("sumaAll").innerHTML =sumAll(1,10,21,35);
+	</script>
+		<p>Fizz Buzz Test: </p>
+	<div id="FBT"></div>
+	<script type="text/javascript">
+						
+		function fizz() {
+			var i;
+			var text = "";
+			for (i = 1; i <=100 ; i++) { 
+				if (i%3==0 && i%5==0){
+					text += "<br>" +" FizzBuzz " + "<br>" ;
+				}
+				else if (i%3==0){
+					text += " Fizz "  ;
+				}
+				else if (i%5==0){
+					text += " Buzz " ;
+				}
+				else {
+					text += i + " ";
+				}
+			}
+			
+			return text;
+		}
+		document.getElementById("FBT").innerHTML =fizz();
+	</script>
+	
+	<p>GCD : </p>
+	<div id="NWD"></div>
+	<script type="text/javascript">
+		function gcd(a, b) {
+			if (b!=0) {
+				return gcd(b, a % b);
+			} else {
+				return Math.abs(a);
+			}
+		}
+		document.getElementById("NWD").innerHTML =gcd(1989,867);
+	</script>
+
+</body>
+
+</html>
