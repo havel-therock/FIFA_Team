@@ -1,8 +1,11 @@
-package lista1;
-
 import java.util.Scanner;
 
-public class zad1 {
+/**
+ * 
+ * @author Janek
+ *
+ */
+public class ListaDruga {
 
 	static int[] array;
 	static int[] resultArray;
@@ -12,7 +15,7 @@ public class zad1 {
 	private static long totalTime;
 
 	public static int[] insertionSort(int[] input, int lenght, boolean fromSmallest) {
-		
+
 		int[] sortedTable = new int[lenght];
 		sortedTable[0] = input[0];
 
@@ -22,20 +25,20 @@ public class zad1 {
 			while (j < lenght) {
 				value = input[j];
 				for (int i = j - 1; i >= 0; i--) {
-					System.out.println("PorÛwnujÍ " + sortedTable[i] + " <= " + value);
+					System.err.println("Por√≥wnujƒô " + sortedTable[i] + " <= " + value);
 					comparCounter++;
 					if (sortedTable[i] <= value) {
 						sortedTable[i + 1] = value;
 						j++;
-						System.out.println("Zamieniam " + sortedTable[i+1] + " na " + value);
+						System.err.println("Zamieniam " + sortedTable[i + 1] + " na " + value);
 						swapCounter++;
 						break;
 					} else {
 						sortedTable[i + 1] = sortedTable[i];
-						System.out.println("Zamieniam " + sortedTable[i+1] + " na " + sortedTable[i]);
+						System.err.println("Zamieniam " + sortedTable[i + 1] + " na " + sortedTable[i]);
 						swapCounter++;
 						if (i == 0) {
-							System.out.println("Zamieniam " + sortedTable[i] + " na " + value);
+							System.err.println("Zamieniam " + sortedTable[i] + " na " + value);
 							swapCounter++;
 							sortedTable[i] = value;
 							j++;
@@ -49,20 +52,20 @@ public class zad1 {
 			while (j < lenght) {
 				value = input[j];
 				for (int i = j - 1; i >= 0; i--) {
-					System.out.println("PorÛwnujÍ " + sortedTable[i] + " > " + value);
+					System.err.println("Por√≥wnujƒô " + sortedTable[i] + " > " + value);
 					comparCounter++;
 					if (sortedTable[i] >= value) {
-						System.out.println("Zamieniam " + sortedTable[i+1] + " na " + value);
+						System.err.println("Zamieniam " + sortedTable[i + 1] + " na " + value);
 						swapCounter++;
 						sortedTable[i + 1] = value;
 						j++;
 						break;
 					} else {
 						sortedTable[i + 1] = sortedTable[i];
-						System.out.println("Zamieniam " + sortedTable[i+1] + " na " + sortedTable[i]);
+						System.err.println("Zamieniam " + sortedTable[i + 1] + " na " + sortedTable[i]);
 						swapCounter++;
 						if (i == 0) {
-							System.out.println("Zamieniam " + sortedTable[i] + " na " + value);
+							System.err.println("Zamieniam " + sortedTable[i] + " na " + value);
 							swapCounter++;
 							sortedTable[i] = value;
 							j++;
@@ -93,17 +96,17 @@ public class zad1 {
 				int j = 0;
 				int z = 0;
 				while (i < lenght1 && j < lenght2) {
-					System.out.println("PorÛwnujÍ " + sortedTable[i] + " >= " + sortedTable[j]);
+					System.err.println("Por√≥wnujƒô " + sortedTable[i] + " >= " + sortedTable[j]);
 					comparCounter++;
 					if (sortedTable1[i] >= sortedTable2[j]) {
 						sortedTable[z] = sortedTable2[j];
-						System.out.println("Zamieniam " + sortedTable[z] + " na " + sortedTable2[j]);
+						System.err.println("Zamieniam " + sortedTable[z] + " na " + sortedTable2[j]);
 						swapCounter++;
 						z++;
 						j++;
 					} else {
 						sortedTable[z] = sortedTable1[i];
-						System.out.println("Zamieniam " + sortedTable[z] + " na " + sortedTable1[i]);
+						System.err.println("Zamieniam " + sortedTable[z] + " na " + sortedTable1[i]);
 						swapCounter++;
 						z++;
 						i++;
@@ -111,14 +114,14 @@ public class zad1 {
 				}
 				while (j < lenght2) {
 					sortedTable[z] = sortedTable2[j];
-					System.out.println("Zamieniam " + sortedTable[z] + " na " + sortedTable2[j]);
+					System.err.println("Zamieniam " + sortedTable[z] + " na " + sortedTable2[j]);
 					swapCounter++;
 					z++;
 					j++;
 				}
 				while (i < lenght1) {
 					sortedTable[z] = sortedTable1[i];
-					System.out.println("Zamieniam " + sortedTable[z] + " na " + sortedTable1[i]);
+					System.err.println("Zamieniam " + sortedTable[z] + " na " + sortedTable1[i]);
 					swapCounter++;
 					z++;
 					i++;
@@ -129,16 +132,16 @@ public class zad1 {
 				int j = 0;
 				int z = 0;
 				while (i < lenght1 && j < lenght2) {
-					System.out.println("PorÛwnujÍ " + sortedTable[i] + " < " + sortedTable[j]);
+					System.err.println("Por√≥wnujƒô " + sortedTable[i] + " < " + sortedTable[j]);
 					comparCounter++;
 					if (sortedTable1[i] < sortedTable2[j]) {
-						System.out.println("Zamieniam " + sortedTable[z] + " na " + sortedTable2[j]);
+						System.err.println("Zamieniam " + sortedTable[z] + " na " + sortedTable2[j]);
 						swapCounter++;
 						sortedTable[z] = sortedTable2[j];
 						z++;
 						j++;
 					} else {
-						System.out.println("Zamieniam " + sortedTable[z] + " na " + sortedTable1[i]);
+						System.err.println("Zamieniam " + sortedTable[z] + " na " + sortedTable1[i]);
 						swapCounter++;
 						sortedTable[z] = sortedTable1[i];
 						z++;
@@ -146,14 +149,14 @@ public class zad1 {
 					}
 				}
 				while (j < lenght2) {
-					System.out.println("Zamieniam " + sortedTable[z] + " na " + sortedTable2[j]);
+					System.err.println("Zamieniam " + sortedTable[z] + " na " + sortedTable2[j]);
 					swapCounter++;
 					sortedTable[z] = sortedTable2[j];
 					z++;
 					j++;
 				}
 				while (i < lenght1) {
-					System.out.println("Zamieniam " + sortedTable[z] + " na " + sortedTable1[i]);
+					System.err.println("Zamieniam " + sortedTable[z] + " na " + sortedTable1[i]);
 					swapCounter++;
 					sortedTable[z] = sortedTable1[i];
 					z++;
@@ -162,7 +165,7 @@ public class zad1 {
 				return sortedTable;
 			}
 		} else {
-			System.out.println("Zamieniam " + sortedTable[0] + " na " + input[lastIndex]);
+			System.err.println("Zamieniam " + sortedTable[0] + " na " + input[lastIndex]);
 			swapCounter++;
 			sortedTable[0] = input[lastIndex];
 			return sortedTable;
@@ -177,16 +180,17 @@ public class zad1 {
 		if (fromSmallest) {
 			int i = pivot;
 			int value = result[pivot];
-			for (int j = firstIndex + 1; j <= lastIndex; j++)
+			for (int j = firstIndex + 1; j <= lastIndex; j++){
+				System.err.println("Por√≥wnujƒô " + value + " > " + result[j]);
+				comparCounter++;
 				if (value > result[j]) {
-					System.out.println("PorÛwnujÍ " + value + " > " + result[j]);
-					comparCounter++;
 					i++;
 					swap(result, i, j);
-					System.out.println("Zamieniam " + result[i] + " z " + result[j]);
+					System.err.println("Zamieniam " + result[i] + " z " + result[j]);
 					swapCounter++;
 				}
-			System.out.println("Zamieniam " + result[pivot] + " z " + result[i]);
+			}
+			System.err.println("Zamieniam " + result[pivot] + " z " + result[i]);
 			swapCounter++;
 			result[pivot] = result[i];
 			result[i] = value;
@@ -194,16 +198,17 @@ public class zad1 {
 		} else {
 			int i = pivot;
 			int value = result[pivot];
-			for (int j = firstIndex + 1; j <= lastIndex; j++)
+			for (int j = firstIndex + 1; j <= lastIndex; j++){
+				System.err.println("Por√≥wnujƒô " + value + " < " + result[j]);
+				comparCounter++;
 				if (value < result[j]) {
-					System.out.println("PorÛwnujÍ " + value + " < " + result[j]);
-					comparCounter++;
 					i++;
 					swap(result, i, j);
-					System.out.println("Zamieniam " + result[i] + " z " + result[j]);
+					System.err.println("Zamieniam " + result[i] + " z " + result[j]);
 					swapCounter++;
 				}
-			System.out.println("Zamieniam " + result[pivot] + " z " + result[i]);
+			}
+			System.err.println("Zamieniam " + result[pivot] + " z " + result[i]);
 			swapCounter++;
 			result[pivot] = result[i];
 			result[i] = value;
@@ -224,11 +229,11 @@ public class zad1 {
 		int[] result = input.clone();
 
 		if (fromSmallest) {
-			System.out.println("PorÛwnujÍ " + result[pivotS] + " > " + result[pivotL]);
+			System.err.println("Por√≥wnujƒô " + result[pivotS] + " > " + result[pivotL]);
 			comparCounter++;
 			if (result[pivotS] > result[pivotL]) {
 				swap(result, pivotL, pivotS);
-				System.out.println("Zamieniam " + result[pivotL] + " z " + result[pivotS]);
+				System.err.println("Zamieniam " + result[pivotL] + " z " + result[pivotS]);
 				swapCounter++;
 			}
 			int i = pivotS;
@@ -239,48 +244,52 @@ public class zad1 {
 			int valueL = result[pivotL];
 			for (int j = firstIndex + 1; j < z; j++) {
 				if (counterS > counterL) {
-					System.out.println("PorÛwnujÍ " + valueS + " > " + result[j]);
+					System.err.println("Por√≥wnujƒô " + valueS + " > " + result[j]);
 					comparCounter++;
 					if (valueS > result[j]) {
 						i++;
 						counterS++;
 						swap(result, i, j);
-						System.out.println("Zamieniam " + result[i] + " z " + result[j]);
+						System.err.println("Zamieniam " + result[i] + " z " + result[j]);
 						swapCounter++;
-					} else if (valueL < result[j]) {
-						System.out.println("PorÛwnujÍ " + valueL + " < " + result[j]);
+					} else {
+						System.err.println("Por√≥wnujƒô " + valueL + " < " + result[j]);
 						comparCounter++;
-						z--;
-						counterL++;
-						swap(result, z, j);
-						System.out.println("Zamieniam " + result[z] + " z " + result[j]);
-						swapCounter++;
-						j--;
+						if (valueL < result[j]) {
+							z--;
+							counterL++;
+							swap(result, z, j);
+							System.err.println("Zamieniam " + result[z] + " z " + result[j]);
+							swapCounter++;
+							j--;
+						}
 					}
 				} else {
+					System.err.println("Por√≥wnujƒô " + valueL + " < " + result[j]);
+					comparCounter++;
 					if (valueL < result[j]) {
-						System.out.println("PorÛwnujÍ " + valueL + " < " + result[j]);
-						comparCounter++;
 						z--;
 						counterL++;
 						swap(result, z, j);
-						System.out.println("Zamieniam " + result[z] + " z " + result[j]);
+						System.err.println("Zamieniam " + result[z] + " z " + result[j]);
 						swapCounter++;
 						j--;
-					} else if (valueS > result[j]) {
-						System.out.println("PorÛwnujÍ " + valueS + " > " + result[j]);
+					} else {
+						System.err.println("Por√≥wnujƒô " + valueS + " > " + result[j]);
 						comparCounter++;
-						i++;
-						counterS++;
-						swap(result, i, j);
-						System.out.println("Zamieniam " + result[i] + " z " + result[j]);
-						swapCounter++;
+						if (valueS > result[j]) {
+							i++;
+							counterS++;
+							swap(result, i, j);
+							System.err.println("Zamieniam " + result[i] + " z " + result[j]);
+							swapCounter++;
+						}
 					}
 				}
 			}
-			System.out.println("Zamieniam " + result[pivotS] + " z " + result[i]);
+			System.err.println("Zamieniam " + result[pivotS] + " z " + result[i]);
 			swapCounter++;
-			System.out.println("Zamieniam " + result[pivotL] + " z " + result[z]);
+			System.err.println("Zamieniam " + result[pivotL] + " z " + result[z]);
 			swapCounter++;
 			result[pivotS] = result[i];
 			result[i] = valueS;
@@ -289,11 +298,11 @@ public class zad1 {
 			result[z] = valueL;
 			pivotL = z;
 		} else {
-			System.out.println("PorÛwnujÍ " + result[pivotS] + " < " + result[pivotL]);
+			System.err.println("Por√≥wnujƒô " + result[pivotS] + " < " + result[pivotL]);
 			comparCounter++;
 			if (result[pivotS] < result[pivotL]) {
 				swap(result, pivotL, pivotS);
-				System.out.println("Zamieniam " + result[pivotL] + " z " + result[pivotS]);
+				System.err.println("Zamieniam " + result[pivotL] + " z " + result[pivotS]);
 				swapCounter++;
 			}
 			int i = pivotS;
@@ -304,48 +313,52 @@ public class zad1 {
 			int valueL = result[pivotL];
 			for (int j = firstIndex + 1; j < z; j++) {
 				if (counterS > counterL) {
+					System.err.println("Por√≥wnujƒô " + valueS + " < " + result[j]);
+					comparCounter++;
 					if (valueS < result[j]) {
-						System.out.println("PorÛwnujÍ " + valueS + " < " + result[j]);
-						comparCounter++;
 						i++;
 						counterS++;
 						swap(result, i, j);
-						System.out.println("Zamieniam " + result[i] + " z " + result[j]);
+						System.err.println("Zamieniam " + result[i] + " z " + result[j]);
 						swapCounter++;
-					} else if (valueL > result[j]) {
-						System.out.println("PorÛwnujÍ " + valueL + " > " + result[j]);
+					} else {
+						System.err.println("Por√≥wnujƒô " + valueL + " > " + result[j]);
 						comparCounter++;
-						z--;
-						counterL++;
-						swap(result, z, j);
-						System.out.println("Zamieniam " + result[z] + " z " + result[j]);
-						swapCounter++;
-						j--;
+						if (valueL > result[j]) {
+							z--;
+							counterL++;
+							swap(result, z, j);
+							System.err.println("Zamieniam " + result[z] + " z " + result[j]);
+							swapCounter++;
+							j--;
+						}
 					}
 				} else {
+					System.err.println("Por√≥wnujƒô " + valueL + " > " + result[j]);
+					comparCounter++;
 					if (valueL > result[j]) {
-						System.out.println("PorÛwnujÍ " + valueL + " > " + result[j]);
-						comparCounter++;
 						z--;
 						counterL++;
 						swap(result, z, j);
-						System.out.println("Zamieniam " + result[z] + " z " + result[j]);
+						System.err.println("Zamieniam " + result[z] + " z " + result[j]);
 						swapCounter++;
 						j--;
-					} else if (valueS < result[j]) {
-						System.out.println("PorÛwnujÍ " + valueS + " < " + result[j]);
+					} else {
+						System.err.println("Por√≥wnujƒô " + valueS + " < " + result[j]);
 						comparCounter++;
-						i++;
-						counterS++;
-						swap(result, i, j);
-						System.out.println("Zamieniam " + result[i] + " z " + result[j]);
-						swapCounter++;
+						if (valueS < result[j]) {
+							i++;
+							counterS++;
+							swap(result, i, j);
+							System.err.println("Zamieniam " + result[i] + " z " + result[j]);
+							swapCounter++;
+						}
 					}
 				}
 			}
-			System.out.println("Zamieniam " + result[pivotS] + " z " + result[i]);
+			System.err.println("Zamieniam " + result[pivotS] + " z " + result[i]);
 			swapCounter++;
-			System.out.println("Zamieniam " + result[pivotL] + " z " + result[z]);
+			System.err.println("Zamieniam " + result[pivotL] + " z " + result[z]);
 			swapCounter++;
 			result[pivotS] = result[i];
 			result[i] = valueS;
@@ -373,7 +386,7 @@ public class zad1 {
 	public static void main(String[] args) {
 
 		Scanner reader = new Scanner(System.in);
-		System.out.println("Podaj d≥ugoúc tablicy");
+		System.out.println("Podaj d≈Çugo≈õc tablicy");
 		length = reader.nextInt();
 		if (length < 1) {
 			System.out.println("Zly rozmiar");
@@ -381,10 +394,10 @@ public class zad1 {
 
 		}
 		array = new int[length];
-		swapCounter=0;
-		comparCounter=0;
+		swapCounter = 0;
+		comparCounter = 0;
 		System.out.println("lenght: " + length);
-		System.out.println("Podaj tablicÍ");
+		System.out.println("Podaj tablicƒô");
 		for (int i = 0; i < length; i++) {
 			array[i] = reader.nextInt();
 		}
@@ -393,16 +406,16 @@ public class zad1 {
 			if (args[1].equals("insert")) {
 				if (args[3].equals(">=")) {
 					long startTime = System.nanoTime();
-					resultArray = insertionSort(array,length,false);
+					resultArray = insertionSort(array, length, false);
 					long endTime = System.nanoTime();
-		            totalTime = endTime - startTime;
-		            System.out.println("Czas dzialania insertsort " + totalTime);
+					totalTime = endTime - startTime;
+					System.err.println("Czas dzialania insertsort " + totalTime);
 				} else if (args[3].equals("<=")) {
 					long startTime = System.nanoTime();
-					resultArray = insertionSort(array,length,true);
+					resultArray = insertionSort(array, length, true);
 					long endTime = System.nanoTime();
-		            totalTime = endTime - startTime;
-		            System.out.println("Czas dzialania insertsort " + totalTime);
+					totalTime = endTime - startTime;
+					System.err.println("Czas dzialania insertsort " + totalTime);
 				} else {
 					System.out.println("Zly comp podaj >= | <=");
 					System.exit(0);
@@ -412,16 +425,16 @@ public class zad1 {
 
 				if (args[3].equals(">=")) {
 					long startTime = System.nanoTime();
-					resultArray = mergeSort(array, false, 0,length-1);
+					resultArray = mergeSort(array, false, 0, length - 1);
 					long endTime = System.nanoTime();
-		            totalTime = endTime - startTime;
-		            System.out.println("Czas dzialania mergesort " + totalTime);
+					totalTime = endTime - startTime;
+					System.err.println("Czas dzialania mergesort " + totalTime);
 				} else if (args[3].equals("<=")) {
 					long startTime = System.nanoTime();
-					resultArray = mergeSort(array, true, 0, length-1);
+					resultArray = mergeSort(array, true, 0, length - 1);
 					long endTime = System.nanoTime();
-		            totalTime = endTime - startTime;
-		            System.out.println("Czas dzialania mergesort " + totalTime);
+					totalTime = endTime - startTime;
+					System.err.println("Czas dzialania mergesort " + totalTime);
 				} else {
 					System.out.println("Zly comp podaj >= | <=");
 					System.exit(0);
@@ -431,40 +444,40 @@ public class zad1 {
 
 				if (args[3].equals(">=")) {
 					long startTime = System.nanoTime();
-					resultArray = quickSort(array, false,0, length-1);
+					resultArray = quickSort(array, false, 0, length - 1);
 					long endTime = System.nanoTime();
-		            totalTime = endTime - startTime;
-		            System.out.println("Czas dzialania quicksort " + totalTime);
+					totalTime = endTime - startTime;
+					System.err.println("Czas dzialania quicksort " + totalTime);
 				} else if (args[3].equals("<=")) {
 					long startTime = System.nanoTime();
-					resultArray = quickSort(array, true, 0, length-1);
+					resultArray = quickSort(array, true, 0, length - 1);
 					long endTime = System.nanoTime();
-		            totalTime = endTime - startTime;
-		            System.out.println("Czas dzialania quicksort " + totalTime);
+					totalTime = endTime - startTime;
+					System.err.println("Czas dzialania quicksort " + totalTime);
 				} else {
 					System.out.println("Zly comp podaj >= | <=");
 					System.exit(0);
-				} 
+				}
 
 			} else if (args[1].equals("dual")) {
 
 				if (args[3].equals(">=")) {
 					long startTime = System.nanoTime();
-					resultArray = dualPivotSort(array, false,0, length-1);
+					resultArray = dualPivotSort(array, false, 0, length - 1);
 					long endTime = System.nanoTime();
-		            totalTime = endTime - startTime;
-		            System.out.println("Czas dzialania dualsort " + totalTime);
+					totalTime = endTime - startTime;
+					System.err.println("Czas dzialania dualsort " + totalTime);
 				} else if (args[3].equals("<=")) {
 					long startTime = System.nanoTime();
-					resultArray = dualPivotSort(array, true, 0, length-1);
+					resultArray = dualPivotSort(array, true, 0, length - 1);
 					long endTime = System.nanoTime();
-		            totalTime = endTime - startTime;
-		            System.out.println("Czas dzialania dualsort " + totalTime);
+					totalTime = endTime - startTime;
+					System.err.println("Czas dzialania dualsort " + totalTime);
 				} else {
 					System.out.println("Zly comp podaj >= | <=");
 					System.exit(0);
 				}
-			}else {
+			} else {
 				System.out.println("Wybierz insert|merge|quick|dual");
 				System.exit(0);
 			}
@@ -473,27 +486,30 @@ public class zad1 {
 			System.exit(0);
 		}
 		System.out.println("tablica");
-		for(int i=0;i<length;i++) 
+		for (int i = 0; i < length; i++)
 			System.out.print(array[i] + " , ");
 		System.out.println();
 		System.out.println("Posortowana tablica");
-		for(int i=0;i<length;i++) 
+		for (int i = 0; i < length; i++)
 			System.out.print(resultArray[i] + " , ");
 		if (args[3].equals(">="))
-			for(int i=0;i<length-1;i++)
-				if(resultArray[i]<resultArray[i+1]){
-					System.out.println("B£•D SORTOWANIA!!!!!!!!!!!!!!");
+			for (int i = 0; i < length - 1; i++)
+				if (resultArray[i] < resultArray[i + 1]) {
+					System.out.println("B≈ÅƒÑD SORTOWANIA!!!!!!!!!!!!!!");
 					System.exit(0);
-				} else;
-		else for(int i=0;i<length-1;i++)
-			if(resultArray[i]>resultArray[i+1]){
-				System.out.println("B£•D SORTOWANIA!!!!!!!!!!!!!!");
-				System.exit(0);
-			};
-			
+				} else
+					;
+		else
+			for (int i = 0; i < length - 1; i++)
+				if (resultArray[i] > resultArray[i + 1]) {
+					System.out.println("B≈ÅƒÑD SORTOWANIA!!!!!!!!!!!!!!");
+					System.exit(0);
+				}
+		;
+
 		System.out.println();
-		System.out.println("Liczba porÛwnaÒ : " + comparCounter + 
-				" Liczba przestawieÒ : " + swapCounter + " Liczba posortowanych elementÛw : " + length);
+		System.out.println("Liczba posortowanych element√≥w : " + length);
+		System.err.println("Liczba por√≥wna√± : " + comparCounter + " Liczba przestawie√± : " + swapCounter);
 	}
 
 }
