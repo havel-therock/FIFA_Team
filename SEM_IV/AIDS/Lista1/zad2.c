@@ -6,7 +6,6 @@
 struct Part{
 	int value;
 	struct Part* next;
-	struct Part* previous;
 };
 
 struct List{
@@ -27,22 +26,16 @@ struct List* push(int newValue, struct List* x){
 	struct Part* y = malloc(1 * sizeof(*y));
 	y->value = newValue;
 	y->next = NULL;
-	y->previous = NULL;
 	
 	if(empty(x)){
 		x->head = y;
 		x->tail = y;
-		y->next = y;
-		y->previous = y;
 		x->size++;
 		return x;
 	}
 	else{
 		x->tail->next = y;
-		y->previous = x->tail;
 		x->tail = y;
-		y->next = x->head; 
-		x->head->previous = y;
 		x->size++;
 	}
 	return x;
@@ -58,8 +51,6 @@ struct List* pop(struct List* x){
 	p2 = p1->next;
 	free(p1);
 	x->head = p2;
-	x->tail->next = p2;
-	x->head->previous = x->tail;
 	x->size--;
 	if(empty(x)){
 		x->tail = x->head;
@@ -70,6 +61,15 @@ struct List* pop(struct List* x){
 
 void size(struct List* x){
 	printf("Size: %d\n",x->size);
+}
+
+void firstValue(struct List* x){
+	if(empty(x)){
+		printf("There is no value. List is empty.\n");
+	}
+	else{
+		printf("Value: %d\n",x->head->value);
+	}
 }
 
 void create(struct List* x){
@@ -84,31 +84,12 @@ void fill(struct List* x, int n){
 	}
 }
 
-void show(struct List* x){
-	int n=1;
-	struct Part* b = x->head;
-	while(b != NULL && n<=(2*(x->size))){
-		printf("%d, ",b->value);
-		b = b->previous;
-		n++;
-	}
-	printf("\n");
-}
-
 void goTo(struct List* x, int n){
 	if((n > 0) && (n <= x->size)){
 		struct Part* p = NULL;
 		p = x->head;
-		if(n < (int)((x->size)/2)){
-			for(int i=n;i>0;i--){
-				p = p->next;
-			}
-		}
-		else{
-			n = x->size - n;
-			for(int i=n;i>0;i--){
-				p = p->previous;
-			}
+		for(int i=n;i>0;i--){
+			p = p->next;
 		}
 	}
 	else{
@@ -121,35 +102,38 @@ void merge(struct List* x,struct List* y,struct List* z){
 	struct Part* mY = NULL;
 	mX = x->head;
 	mY = y->head;
-	int sizeX = x->size;
-	int sizeY = y->size;
 	
-	while(sizeX!=0 && sizeY!=0){
+	while(mX && mY){
 		if(mX->value < mY->value){
 			push(mX->value,z);
 			mX = mX->next;
-			sizeX--;
 		}
 		else{
 			push(mY->value,z);
 			mY = mY->next;
-			sizeY--;
 		}
 	}
-	while(sizeX!=0){
+	while(mX){
 		push(mX->value,z);
 		mX = mX->next;
-		sizeX--;
 	}
-	while(sizeY!=0){
+	while(mY){
 		push(mY->value,z);
 		mY = mY->next;
-		sizeY--;
 	}
 	free(mX);
 	free(mY);
 	free(x);
 	free(y);
+}
+
+void show(struct List* x){
+	struct Part* b = x->head;
+	while(b != NULL){
+		printf("%d, ",b->value);
+		b = b->next;
+	}
+	printf("\n");
 }
 
 int main (int argc, char *argv[]){
@@ -159,10 +143,12 @@ int main (int argc, char *argv[]){
 	int r, s;
 	s = time(&t);
 	srand(s);
-	
+	//Tworzenie listy
 	struct List*  list = malloc( 1 * sizeof(*list));
 	create(list);
 	fill(list,1000);
+	
+	size(list);
 	
 	//Testy dla 500 elementu listy
 	start_t = clock();
@@ -209,6 +195,7 @@ int main (int argc, char *argv[]){
 	printf("Time for random element: %f s\n",ti);
 	printf("Average time: %f\n",ti/1000000);
 	
+	//Marge
 	struct List*  list1 = malloc( 1 * sizeof(*list1));
 	create(list1);
 	fill(list1,5);
@@ -221,4 +208,6 @@ int main (int argc, char *argv[]){
 	create(list3);
 	merge(list1,list2,list3);
 	show(list3);
+	
+	return 0;
 }
