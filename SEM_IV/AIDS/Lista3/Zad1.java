@@ -88,7 +88,7 @@ public class Zad1 {
 			C[lastNumbers[i]]++;
 		for (int i = 1; i < 10; i++)
 			C[i] = C[i] + C[i - 1];
-		for (int i = lenght - 1; i >= 0; i--) {
+		for (int i = 0; i < lenght; i++) {
 			sortedTable[lenght-C[lastNumbers[i]]] = input[i];
 			C[lastNumbers[i]]--;
 		}
