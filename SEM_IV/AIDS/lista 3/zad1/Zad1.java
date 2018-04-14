@@ -1,4 +1,4 @@
-package lista3;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,6 +28,9 @@ public class Zad1 {
 	static int swapCounter;
 	static int comparCounter;
 	private static long totalTime;
+	private static long beforeUsedMem;
+	private static long afterUsedMem;
+	private static long actualMemUsed;
 
 	public static int[] radixSort(int[] input,Boolean bool,int lenght) {
 		int[] sortedTable = new int[lenght];
@@ -527,28 +530,28 @@ public class Zad1 {
 			XYSeries nrQS = new XYSeries("Quick Sort");
 			XYSeries nrMS = new XYSeries("Marge Sort");
 			XYSeries nrDS = new XYSeries("Dual Pivot Sort");
+			XYSeries nrRS = new XYSeries("Radix Sort");
 			XYSeriesCollection dataset = new XYSeriesCollection();
-			dataset.addSeries(nrIS);
-			// dataset.addSeries(nrQS);
-			// dataset.addSeries(nrMS);
+		//	dataset.addSeries(nrIS);
+			dataset.addSeries(nrQS);
+			dataset.addSeries(nrMS);
 			dataset.addSeries(nrDS);
+			dataset.addSeries(nrRS);
 			// --type quick --comp <= --stat quick10Comp.txt 10
-			String thing = "Comp";
-			String name = "ExperimentalFidingCV2_noins_" + args[6] + thing;
-			// args[1]="quick";
-			// args[5]=args[1] + args[6] + thing;
-			// prepereData(args, nrIS, nrQS, nrMS, nrDS);
-			args[1] = "dual";
+			String thing = "time1000000";
+			String name = "AllSorts" + args[6] + thing;
+			 args[1]="quick";
+			 args[5]=args[1] + args[6] + thing;
+			 prepereData(args, nrIS, nrQS, nrMS, nrDS, nrRS);
+			args[1] = "radix";
 			args[5] = args[1] + args[6] + thing;
-			prepereData(args, nrIS, nrQS, nrMS, nrDS);
-			for (int i = 0; i < 10000; i++)
-				nrIS.add(i, 2 * i * Math.log(i));
-			// args[1]="insert";
+			prepereData(args, nrIS, nrQS, nrMS, nrDS, nrRS);
+			 //args[1]="insert";
 			// args[5]=args[1] + args[6] + thing;
 			// prepereData(args, nrIS, nrQS, nrMS, nrDS);
-			// args[1]="merge";
-			// args[5]=args[1] + args[6] + thing;
-			// prepereData(args, nrIS, nrQS, nrMS, nrDS);
+			 args[1]="merge";
+			 args[5]=args[1] + args[6] + thing;
+			 prepereData(args, nrIS, nrQS, nrMS, nrDS,nrRS);
 			JFreeChart compars = ChartFactory.createXYLineChart(name, // Title
 					"elements", // x-axis Label
 					thing, // y-axis Label
@@ -593,7 +596,7 @@ public class Zad1 {
 			if (args[3].equals(">="))
 				for (int i = 0; i < length - 1; i++)
 					if (resultArray[i] < resultArray[i + 1]) {
-						System.out.println("B£¥D SORTOWANIA!!!!!!!!!!!!!!");
+						System.out.println("BLAD SORTOWANIA!!!!!!!!!!!!!!");
 						System.exit(0);
 					} else
 						;
@@ -601,12 +604,12 @@ public class Zad1 {
 				checkSort(args);
 
 			System.out.println();
-			System.out.println("Liczba posortowanych elementów : " + length);
-			System.err.println("Liczba porównañ : " + comparCounter + " Liczba przestawieeñ : " + swapCounter);
+			System.out.println("Liczba posortowanych elementow : " + length);
+			System.err.println("Liczba porownan : " + comparCounter + " Liczba przestawieen : " + swapCounter);
 		}
 	}
 
-	private static void prepereData(String[] args, XYSeries nrIS, XYSeries nrQS, XYSeries nrMS, XYSeries nrDS) {
+	private static void prepereData(String[] args, XYSeries nrIS, XYSeries nrQS, XYSeries nrMS, XYSeries nrDS,XYSeries nrRS) {
 		int k = Integer.parseInt(args[6]);
 		int j = 0;
 		int timesummer, swapsummer, comparsummer;
@@ -616,7 +619,9 @@ public class Zad1 {
 			out = new PrintStream(new FileOutputStream(nazwaPliku));
 			System.setOut(out);
 			Random ran = new Random();
-			for (int n = 100; n <= 10000; n = n + 100) {
+			int n=10;
+			int counter=0;
+			while(n <= 100000) {
 				length = n;
 				swapCounter = 0;
 				comparCounter = 0;
@@ -628,9 +633,9 @@ public class Zad1 {
 					array = new int[n];
 					for (int i = 0; i < length; i++) {
 						if (ran.nextInt(2) == 0)
-							array[i] = -ran.nextInt(1000);
+							array[i] = ran.nextInt(1000000);
 						else
-							array[i] = ran.nextInt(1000);
+							array[i] = ran.nextInt(1000000);
 					}
 					sort(args);
 					checkSort(args);
@@ -645,18 +650,27 @@ public class Zad1 {
 				swapsummer /= k;
 				int ilorazC = comparsummer / n;
 				int ilorazS = swapsummer / n;
+				if(counter%2==0)
+					n*=5;
+				else
+					n*=2;
+				System.err.println(n);
+				counter++;
 				switch (args[1]) {
 				case "insert":
-					nrIS.add(length, swapsummer);
+					nrIS.add(length, totalTime);
 					break;
 				case "merge":
-					nrMS.add(length, swapsummer);
+					nrMS.add(length, totalTime);
 					break;
 				case "quick":
-					nrQS.add(length, swapsummer);
+					nrQS.add(length, totalTime);
 					break;
 				case "dual":
-					nrDS.add(length, comparsummer);
+					nrDS.add(length, totalTime);
+					break;
+				case "radix":
+					nrRS.add(length, totalTime);
 					break;
 				}
 			}
@@ -671,14 +685,14 @@ public class Zad1 {
 		if (args[3].equals("<="))
 			for (int i = 0; i < length - 1; i++)
 				if (resultArray[i] > resultArray[i + 1]) {
-					System.out.println("B£¥D SORTOWANIA!!!!!!!!!!!!!!");
+					System.out.println("BLAD SORTOWANIA!!!!!!!!!!!!!!");
 					System.exit(0);
 				} else
 					;
 		else
 			for (int i = 0; i < length - 1; i++)
 				if (resultArray[i] < resultArray[i + 1]) {
-					System.out.println("B£¥D SORTOWANIA!!!!!!!!!!!!!!");
+					System.out.println("BLAD SORTOWANIA!!!!!!!!!!!!!!");
 					System.exit(0);
 				}
 	}
@@ -688,17 +702,23 @@ public class Zad1 {
 			if (args[0].equals("--type") && args[2].equals("--comp")) {
 				if (args[1].equals("insert")) {
 					if (args[3].equals(">=")) {
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = insertionSort(array, length, false);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania insertsort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania insertsort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else if (args[3].equals("<=")) {
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = insertionSort(array, length, true);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania insertsort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania insertsort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else {
 						System.out.println("Zly comp podaj >= | <=");
 						System.exit(0);
@@ -707,17 +727,23 @@ public class Zad1 {
 				} else if (args[1].equals("merge")) {
 
 					if (args[3].equals(">=")) {
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = mergeSort(array, false, 0, length - 1);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania mergesort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania mergesort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else if (args[3].equals("<=")) {
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = mergeSort(array, true, 0, length - 1);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania mergesort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania mergesort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else {
 						System.out.println("Zly comp podaj >= | <=");
 						System.exit(0);
@@ -728,19 +754,25 @@ public class Zad1 {
 					if (args[3].equals(">=")) {
 						int[] arrayClone;
 						arrayClone = array.clone();
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = quickSort(arrayClone, false, 0, length - 1);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania quicksort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania quicksort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else if (args[3].equals("<=")) {
 						int[] arrayClone;
 						arrayClone = array.clone();
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = quickSort(arrayClone, true, 0, length - 1);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania quicksort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania quicksort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else {
 						System.out.println("Zly comp podaj >= | <=");
 						System.exit(0);
@@ -751,19 +783,25 @@ public class Zad1 {
 					if (args[3].equals(">=")) {
 						int[] arrayClone;
 						arrayClone = array.clone();
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = dualPivotSort(arrayClone, false, 0, length - 1);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania dualsort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania dualsort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else if (args[3].equals("<=")) {
 						int[] arrayClone;
 						arrayClone = array.clone();
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = dualPivotSort(arrayClone, true, 0, length - 1);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania dualsort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania dualsort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else {
 						System.out.println("Zly comp podaj >= | <=");
 						System.exit(0);
@@ -773,19 +811,25 @@ public class Zad1 {
 					if (args[3].equals(">=")) {
 						int[] arrayClone;
 						arrayClone = array.clone();
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = radixSort(arrayClone,false,length);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania radixsort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania radixsort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else if (args[3].equals("<=")) {
 						int[] arrayClone;
 						arrayClone = array.clone();
+						beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 						long startTime = System.nanoTime();
 						resultArray = radixSort(arrayClone,true,length);
 						long endTime = System.nanoTime();
 						totalTime = endTime - startTime;
-						System.err.println("Czas dzialania radixsort " + totalTime);
+						afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+						actualMemUsed = afterUsedMem - beforeUsedMem;
+						System.err.println("Czas dzialania radixsort " + totalTime + " Zuzycie pamiesci " + actualMemUsed);
 					} else {
 						System.out.println("Zly comp podaj >= | <=");
 						System.exit(0);
@@ -800,7 +844,7 @@ public class Zad1 {
 			}
 
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Nastêpnym razem wpisz parametry");
+			System.out.println("Nastepnym razem wpisz parametry");
 			System.exit(0);
 		}
 

@@ -1,10 +1,11 @@
-package lista3;
+
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Zad2 {
 	static int[] array;
+	static int[] array2;
 	static int[] resultArrayRS;
 	static int[] resultArrayS;
 	static int length;
@@ -36,8 +37,14 @@ public class Zad2 {
 			int j = 1;
 			int value;
 			while (j < k - p + 1) {
+				System.err.println("Porownoje " + j + " <= " +
+						 (k-p+1));
+						comparCounter++;
 				value = input[p + j];
 				for (int i = j - 1; i >= 0; i--) {
+					 System.err.println("Porownoje " + sortedTable[i] + " <= " +
+							 value);
+							comparCounter++;
 					if (sortedTable[i] <= value) {
 						sortedTable[i + 1] = value;
 						j++;
@@ -68,6 +75,7 @@ public class Zad2 {
 			System.exit(0);
 		}
 		array = new int[length];
+		array2 = new int[length];
 		swapCounter = 0;
 		comparCounter = 0;
 
@@ -80,12 +88,14 @@ public class Zad2 {
 
 		if (args[0].equals("-r")) {
 			Random rnd = new Random();
+			int temp;
 			for (int i = 0; i < length; i++) {
-				array[i] = rnd.nextInt(1000);
+				temp = rnd.nextInt(1000);
+				array[i] = temp;
+				array2[i] = temp;
 			}
 			int odp;
 			odp = select(array, 0, length - 1, number);
-			// odp = randomizedSelect(array,0,length-1,number);
 			for (int i = 0; i < length; i++) {
 				if (array[i] != odp)
 					System.out.print(array[i] + ", ");
@@ -93,20 +103,56 @@ public class Zad2 {
 					System.out.print("[ " + array[i] + " ] , ");
 			}
 			System.out.println();
+			System.err.println();
+			System.err.println("ILOSC POROWNAN " + comparCounter + " ILOSC PRZESTAWIEN " + swapCounter);
+			System.out.println("TERAZ RANDOMIZEZ SELECT (WCZESNIEJ SELECT)");
+			swapCounter = 0;
+			comparCounter = 0;
+			odp = randomizedSelect(array2,0,length-1,number);
+			for (int i = 0; i < length; i++) {
+				if (array2[i] != odp)
+					System.out.print(array2[i] + ", ");
+				else
+					System.out.print("[ " + array2[i] + " ] , ");
+			}
+			System.err.println();
+			System.err.println("ILOSC POROWNAN " + comparCounter + " ILOSC PRZESTAWIEN " + swapCounter);
+			System.out.println();
 		} else if (args[0].equals("-p")) {
 			for (int i = 0; i < length; i++) {
 				array[i] = i;
+				array2[i]= i;
 			}
 			shuffleArray(array);
 			int odp;
 			odp = select(array, 0, length - 1, number);
-			// odp = randomizedSelect(array,0,length-1,number);
+			Boolean bool = false;
 			for (int i = 0; i < length; i++) {
-				if (array[i] != odp)
+				if (array[i] != odp || bool)
 					System.out.print(array[i] + ", ");
-				else
+				else{
 					System.out.print("[ " + array[i] + " ] , ");
+					bool=true;
+				}
 			}
+			System.out.println();
+			System.err.println();
+			System.err.println("ILOSC POROWNAN " + comparCounter + " ILOSC PRZESTAWIEN " + swapCounter);
+			System.out.println("TERAZ RANDOMIZEZ SELECT (WCZESNIEJ SELECT)");
+			swapCounter = 0;
+			comparCounter = 0;
+			odp = randomizedSelect(array2,0,length-1,number);
+			bool = false;
+			for (int i = 0; i < length; i++) {
+				if (array2[i] != odp || bool)
+					System.out.print(array2[i] + ", ");
+				else{
+					System.out.print("[ " + array2[i] + " ] , ");
+					bool=true;
+				}
+			}
+			System.err.println();
+			System.err.println("ILOSC POROWNAN " + comparCounter + " ILOSC PRZESTAWIEN " + swapCounter);
 			System.out.println();
 		} else {
 			System.out.println("Wpisz -r albo -p");
@@ -129,6 +175,9 @@ public class Zad2 {
 			median = new int[((lenght2) / 5) + 1];
 
 		while ((helper + 5) <= k + 1) {
+			 System.err.println("Porownoje " + helper+5 + " <= " +
+					 k+1);
+					comparCounter++;
 			helper = helper + 5;
 			sortedTable = insertionSort(T, helper - 5, helper - 1, true);
 			median[((helper - p) / 5) - 1] = sortedTable[2];
@@ -139,16 +188,11 @@ public class Zad2 {
 			median[(lenght2) / 5] = sortedTable[sortedTable.length / 2];
 		}
 		
-		//for (int i = 0; i < median.length; i++)
-		//	System.out.print(median[i] + ", ");
-		//System.out.println("aa");
 		if (median.length == 1) {
 			if (p != k) {
 				sortedTable = insertionSort(T, p, k, true);
-				//System.out.println("xxxxx" + sortedTable[num - 1]);
 				return sortedTable[num - 1];
 			}
-			//System.out.println("xxxxx2" + T[k]);
 			return T[k];
 		}
 
@@ -159,13 +203,16 @@ public class Zad2 {
 				x = i;
 				break;
 			}
-		for (int i = 0; i < length; i++)
+		for (int i = 0; i < T.length; i++)
 			System.err.print(T[i] + ", ");
-		System.err.println(" X = " + x);
+		System.err.println();
 		x = partition(T, p, k, num, x);
 		int z = x - p + 1;
 		if (z == num)
 			return T[x];
+		 System.err.println("Porownoje " + z + " < " +
+				 num);
+				comparCounter++;
 		if (z < num)
 			return select(T, x + 1, k, num - z);
 		else
@@ -180,6 +227,9 @@ public class Zad2 {
 		int z = r - p + 1;
 		if (z == num)
 			return T[r];
+		 System.err.println("Porownoje " + z + " < " +
+				 num);
+				comparCounter++;
 		if (z < num)
 			return randomizedSelect(T, r + 1, k, num - z);
 		else
@@ -189,24 +239,24 @@ public class Zad2 {
 	private static int randomPartition(int[] T, int p, int k, int num) {
 		Random rnd = new Random();
 		int r = p + rnd.nextInt(k - p + 1);
-		System.err.println("PIVOT -> " + T[r] + " pocz�tek -> " + T[p] + " koniec -> " + T[k] + " k -> " + num);
+		System.err.println("[W WARTOSCIACH] PIVOT -> " + T[r] + " poczatek -> " + T[p] + " koniec -> " + T[k] + " k -> " + num);
 		int value = T[r];
 		swap(T, r, p);
 		int i = p;
 		for (int j = p + 1; j <= k; j++) {
-			// System.err.println("Porównuję " + value + " > " +
-			// T[j]);
+			 System.err.println("Porownoje " + value + " > " +
+			 T[j]);
 			comparCounter++;
 			if (value > T[j]) {
 				i++;
 				swap(T, i, j);
-				// System.err.println("Zamieniam " + T[i] + " z " +
-				// T[j]);
+				 System.err.println("Zamieniam " + T[i] + " z " +
+				 T[j]);
 				swapCounter++;
 			}
 		}
-		// System.err.println("Zamieniam " + T[r] + " z " +
-		// T[i]);
+		 System.err.println("Zamieniam " + T[p] + " z " +
+		 T[i]);
 		swapCounter++;
 		swap(T, p, i);
 		return i;
@@ -214,24 +264,24 @@ public class Zad2 {
 
 	private static int partition(int[] T, int p, int k, int num, int x) {
 		int r = x;
-		//System.err.println("PIVOT -> " + T[r] + " pocz�tek -> " + T[p] + " koniec -> " + T[k] + " k -> " + num);
+		System.err.println("[W WARTOSCIACH] PIVOT -> " + T[r] + " poczatek -> " + T[p] + " koniec -> " + T[k] + " k -> " + num);
 		int value = T[r];
 		swap(T, r, p);
 		int i = p;
 		for (int j = p + 1; j <= k; j++) {
-			// System.err.println("Porównuję " + value + " > " +
-			// T[j]);
+			 System.err.println("Porownoje " + value + " > " +
+			 T[j]);
 			comparCounter++;
 			if (value > T[j]) {
 				i++;
 				swap(T, i, j);
-				// System.err.println("Zamieniam " + T[i] + " z " +
-				// T[j]);
+				 System.err.println("Zamieniam " + T[i] + " z " +
+				 T[j]);
 				swapCounter++;
 			}
 		}
-		// System.err.println("Zamieniam " + T[r] + " z " +
-		// T[i]);
+		 System.err.println("Zamieniam " + T[p] + " z " +
+		 T[i]);
 		swapCounter++;
 		swap(T, p, i);
 		return i;

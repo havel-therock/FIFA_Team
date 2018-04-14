@@ -1,4 +1,3 @@
-package lista3;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -59,12 +58,34 @@ public class Zad3 {
 		
 		System.out.println("Wpisz 1 jesli chcesz losowac tablice, 2 jesli wpisac");
 		int option = reader.nextInt();
-		if (option != 1 && option != 2) {
+		if (option != 1 && option != 2 && option!=3) {
 			System.out.println("Zly wybor");
 			System.exit(0);
 		}
-		
-		if(option==1){
+		if(option==3){
+			System.out.println("TAJNA OPCJA DLA STATYSTYK");
+			Random rnd = new Random();
+			int counter=1000;
+			while(counter<=100000){
+				array = new int[counter];
+				for(int i=0;i<counter;i++){
+					array[i]=rnd.nextInt(1000);
+				}		
+				value=array[0];
+				array = quickSort(array, true, 0, counter-1);
+				long startTime = System.nanoTime();
+				int result = binarysearch(array,0,counter-1,value);
+				long endTime = System.nanoTime();
+				totalTime = endTime - startTime;
+				counter+=1000;
+				if(result == 1){
+					System.out.println("ELEMENT " + value +" JEST W TABLICY --liczba porownan-- " + comparCounter + " --czas wykonania-- " + totalTime);
+				}
+				else
+					System.out.println("NIE MA ELEMENTU W TABLICY --liczba porownan-- " + comparCounter + " --czas wykonania-- " + totalTime);
+			}
+			System.exit(0);
+		} else if(option==1){
 			Random rnd = new Random();
 			for(int i=0;i<length;i++){
 				array[i]=rnd.nextInt(1000);
@@ -81,7 +102,7 @@ public class Zad3 {
 			System.out.print(array[i] + ", ");
 		System.out.println("");
 		
-		System.out.println("Podaj poszukiwan¹ wartosc");
+		System.out.println("Podaj poszukiwan wartosc");
 		value = reader.nextInt();
 		
 		long startTime = System.nanoTime();
@@ -90,10 +111,10 @@ public class Zad3 {
 		totalTime = endTime - startTime;
 		
 		if(result == 1){
-			System.out.println("ELEMENT JEST W TABLICY --liczba porownan-- " + comparCounter + " --czas wykonania-- " + totalTime);
+			System.out.println("ELEMENT " + value + " JEST W TABLICY --liczba porownan-- " + comparCounter + " --czas wykonania-- " + totalTime);
 		}
 		else
-			System.out.println("NIE MA ELEMENTU W TABLICY --liczba porownan-- " + comparCounter + " --czas wykonania-- " + totalTime);
+			System.out.println("NIE MA ELEMENTU " + value + " W TABLICY --liczba porownan-- " + comparCounter + " --czas wykonania-- " + totalTime);
 	}
 
 	private static int binarysearch(int[] array2,int start,int end,int value2 ) {
