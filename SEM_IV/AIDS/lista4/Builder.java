@@ -11,7 +11,7 @@ public class Builder {
 				struct = new BST();
 				break;
 			case "rbt":
-				struct = new BST();
+				struct = new RBT();
 				break;
 			case "hmap":
 				struct = new BST();
