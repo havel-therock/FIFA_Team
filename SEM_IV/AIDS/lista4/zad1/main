@@ -1,0 +1,4 @@
+
+#!/bin/bash
+
+java Builder $1 $2 <&0 >&1

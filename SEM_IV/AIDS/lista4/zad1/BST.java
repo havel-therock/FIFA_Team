@@ -13,12 +13,14 @@ public class BST extends DataStructure  {
 	Node searchNode(Node node, String s) {
 		if(node==null)
 			return null;
-		if((node.value.compareTo(s))==0)
+		if((node.value.compareTo(s))==0){
 			return node;
-		else if((node.value.compareTo(s))<=0){
+		}
+		else if((node.value.compareToIgnoreCase(s))<=0){
 			return searchNode(node.right,s);
-		} else
+		} else{
 			return searchNode(node.left,s);
+		}
 	}
 	
 	String findExtremum(Node node, boolean b) {
@@ -36,12 +38,21 @@ public class BST extends DataStructure  {
 		}
 	}
 
+	public void successor(String s) {
+		Node k = searchNode(root, s);
+		Node y=successorHelp(k);
+		if(y!=null)
+			System.out.print(y.value);
+	}
+	
 	public Node successorHelp(Node k){
-		if(k.right!=null){
-			System.out.println(findExtremum(k,false));
-			return null;
-		}
 		Node y=k.parent;
+		if(k.right!=null){
+			y=k.right;
+			while(y.left!=null)
+				y=y.left;
+			return y;
+		}
 		while(y!=null && k==y.right){
 			k=y;
 			y=y.parent;
@@ -52,19 +63,21 @@ public class BST extends DataStructure  {
 	void inorderWalk(Node node) {
 		if(node!=null){
 			inorderWalk(node.left);
-			System.out.print(node.value + " , ");
+			if(node.value!=null)
+				System.out.print(node.value + " , ");
 			inorderWalk(node.right);
 		}			
 	}
 
 	public void insert(String s) {
+		size++;
 		if(root==null){
 			root = new Node(s,null);
 			return;
 		}
 		Node temp=root;
 		while(true){
-			if((temp.value.compareTo(s))<=0){
+			if((temp.value.compareToIgnoreCase(s))<=0){
 				if(temp.right==null){
 					temp.right=new Node(s,temp);
 					return;
@@ -84,7 +97,7 @@ public class BST extends DataStructure  {
 	}
 
 	public void load(String f) {
-		System.out.println("zz");
+		//System.out.println("zz");
 		BufferedReader abc;
 		try {
 			abc = new BufferedReader(new FileReader(f));
@@ -97,8 +110,10 @@ public class BST extends DataStructure  {
 			}
 			String[] strings;
 			strings = text.split("\\s+");
-			for(int i=0; i< strings.length;i++)
-				insert(strings[i]);
+			for(int i=0; i< strings.length;i++){
+				//System.out.println("OO " + strings[i]);
+				insert(strings[i].replaceAll("[^a-zA-Z]", ""));
+			}
 			abc.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -111,60 +126,40 @@ public class BST extends DataStructure  {
 
 	public void delete(String s) {
 		Node node=searchNode(root,s);
-		if(node==null)
-			return;
-		if(node==root){
-			root=null;
-			return;
-		}
-		//zero poddrzew
-		Node parent=node.parent;
-		if(node.left==null && node.right==null){
-			if(node.value.compareTo(parent.value)<=0)
-				parent.left=null;
-			else
-				parent.right=null;
-			return;
-		}
-		
-		//jedno poddrzewo
-		if(node.left!=null){
-			if(node.value.compareTo(parent.value)<=0){
-				parent.left=node.left;
-				node.left.parent=parent;
-			}
-			else{
-				parent.right=node.left;
-				node.left.parent=parent;
-			}
-			return;
-		}
-		
-		if(node.right!=null){
-			if(node.value.compareTo(parent.value)<=0){
-				parent.left=node.right;
-				node.right.parent=parent;
-			}
-			else{
-				parent.right=node.right;
-				node.right.parent=parent;
-			}
-			return;
-		}
-		//dwa poddrzewa
-		Node next = successorHelp(node);
-		next.parent =node.parent;
-		next.left=node.left;
-		next.right=node.right;
-		node.left.parent=next;
-		node.right.parent=next;
-		if(node.value.compareTo(parent.value)<=0){
-			parent.left=next;
-		}
-		else{
-			parent.right=next;
-		}
-		return;
+		Node x = null;
+	    Node y = null;    	
+	    if(node!=null)
+	    	size--;
+	    else
+	    	return;
+	    
+	        if (node.left == null || node.right==null) {	    
+	            y = node;
+	        } else {	         	
+	            y = successorHelp(node);
+	        }
+	        if (y.left!=null) {
+	        	
+	            x = y.left;
+	        } else {
+	            x = y.right;
+	          
+	        }
+	        if(x!=null)
+	        	x.parent = y.parent;
+	        if (y.parent==null) {
+	            root = x;
+	        } else if (y.parent.left!=null && y.parent.left == y) {
+	            y.parent.left = x;
+	         
+	        } else if (y.parent.right!=null && y.parent.right == y) {
+	            y.parent.right = x;
+	           
+	        }
+	        if (y != node) {
+	            node.value = y.value;
+	        }
+	   
 	}
 
 	public void find(String s) {
@@ -175,18 +170,15 @@ public class BST extends DataStructure  {
 	}
 
 	public void min() {
-		System.out.print(findExtremum(root,false));
+		if(root!=null)
+			System.out.print(findExtremum(root,false));
 	}
 
 	public void max() {
-		System.out.print(findExtremum(root,true));
+		if(root!=null)
+			System.out.print(findExtremum(root,true));
 	}
 
-	public void successor(Node k) {
-		Node y=successorHelp(k);
-		if(y!=null)
-			System.out.print(y.value);
-	}
 
 	public void inorder() {
 		inorderWalk(root);

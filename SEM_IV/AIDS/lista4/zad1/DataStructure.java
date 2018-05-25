@@ -1,5 +1,6 @@
 public abstract class DataStructure {
-
+	int size;
+	
 	public DataStructure() {
 	}
 
@@ -22,7 +23,7 @@ public abstract class DataStructure {
 	public void max() {
 	}
 
-	public void successor(Node k) {
+	public void successor(String s) {
 	}
 
 	public void inorder() {
