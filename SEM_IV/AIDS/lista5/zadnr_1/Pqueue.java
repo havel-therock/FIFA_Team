@@ -40,8 +40,9 @@ public class Pqueue {
 	}
 	
 	public void topp(){
-		if (top()!=0)
-			System.out.println(top());
+		int w=top();
+		if (w!=0)
+			System.out.println(w);
 	}
 	
 	public int pop(){
@@ -57,8 +58,9 @@ public class Pqueue {
 	}
 	
 	public void popp(){
-		if (pop()!=0)
-			System.out.println(pop());
+		int w = pop();
+		if (w!=0)
+			System.out.println(w);
 	}
 	
 	private void heapify(int i) {
@@ -199,5 +201,16 @@ class Element{
 	
 	public void setP (double p){
 		priority=p;
+	}
+}
+
+class Edge{
+	int v1;
+	int v2;
+	double w;
+	public Edge(int v1, int v2, double w) {
+		this.v1=v1;
+		this.v2=v2;
+		this.w=w;
 	}
 }

@@ -15,8 +15,8 @@ public class SpanningTree {
 	List<Edge> spanEdges;
 	double weight;
 	Pqueue q;
-	List<Integer> []  adj;
-	double [][] weights;
+	List<Edge> []  adj;
+	//double [][] weights;
 	
 	public void doKruskalAlgorithm(){
 		Edge x;
@@ -47,10 +47,10 @@ public class SpanningTree {
 		v[w]=true;
 		for(int i=0;i<vNumber-1;i++){
 			for(int z=0;z<adj[w].size();z++){
-				int u = adj[w].get(z);
+				int u = adj[w].get(z).v2;
 				if(v[u]==false){
-					edges[counter]=new Edge(w, u, weights[w][u]);
-					q.insert(counter, weights[w][u]);
+					edges[counter]=new Edge(w, u, adj[w].get(z).w);
+					q.insert(counter, adj[w].get(z).w);
 					counter++;
 				}
 			}
@@ -80,7 +80,7 @@ public class SpanningTree {
 		this.q=new Pqueue(eNumber);
 		this.spanEdges=new ArrayList<>();
 		this.adj = new List[vNumber];
-		this.weights=new double[eNumber][eNumber];
+		//this.weights=new double[eNumber][eNumber];
 		
 	}
 	
@@ -91,14 +91,14 @@ public class SpanningTree {
 		
 		if(adj[w1-1]==null)
 			adj[w1-1] = new ArrayList<>();
-		adj[w1-1].add(w2-1);
+		adj[w1-1].add(new Edge(w1-1,w2-1,p));
 		if(adj[w2-1]==null)
 			adj[w2-1] = new ArrayList<>();
-		adj[w2-1].add(w1-1);
+		adj[w2-1].add(new Edge(w2-1,w1-1,p));
 		edges[i]=new Edge(w1-1,w2-1,p);
 		q.insert(i, p);
-		weights[w1-1][w2-1]=p;
-		weights[w2-1][w1-1]=p;
+		//weights[w1-1][w2-1]=p;
+		//weights[w2-1][w1-1]=p;
 	}
 	
 	public static void load(String f) {
@@ -144,7 +144,7 @@ public class SpanningTree {
 	}
 	
 	public static void main(String[] args) {
-		if(args.length==1)
+	if(args.length==1)
 			if(args[0].equals("-k"))
 				kruskal=true;
 			else if(args[0].equals("-p"))
@@ -169,7 +169,7 @@ public class SpanningTree {
 			}
 			doAlgorythm(struct);
 			
-	//	load("mst.in");
+		//load("mst.in");
 		
 	 }
 }
@@ -209,16 +209,5 @@ class SetElements{
 	SetElements up;
 	public SetElements(int v) {
 		this.v=v;
-	}
-}
-
-class Edge{
-	int v1;
-	int v2;
-	double w;
-	public Edge(int v1, int v2, double w) {
-		this.v1=v1;
-		this.v2=v2;
-		this.w=w;
 	}
 }

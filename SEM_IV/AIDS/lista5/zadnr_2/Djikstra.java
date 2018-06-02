@@ -14,8 +14,8 @@ public class Djikstra {
 	int vNumber;
 	int eNumber;
 	int vStart;
-	List<Integer> []  Adj;
-	double [][] weights;
+	List<Edge> []  Adj;
+	//double [][] weights;
 	int [] prev;
 	double [] dist;
 	
@@ -23,13 +23,21 @@ public class Djikstra {
 		this.vNumber=vNumber;
 		this.eNumber=eNumber;
 		this.Adj = new List[vNumber];
-		this.weights=new double[eNumber][eNumber];
+		//this.weights=new double[eNumber][eNumber];
 		this.prev=new int[vNumber];
 		this.dist = new double[vNumber];
 	}
 	
 	public void setStart(int vStart) {
 		this.vStart=vStart-1;		
+	}
+	
+	public double findEdge(List<Edge> l, int v){
+		int counter=0;
+		while(l.get(counter).v2!=v){
+			counter++;
+		}
+		return l.get(counter).w;
 	}
 	
 	public void addEdge(String string, String string2, String string3, int i) {
@@ -39,13 +47,12 @@ public class Djikstra {
 		
 		if(Adj[w1-1]==null)
 			Adj[w1-1] = new ArrayList<>();
-		Adj[w1-1].add(w2-1);
-		weights[w1-1][w2-1]=p;
+		Adj[w1-1].add(new Edge(w1-1,w2-1,p));
+		//weights[w1-1][w2-1]=p;
 	}
 	
 	public void doDjikstraAlgorithm() {
 		Boolean [] v = new Boolean[vNumber];
-		int [] s = new int[vNumber];
 		Pqueue q = new Pqueue(vNumber);
 		for(int i=0;i<vNumber;i++){
 			v[i]=false;
@@ -54,7 +61,7 @@ public class Djikstra {
 			prev[i]=-1;
 		}
 		q.priority(vStart, 0);
-		dist[0]=0;
+		dist[vStart]=0;
 		int u;
 		int temp;
 		double helper;
@@ -63,9 +70,9 @@ public class Djikstra {
 			u = q.pop();
 			v[u]=true;
 			for(int i =0;i<Adj[u].size();i++){
-				temp = Adj[u].get(i);
+				temp = Adj[u].get(i).v2;
 				if(v[temp]==false){
-					helper=dist[u]+weights[u][temp];
+					helper=dist[u]+Adj[u].get(i).w;
 					if(helper<dist[temp]){
 						q.priority(temp,helper);
 						dist[temp]=helper;
@@ -86,7 +93,7 @@ public class Djikstra {
 			System.err.print("DROGA DLA V "+ (i+1) + " WAGA " + dist[i] + " ::: ");
 			while(prev[q]!=-1){
 				q=prev[q];
-				System.err.print("V "+ (q+1) + " -- V " + (w+1) + " Wagi " + weights[q][w] + " ; ");
+				System.err.print("V "+ (q+1) + " -- V " + (w+1) + " Wagi " + findEdge(Adj[q], w) + " ; ");
 				w=q;
 			}
 			System.err.println();
@@ -150,7 +157,7 @@ public class Djikstra {
 			struct.setStart(vStart);
 			doAlgorytm(struct);
 			
-		//load("dijkstra2.in");
+		//load("dijkstra4.in");
 		
 	 }
 
@@ -162,5 +169,8 @@ public class Djikstra {
 		struct.showOutput();
 		System.err.println("Time " + tTime);
 	}
+	
 
 }
+
+
