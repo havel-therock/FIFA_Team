@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+
+body {
+    background-color: #dbdbdb;
+}
+
+h1, h2, p, #logo, #logo-desc, a {
+    color: black;
+    font-family: "PT Mono", monospace;
+    text-align: justify;
+}
+
+h1 {
+    padding: 30px 0;
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    padding: 15px 0 0px 0;
+}
+
+.container {
+    padding-top: 20px;
+}
+
+.header {
+    padding-bottom: 30px;
+}
+
+#logo {
+    font-size: 95px;
+    line-height: 90px;
+}
+
+ul {
+    list-style-type: none;
+    line-height: 33%;
+}
+
+ul li {
+    display: inline;
+}
+
+.menu-bar {
+
+}
+
+.menu-item {
+    padding: 0 20px;
+    line-height: 100px;
+}
+
+.a-clear:hover {
+    text-decoration: none;
+}
