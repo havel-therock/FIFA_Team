@@ -1,5 +1,20 @@
 # FIFA_Team
 
+Spis treści:
+* Semestr IV
+* Semestr V
+
+---
+
+## SEMESTR IV
+Przedmioty | Linki
+--- | ---
+AiSD | Gołębiewski
+Technologie WWW | Cichoń
+Technologie sieciowe | Krzywiecki
+
+---
+
 ## SEMESTR V
 Przedmioty | Linki
 --- | ---
