@@ -1,0 +1,194 @@
+mateusz@LEGION:~/Pulpit/repository$ svn checkout http://156.17.7.16/236618/
+Obszar uwierzytelniania: <http://156.17.7.16:80> Subversion Repository 236618
+Has³o 'mateusz': *
+
+Obszar uwierzytelniania: <http://156.17.7.16:80> Subversion Repository 236618
+U¿ytkownik: 236618
+Has³o '236618': ******
+
+A    236618/AiSD Lista2
+A    236618/AiSD Lista2/zadanie1
+A    236618/AiSD Lista2/zadanie2
+A    236618/AiSD Lista2/zadanie3
+A    236618/aisd
+A    236618/aisd/lista3
+A    236618/aisd/lista3/zad1
+A    236618/aisd/lista3/zad2
+A    236618/aisd/lista3/zad3
+A    236618/aisd/lista4
+A    236618/aisd/lista3/zad2/global.h
+A    236618/AiSD Lista2/zadanie1/sorts.h
+A    236618/aisd/lista3/zad1/global.h
+A    236618/AiSD Lista2/zadanie1/zad1.c
+A    236618/AiSD Lista2/zadanie1/insertionSort.c
+A    236618/AiSD Lista2/zadanie1/quickSort.c
+A    236618/AiSD Lista2/zadanie1/global.h
+A    236618/AiSD Lista2/zadanie1/mergeSort.c
+A    236618/AiSD Lista2/zadanie1/Makefile
+A    236618/aisd/lista5
+A    236618/aisd/lista5/zad3
+A    236618/AiSD Lista2/zadanie2/mergeSort.c
+A    236618/AiSD Lista2/zadanie2/Makefile
+A    236618/AiSD Lista2/zadanie2/dualPivotSort.c
+A    236618/aisd/lista3/zad1/Makefile
+A    236618/aisd/lista3/zad1/dualPivotSort.c
+A    236618/aisd/lista3/zad1/sorts.h
+A    236618/aisd/lista5/zad4
+A    236618/aisd/lista3/zad2/insertionSort.c
+A    236618/AiSD Lista2/zadanie2/sorts.h
+A    236618/AiSD Lista2/zadanie2/zad2.c
+A    236618/AiSD Lista2/zadanie2/insertionSort.c
+A    236618/AiSD Lista2/zadanie2/quickSort.c
+A    236618/AiSD Lista2/zadanie2/global.h
+A    236618/AiSD Lista2/zadanie3/insertionSort.c
+A    236618/AiSD Lista2/zadanie3/quickSort.c
+A    236618/AiSD Lista2/zadanie3/global.h
+A    236618/AiSD Lista2/zadanie3/mergeSort.c
+A    236618/AiSD Lista2/zadanie3/Makefile
+A    236618/AiSD Lista2/zadanie3/dualPivotSort.c
+A    236618/AiSD Lista2/zadanie3/sorts.h
+A    236618/AiSD Lista2/zadanie3/zad3.c
+A    236618/aisd/lista3/zad1/insertionSort.c
+A    236618/aisd/lista3/zad1/quickSort.c
+A    236618/aisd/lista3/zad1/mergeSort.c
+A    236618/aisd/lista5/zad1
+A    236618/aisd/lista5/zad2
+A    236618/aisd/lista3/zad2/Makefile
+A    236618/aisd/lista5/zad3/Edge.java
+A    236618/TS_2
+A    236618/aisd/lista5/zad3/Set.java
+A    236618/aisd/lista5/zad4/Edge.java
+A    236618/aisd/lista3/zad3/zad.exe
+A    236618/aisd/lista3/zad3/Makefile
+A    236618/aisd/lista5/zad4/Set.java
+A    236618/TS_3
+A    236618/aisd/lista4/Main.java
+A    236618/aisd/lista4/Functionality.java
+A    236618/aisd/lista5/zad3/SetElement.java
+A    236618/aisd/lista5/zad4/ElementQueue.java
+A    236618/aisd/lista5/zad1/Makefile
+A    236618/aisd/lista5/zad2/PriorityQueue.java
+A    236618/TS_4
+A    236618/aisd/lista5/zad3/SpanningTree.java
+A    236618/aisd/lista5/zad4/SetElement.java
+A    236618/aisd/lista5/zad4/Makefile
+A    236618/aisd/lista5/zad1/main
+A    236618/aisd/lista5/zad2/AlgorithmDjikstra.java
+A    236618/aisd/lista3/zad2/zad.exe
+A    236618/aisd/lista5/zad2/ElementQueue.java
+A    236618/TS_5
+A    236618/TS_5/.idea
+A    236618/aisd/lista3/zad3/zad3.c
+A    236618/aisd/lista4/BinarySearchTree.java
+A    236618/aisd/lista4/main
+A    236618/aisd/lista5/zad3/AlgorithmDjikstra.java
+A    236618/aisd/lista5/zad3/PriorityQueue.java
+A    236618/aisd/lista5/zad3/ElementQueue.java
+A    236618/aisd/lista5/zad4/PriorityQueue.java
+A    236618/aisd/lista5/zad4/SpanningTree.java
+A    236618/aisd/lista5/zad1/PriorityQueue.java
+A    236618/aisd/lista5/zad2/main
+A    236618/TS_5/public_html
+A    236618/TS_5/public_html/css
+A    236618/aisd/lista3/zad1/zad.exe
+A    236618/aisd/lista3/zad1/radixSort.c
+A    236618/aisd/lista3/zad1/zad1.c
+A    236618/aisd/lista3/zad2/function.h
+A    236618/aisd/lista3/zad2/zad2.c
+A    236618/aisd/lista3/zad3/global.h
+A    236618/aisd/lista4/Makefile
+A    236618/aisd/lista4/RedBlackTree.java
+A    236618/aisd/lista5/zad3/main
+A    236618/aisd/lista5/zad3/Makefile
+A    236618/aisd/lista5/zad4/main
+A    236618/TS_5/public_html/js
+A    236618/TS_5/out
+A    236618/TS_5/out/production
+A    236618/TS_5/out/production/TS5
+A    236618/TS_5/out/production/TS5/body
+A    236618/TS_5/out/production/TS5/response
+A    236618/TS_2/graf.txt
+A    236618/TS_2/Exercise_1.java
+A    236618/TS_3/Framing.java
+A    236618/TS_3/W.txt
+A    236618/aisd/lista5/zad4/WalkingTree.java
+A    236618/aisd/lista5/zad4/AlgorithmDjikstra.java
+A    236618/aisd/lista5/zad1/ElementQueue.java
+A    236618/aisd/lista5/zad2/Makefile
+A    236618/TS_2/Exercise_2.java
+A    236618/TS_3/Main.java
+A    236618/TS_3/Z.txt
+A    236618/TS_4/Z2Packet.java
+A    236618/TS_4/Z2Receiver.java
+A    236618/TS_5/.idea/workspace.xml
+A    236618/TS_5/out/production/TS5/server
+A    236618/TS_5/src
+A    236618/TS_3/Channel.java
+A    236618/TS_4/Z2Forwarder.java
+A    236618/TS_5/.idea/modules.xml
+A    236618/TS_5/public_html/footer.html
+A    236618/TS_5/src/body
+A    236618/TS_5/src/response
+A    236618/TS_3/Node2.java
+A    236618/TS_5/public_html/docs.html
+A    236618/TS_5/public_html/contact.html
+A    236618/TS_5/out/production/TS5/body/ServerResponseType.class
+A    236618/TS_5/src/server
+A    236618/TS_5/out/production/TS5/response/ServerResponseBuilder.class
+A    236618/TS_5/public_html/index.html
+A    236618/TS_5/public_html/about.html
+A    236618/TS_5/out/production/TS5/body/ServerResponsePage$1.class
+A    236618/TS_5/out/production/TS5/response/ServerResponseGET$1.class
+A    236618/TS_5/out/production/TS5/response/ServerResponseGET.class
+A    236618/TS_5/out/production/TS5/server/ServerRequestValidator.class
+A    236618/TS_5/src/body/ServerResponseProperty.java
+A    236618/TS_5/src/response/ServerResponse.java
+A    236618/TS_5/out/production/TS5/response/ServerResponse.class
+A    236618/TS_5/out/production/TS5/server/ServerListenerThread.class
+A    236618/TS_5/out/production/TS5/Main.class
+A    236618/TS_5/src/body/ServerResponseType.java
+A    236618/AiSD Lista1
+A    236618/TS_5/src/response/ServerResponseInvalid.java
+A    236618/TS_5/src/server/ServerRequestFileType.java
+A    236618/TS_5/src/server/ServerLogger.java
+A    236618/TS_5/src/response/ServerResponseBuilder.java
+A    236618/TS_5/src/server/ServerRequest.java
+A    236618/TS_5/src/server/Server.java
+A    236618/AiSD Lista1/OneWayList.c
+A    236618/AiSD Lista1/TwoWayCyclicList.c
+A    236618/TS_4/Sprawozdanie 4.pdf
+A    236618/TS_4/plik.txt
+A    236618/TS_5/.idea/uiDesigner.xml
+A    236618/TS_5/public_html/404.html
+A    236618/TS_5/public_html/js/script.js
+A    236618/TS_2/SPRAWOZDANIE nr 2.pdf
+A    236618/TS_5/out/production/TS5/body/ServerResponsePage.class
+A    236618/TS_5/out/production/TS5/response/ServerResponseHEAD.class
+A    236618/TS_5/out/production/TS5/response/ServerResponseCLIENT.class
+A    236618/TS_5/out/production/TS5/server/ServerRequestFileType.class
+A    236618/TS_5/out/production/TS5/server/ServerLogger.class
+A    236618/TS_5/src/body/ServerResponsePage.java
+A    236618/TS_5/src/response/ServerResponseHEAD.java
+A    236618/TS_5/src/Main.java
+A    236618/TS_5/src/server/ServerRequestValidator.java
+A    236618/TS_3/Sprawozdanie Lista 3.pdf
+A    236618/TS_3/Node.java
+A    236618/TS_3/Transmission.java
+A    236618/TS_4/Z2Sender.java
+A    236618/TS_5/.idea/misc.xml
+A    236618/TS_5/public_html/css/style.css
+A    236618/TS_5/public_html/header.html
+A    236618/TS_5/out/production/TS5/body/ServerResponseContent.class
+A    236618/TS_5/out/production/TS5/body/ServerResponseProperty.class
+A    236618/TS_5/out/production/TS5/response/ServerResponseInvalid.class
+A    236618/TS_5/out/production/TS5/server/ServerRequest.class
+A    236618/TS_5/out/production/TS5/server/Server.class
+A    236618/TS_5/src/body/ServerResponseContent.java
+A    236618/TS_5/src/response/ServerResponseGET.java
+A    236618/TS_5/src/response/ServerResponseCLIENT.java
+A    236618/SPRAWOZDANIE Lista nr 1.pdf
+A    236618/TS_5/src/server/ServerListenerThread.java
+A    236618/TS_5/TS5.iml
+A    236618/AiSD Lista1/FIFO.c
+Pobrano wersjê 29.
+mateusz@LEGION:~/Pulpit/repository$

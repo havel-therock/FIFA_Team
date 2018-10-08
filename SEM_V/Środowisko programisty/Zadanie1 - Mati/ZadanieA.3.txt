@@ -1,0 +1,14 @@
+mateusz@LEGION:~/Pulpit/repository2/236618$ svn add Folder/
+A         Folder
+A         Folder/A.txt
+mateusz@LEGION:~/Pulpit/repository2/236618$ svn commit -m "dodanie folderu do wykonywania zadañ"
+Dodawanie       Folder
+Dodawanie       Folder/A.txt
+Przesy³anie treœci pliku.done
+Committing transaction...
+Zatwierdzona wersja 30.
+mateusz@LEGION:~/Pulpit/repository2/236618$ cat Folder/A.txt 
+Milionerzy.
+120
+AbC
+Stan Lee

@@ -1,0 +1,100 @@
+mateusz@LEGION:~/Pulpit/F$ svn log -v abc/
+------------------------------------------------------------------------
+r51 | 236618 | 2018-10-06 11:12:55 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   A /abc/b.txt
+
+dodany znowu b.txt
+------------------------------------------------------------------------
+r50 | 236618 | 2018-10-06 11:12:19 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   D /abc/b.txt
+   A /abc/c.txt (z /abc/b.txt:49)
+
+move b to c
+------------------------------------------------------------------------
+r49 | 236618 | 2018-10-06 11:10:53 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   D /abc/a.txt
+   A /abc/b.txt (z /abc/a.txt:48)
+
+move a to b
+------------------------------------------------------------------------
+r48 | 236618 | 2018-10-06 10:55:33 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   D /abc/b.txt
+
+delete b.txt
+------------------------------------------------------------------------
+r47 | 236618 | 2018-10-06 10:53:44 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   A /abc/a.txt
+   A /abc/b.txt
+
+Zadanie F dodanie txt
+------------------------------------------------------------------------
+r46 | 236618 | 2018-10-06 00:40:50 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   A /abc
+
+add
+------------------------------------------------------------------------
+mateusz@LEGION:~/Pulpit/F/abc$ svn log -v a.txt 
+svn: E155010: Obiekt '/home/mateusz/Pulpit/F/abc/a.txt' nie zosta³ znaleziony.
+mateusz@LEGION:~/Pulpit/F/abc$ svn log -v b.txt 
+------------------------------------------------------------------------
+r51 | 236618 | 2018-10-06 11:12:55 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   A /abc/b.txt
+
+dodany znowu b.txt
+------------------------------------------------------------------------
+mateusz@LEGION:~/Pulpit/F/abc$ svn log -v c.txt 
+------------------------------------------------------------------------
+r50 | 236618 | 2018-10-06 11:12:19 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   D /abc/b.txt
+   A /abc/c.txt (z /abc/b.txt:49)
+
+move b to c
+------------------------------------------------------------------------
+r49 | 236618 | 2018-10-06 11:10:53 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   D /abc/a.txt
+   A /abc/b.txt (z /abc/a.txt:48)
+
+move a to b
+------------------------------------------------------------------------
+r47 | 236618 | 2018-10-06 10:53:44 +0200 (sob) | 1 linia
+Zmodyfikowane œcie¿ki:
+   A /abc/a.txt
+   A /abc/b.txt
+
+Zadanie F dodanie txt
+------------------------------------------------------------------------
+mateusz@LEGION:~/Pulpit/F/abc$ svn cat -r 50 c.txt 
+Subversion1
+Dodany tekst
+Dodany test znowu 2
+mateusz@LEGION:~/Pulpit/F/abc$ svn cat -r 49 c.txt 
+Subversion1
+Dodany tekst
+mateusz@LEGION:~/Pulpit/F/abc$ svn cat -r 48 c.txt 
+Subversion1
+mateusz@LEGION:~/Pulpit/F$ svn diff -r 48:51 http://156.17.7.16/236618
+Index: abc/a.txt
+===================================================================
+--- abc/a.txt	(wersja 48)
++++ abc/a.txt	(nonexistent)
+@@ -1 +0,0 @@
+-Subversion1
+Index: abc/b.txt
+===================================================================
+Index: abc/c.txt
+===================================================================
+--- abc/c.txt	(nonexistent)
++++ abc/c.txt	(wersja 51)
+@@ -0,0 +1,3 @@
++Subversion1
++Dodany tekst
++Dodany test znowu 2

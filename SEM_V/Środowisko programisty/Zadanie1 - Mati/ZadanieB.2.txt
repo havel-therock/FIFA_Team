@@ -1,0 +1,21 @@
+mateusz@LEGION:~/Pulpit/repository/236618$ svn add --force Folder/
+A         Folder/Folder1
+A         Folder/Folder1/Folder123
+A         Folder/Folder1/Folder123/abc.txt
+A         Folder/Folder1/X.txt
+A         Folder/Folder1/Z.txt
+A         Folder/Folder2
+A         Folder/Folder2/U.txt
+A         Folder/Folder2/txt.txt
+mateusz@LEGION:~/Pulpit/repository/236618$ svn commit -m "Dodane podkatalogi"
+Dodawanie       Folder/Folder1
+Dodawanie       Folder/Folder1/Folder123
+Dodawanie       Folder/Folder1/Folder123/abc.txt
+Dodawanie       Folder/Folder1/X.txt
+Dodawanie       Folder/Folder1/Z.txt
+Dodawanie       Folder/Folder2
+Dodawanie       Folder/Folder2/U.txt
+Dodawanie       Folder/Folder2/txt.txt
+Przesy³anie treœci pliku.....done
+Committing transaction...
+Zatwierdzona wersja 33.

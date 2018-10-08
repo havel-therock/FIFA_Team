@@ -1,0 +1,12 @@
+Milionerzy.!@#$
+120
+AbC
+<<<<<<< .mine
+Stan Lee utworzył komiksy o Spider-Man'ie.
+W-11 - Wydział Śledczy
+||||||| .r30
+Stan Lee
+=======
+Stan Lee
+Ola boga. Nikt
+>>>>>>> .r31

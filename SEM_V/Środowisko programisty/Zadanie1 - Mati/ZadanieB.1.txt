@@ -1,0 +1,186 @@
+mateusz@LEGION:~/Pulpit/repository$ tree
+.
+L¦¦ 236618
+    +¦¦ aisd
+    -   +¦¦ lista3
+    -   -   +¦¦ zad1
+    -   -   -   +¦¦ dualPivotSort.c
+    -   -   -   +¦¦ global.h
+    -   -   -   +¦¦ insertionSort.c
+    -   -   -   +¦¦ Makefile
+    -   -   -   +¦¦ mergeSort.c
+    -   -   -   +¦¦ quickSort.c
+    -   -   -   +¦¦ radixSort.c
+    -   -   -   +¦¦ sorts.h
+    -   -   -   +¦¦ zad1.c
+    -   -   -   L¦¦ zad.exe
+    -   -   +¦¦ zad2
+    -   -   -   +¦¦ function.h
+    -   -   -   +¦¦ global.h
+    -   -   -   +¦¦ insertionSort.c
+    -   -   -   +¦¦ Makefile
+    -   -   -   +¦¦ zad2.c
+    -   -   -   L¦¦ zad.exe
+    -   -   L¦¦ zad3
+    -   -       +¦¦ global.h
+    -   -       +¦¦ Makefile
+    -   -       +¦¦ zad3.c
+    -   -       L¦¦ zad.exe
+    -   +¦¦ lista4
+    -   -   +¦¦ BinarySearchTree.java
+    -   -   +¦¦ Functionality.java
+    -   -   +¦¦ main
+    -   -   +¦¦ Main.java
+    -   -   +¦¦ Makefile
+    -   -   L¦¦ RedBlackTree.java
+    -   L¦¦ lista5
+    -       +¦¦ zad1
+    -       -   +¦¦ ElementQueue.java
+    -       -   +¦¦ main
+    -       -   +¦¦ Makefile
+    -       -   L¦¦ PriorityQueue.java
+    -       +¦¦ zad2
+    -       -   +¦¦ AlgorithmDjikstra.java
+    -       -   +¦¦ ElementQueue.java
+    -       -   +¦¦ main
+    -       -   +¦¦ Makefile
+    -       -   L¦¦ PriorityQueue.java
+    -       +¦¦ zad3
+    -       -   +¦¦ AlgorithmDjikstra.java
+    -       -   +¦¦ Edge.java
+    -       -   +¦¦ ElementQueue.java
+    -       -   +¦¦ main
+    -       -   +¦¦ Makefile
+    -       -   +¦¦ PriorityQueue.java
+    -       -   +¦¦ SetElement.java
+    -       -   +¦¦ Set.java
+    -       -   L¦¦ SpanningTree.java
+    -       L¦¦ zad4
+    -           +¦¦ AlgorithmDjikstra.java
+    -           +¦¦ Edge.java
+    -           +¦¦ ElementQueue.java
+    -           +¦¦ main
+    -           +¦¦ Makefile
+    -           +¦¦ PriorityQueue.java
+    -           +¦¦ SetElement.java
+    -           +¦¦ Set.java
+    -           +¦¦ SpanningTree.java
+    -           L¦¦ WalkingTree.java
+    +¦¦ AiSD Lista1
+    -   +¦¦ FIFO.c
+    -   +¦¦ OneWayList.c
+    -   L¦¦ TwoWayCyclicList.c
+    +¦¦ AiSD Lista2
+    -   +¦¦ zadanie1
+    -   -   +¦¦ global.h
+    -   -   +¦¦ insertionSort.c
+    -   -   +¦¦ Makefile
+    -   -   +¦¦ mergeSort.c
+    -   -   +¦¦ quickSort.c
+    -   -   +¦¦ sorts.h
+    -   -   L¦¦ zad1.c
+    -   +¦¦ zadanie2
+    -   -   +¦¦ dualPivotSort.c
+    -   -   +¦¦ global.h
+    -   -   +¦¦ insertionSort.c
+    -   -   +¦¦ Makefile
+    -   -   +¦¦ mergeSort.c
+    -   -   +¦¦ quickSort.c
+    -   -   +¦¦ sorts.h
+    -   -   L¦¦ zad2.c
+    -   L¦¦ zadanie3
+    -       +¦¦ dualPivotSort.c
+    -       +¦¦ global.h
+    -       +¦¦ insertionSort.c
+    -       +¦¦ Makefile
+    -       +¦¦ mergeSort.c
+    -       +¦¦ quickSort.c
+    -       +¦¦ sorts.h
+    -       L¦¦ zad3.c
+    +¦¦ Folder
+    -   L¦¦ A.txt
+    +¦¦ SPRAWOZDANIE Lista nr 1.pdf
+    +¦¦ TS_2
+    -   +¦¦ Exercise_1.java
+    -   +¦¦ Exercise_2.java
+    -   +¦¦ graf.txt
+    -   L¦¦ SPRAWOZDANIE nr 2.pdf
+    +¦¦ TS_3
+    -   +¦¦ Channel.java
+    -   +¦¦ Framing.java
+    -   +¦¦ Main.java
+    -   +¦¦ Node2.java
+    -   +¦¦ Node.java
+    -   +¦¦ Sprawozdanie Lista 3.pdf
+    -   +¦¦ Transmission.java
+    -   +¦¦ W.txt
+    -   L¦¦ Z.txt
+    +¦¦ TS_4
+    -   +¦¦ plik.txt
+    -   +¦¦ Sprawozdanie 4.pdf
+    -   +¦¦ Z2Forwarder.java
+    -   +¦¦ Z2Packet.java
+    -   +¦¦ Z2Receiver.java
+    -   L¦¦ Z2Sender.java
+    L¦¦ TS_5
+        +¦¦ out
+        -   L¦¦ production
+        -       L¦¦ TS5
+        -           +¦¦ body
+        -           -   +¦¦ ServerResponseContent.class
+        -           -   +¦¦ ServerResponsePage$1.class
+        -           -   +¦¦ ServerResponsePage.class
+        -           -   +¦¦ ServerResponseProperty.class
+        -           -   L¦¦ ServerResponseType.class
+        -           +¦¦ Main.class
+        -           +¦¦ response
+        -           -   +¦¦ ServerResponseBuilder.class
+        -           -   +¦¦ ServerResponse.class
+        -           -   +¦¦ ServerResponseCLIENT.class
+        -           -   +¦¦ ServerResponseGET$1.class
+        -           -   +¦¦ ServerResponseGET.class
+        -           -   +¦¦ ServerResponseHEAD.class
+        -           -   L¦¦ ServerResponseInvalid.class
+        -           L¦¦ server
+        -               +¦¦ Server.class
+        -               +¦¦ ServerListenerThread.class
+        -               +¦¦ ServerLogger.class
+        -               +¦¦ ServerRequest.class
+        -               +¦¦ ServerRequestFileType.class
+        -               L¦¦ ServerRequestValidator.class
+        +¦¦ public_html
+        -   +¦¦ 404.html
+        -   +¦¦ about.html
+        -   +¦¦ contact.html
+        -   +¦¦ css
+        -   -   L¦¦ style.css
+        -   +¦¦ docs.html
+        -   +¦¦ footer.html
+        -   +¦¦ header.html
+        -   +¦¦ index.html
+        -   L¦¦ js
+        -       L¦¦ script.js
+        +¦¦ src
+        -   +¦¦ body
+        -   -   +¦¦ ServerResponseContent.java
+        -   -   +¦¦ ServerResponsePage.java
+        -   -   +¦¦ ServerResponseProperty.java
+        -   -   L¦¦ ServerResponseType.java
+        -   +¦¦ Main.java
+        -   +¦¦ response
+        -   -   +¦¦ ServerResponseBuilder.java
+        -   -   +¦¦ ServerResponseCLIENT.java
+        -   -   +¦¦ ServerResponseGET.java
+        -   -   +¦¦ ServerResponseHEAD.java
+        -   -   +¦¦ ServerResponseInvalid.java
+        -   -   L¦¦ ServerResponse.java
+        -   L¦¦ server
+        -       +¦¦ Server.java
+        -       +¦¦ ServerListenerThread.java
+        -       +¦¦ ServerLogger.java
+        -       +¦¦ ServerRequestFileType.java
+        -       +¦¦ ServerRequest.java
+        -       L¦¦ ServerRequestValidator.java
+        L¦¦ TS5.iml
+
+35 directories, 147 files

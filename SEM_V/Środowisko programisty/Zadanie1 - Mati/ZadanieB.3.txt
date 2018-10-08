@@ -1,0 +1,96 @@
+mateusz@LEGION:~/Pulpit/repository2/Folder$ svn update --set-depth immediates aisd
+Updating 'aisd':
+A    aisd
+A    aisd/lista3
+A    aisd/lista4
+A    aisd/lista5
+Uaktualniono do wersji 33.
+mateusz@LEGION:~/Pulpit/repository2/Folder$ tree
+.
++¦¦ aisd
+-   +¦¦ lista3
+-   +¦¦ lista4
+-   L¦¦ lista5
+L¦¦ Folder
+    +¦¦ A.txt
+    +¦¦ Folder1
+    -   +¦¦ Folder123
+    -   -   L¦¦ abc.txt
+    -   +¦¦ X.txt
+    -   L¦¦ Z.txt
+    L¦¦ Folder2
+        +¦¦ txt.txt
+        L¦¦ U.txt
+
+8 directories, 6 files
+mateusz@LEGION:~/Pulpit/repository2/Folder$ svn update --set-depth immediates aisd/lista3
+Updating 'aisd/lista3':
+A    aisd/lista3/zad1
+A    aisd/lista3/zad2
+A    aisd/lista3/zad3
+Uaktualniono do wersji 33.
+mateusz@LEGION:~/Pulpit/repository2/Folder$ tree
+.
++¦¦ aisd
+-   +¦¦ lista3
+-   -   +¦¦ zad1
+-   -   +¦¦ zad2
+-   -   L¦¦ zad3
+-   +¦¦ lista4
+-   L¦¦ lista5
+L¦¦ Folder
+    +¦¦ A.txt
+    +¦¦ Folder1
+    -   +¦¦ Folder123
+    -   -   L¦¦ abc.txt
+    -   +¦¦ X.txt
+    -   L¦¦ Z.txt
+    L¦¦ Folder2
+        +¦¦ txt.txt
+        L¦¦ U.txt
+
+11 directories, 6 files
+mateusz@LEGION:~/Pulpit/repository2/Folder$ svn update --set-depth immediates aisd/lista3/zad1/
+Updating 'aisd/lista3/zad1':
+A    aisd/lista3/zad1/dualPivotSort.c
+A    aisd/lista3/zad1/radixSort.c
+A    aisd/lista3/zad1/sorts.h
+A    aisd/lista3/zad1/zad1.c
+A    aisd/lista3/zad1/insertionSort.c
+A    aisd/lista3/zad1/quickSort.c
+A    aisd/lista3/zad1/global.h
+A    aisd/lista3/zad1/mergeSort.c
+A    aisd/lista3/zad1/Makefile
+A    aisd/lista3/zad1/zad.exe
+Uaktualniono do wersji 33.
+mateusz@LEGION:~/Pulpit/repository2/Folder$ tree 
+.
++¦¦ aisd
+-   +¦¦ lista3
+-   -   +¦¦ zad1
+-   -   -   +¦¦ dualPivotSort.c
+-   -   -   +¦¦ global.h
+-   -   -   +¦¦ insertionSort.c
+-   -   -   +¦¦ Makefile
+-   -   -   +¦¦ mergeSort.c
+-   -   -   +¦¦ quickSort.c
+-   -   -   +¦¦ radixSort.c
+-   -   -   +¦¦ sorts.h
+-   -   -   +¦¦ zad1.c
+-   -   -   L¦¦ zad.exe
+-   -   +¦¦ zad2
+-   -   L¦¦ zad3
+-   +¦¦ lista4
+-   L¦¦ lista5
+L¦¦ Folder
+    +¦¦ A.txt
+    +¦¦ Folder1
+    -   +¦¦ Folder123
+    -   -   L¦¦ abc.txt
+    -   +¦¦ X.txt
+    -   L¦¦ Z.txt
+    L¦¦ Folder2
+        +¦¦ txt.txt
+        L¦¦ U.txt
+
+11 directories, 16 files

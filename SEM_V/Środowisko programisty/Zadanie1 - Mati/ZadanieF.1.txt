@@ -1,0 +1,45 @@
+mateusz@LEGION:~/Pulpit/F/abc$ touch a.txt
+mateusz@LEGION:~/Pulpit/F/abc$ touch b.txt
+mateusz@LEGION:~/Pulpit/F/abc$ ls
+a.txt  b.txt
+mateusz@LEGION:~/Pulpit/F/abc$ svn add --force .
+A         a.txt
+A         b.txt
+mateusz@LEGION:~/Pulpit/F/abc$ svn commit -m "Zadanie F dodanie txt"
+Dodawanie       a.txt
+Dodawanie       b.txt
+Przesy³anie treœci pliku..done
+Committing transaction...
+Zatwierdzona wersja 47.
+mateusz@LEGION:~/Pulpit/F/abc$ svn delete b.txt 
+D         b.txt
+mateusz@LEGION:~/Pulpit/F/abc$ svn commit -m "delete b.txt"
+Usuwanie        b.txt
+Committing transaction...
+Zatwierdzona wersja 48.
+mateusz@LEGION:~/Pulpit/F/abc$ svn move a.txt b.txt
+A         b.txt
+D         a.txt
+mateusz@LEGION:~/Pulpit/F/abc$ svn commit -m "move a to b"
+Usuwanie        a.txt
+Dodawanie       b.txt
+Przesy³anie treœci pliku.done
+Committing transaction...
+Zatwierdzona wersja 49.
+mateusz@LEGION:~/Pulpit/F/abc$ svn move b.txt c.txt
+A         c.txt
+D         b.txt
+mateusz@LEGION:~/Pulpit/F/abc$ svn commit -m "move b to c"
+Usuwanie        b.txt
+Dodawanie       c.txt
+Przesy³anie treœci pliku.done
+Committing transaction...
+Zatwierdzona wersja 50.
+mateusz@LEGION:~/Pulpit/F/abc$ touch b.txt
+mateusz@LEGION:~/Pulpit/F/abc$ svn add b.txt 
+A         b.txt
+mateusz@LEGION:~/Pulpit/F/abc$ svn commit -m "dodany znowu b.txt"
+Dodawanie       b.txt
+Przesy³anie treœci pliku.done
+Committing transaction...
+Zatwierdzona wersja 51.
