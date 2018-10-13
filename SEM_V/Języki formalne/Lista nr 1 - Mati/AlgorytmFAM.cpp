@@ -58,7 +58,7 @@ int main()
     char *P = "ABAB";
 
     int m = strlen(P);
-
-	finiteAutomatonMatcher(T, P, m);
+    
+    finiteAutomatonMatcher(T, P, m);
     return 0;
 }
