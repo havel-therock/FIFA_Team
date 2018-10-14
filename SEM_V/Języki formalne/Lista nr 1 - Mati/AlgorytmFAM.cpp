@@ -6,19 +6,19 @@ int k(char *P, int m, int q, int a)
 {
     if (q < m && a == P[q])
         return q + 1;
-
-    for (int ns = q; ns > 0; ns--)
+// Program rozpoczyna działanie z największą sensowną wartością k, a następnie zmniejsza k aż znajdzie prefiks
+    for (int k = q; k > 0; k--)
     {
     	int i;
-        if (P[ns - 1] == a)
+        if (P[k - 1] == a)
         {
-            for (i = 0; i < ns - 1; i++)
+            for (i = 0; i < k - 1; i++)
             {
-                if (P[i] != P[q - ns + 1 + i])
+                if (P[i] != P[i + q - (k - 1)])
                     break;
             }
-            if (i == ns - 1)
-                return ns;
+            if (i == k - 1)
+                return k;
         }
     }
 
@@ -34,10 +34,9 @@ void computeTF(char *P, int sigma[][NO_OF_CHARS])
             sigma[q][a] = k(P, m, q, a);
 }
 
-void finiteAutomatonMatcher(char *T, char *P, int m)
+void finiteAutomatonMatcher(char *T, int delta[][NO_OF_CHARS], int m)
 {
-    int delta[m + 1][NO_OF_CHARS];
-    computeTF(P, delta);
+
 
 	int n = strlen(T);
     int q = 0;
@@ -47,18 +46,22 @@ void finiteAutomatonMatcher(char *T, char *P, int m)
         if (q == m)
         {
         	int s = i - m + 1;
-            printf("\n Pattern found at index %d", s);
+            printf("\n Wzorzec występuje z przesunięciem s = %d", s);
         }
     }
 }
- 
+
 int main()
 {
     char *T = "ABaBABAABAB";
     char *P = "ABAB";
+    printf(" T = %s, P = %s\n", T, P);
+    printf("%c", 350);
 
     int m = strlen(P);
-    
-    finiteAutomatonMatcher(T, P, m);
+    int delta[m + 1][NO_OF_CHARS];
+    computeTF(P, delta);
+
+	finiteAutomatonMatcher(T, delta, m);
     return 0;
 }
