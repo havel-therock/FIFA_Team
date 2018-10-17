@@ -1,0 +1,10 @@
+function anomal(z)
+    z=z*10
+    x=1+z
+    y=x*(1/x)
+    if y != 1
+        return x
+    else
+        anomal(z)
+    end
+end

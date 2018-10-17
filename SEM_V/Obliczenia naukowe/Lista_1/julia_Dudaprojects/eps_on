@@ -1,0 +1,36 @@
+function min()
+r=eps(Float16)
+println("eps(float16) =$r")
+ min16(1)
+ r=eps(Float32)
+ println("eps(float32) =$r")
+ min32(1)
+ r=eps(Float64)
+ println("eps(float64) =$r")
+ min64(1)
+end
+
+function min16(x)
+    y=x/2
+    if 1+y>1
+        min16(Float16(y))
+    else
+        return x
+    end
+end
+function min32(x)
+    y=x/2
+    if 1+y>1
+        min16(Float32(y))
+    else
+        return x
+    end
+end
+function min64(x)
+    y=x/2
+    if 1+y>1
+        min16(Float64(y))
+    else
+        return x
+    end
+end

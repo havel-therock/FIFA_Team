@@ -1,0 +1,24 @@
+function max16(x)
+    y=x*2
+    if !isinf(y)
+        max16(Float16(y))
+    else
+        return x*2
+    end
+end
+function max32(x)
+    y=x*2
+    if !isinf(y)
+        max32(Float32(y))
+    else
+        return y
+    end
+end
+function max64(x)
+    y=x*2
+    if !isinf(y)
+        max64(Float64(y))
+    else
+        return x*2
+    end
+end

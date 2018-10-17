@@ -1,0 +1,24 @@
+function min16(x)
+    y=x/2
+    if 1+y>1
+        min16(Float16(y))
+    else
+        return x
+    end
+end
+function min32(x)
+    y=x/2
+    if 1+y>1
+        min32(Float32(y))
+    else
+        return x
+    end
+end
+function min64(x)
+    y=x/2
+    if 1+y>1
+        min64(Float64(y))
+    else
+        return x
+    end
+end
