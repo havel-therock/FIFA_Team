@@ -1,0 +1,181 @@
+IP address or host name: 	
+156.17.18.10
+
+traceroute to 156.17.18.10 (156.17.18.10), 30 hops max, 60 byte packets
+
+			
+1	 	 	 	*	*	*
+
+			
+2	core22.fsn1.hetzner.com	213.239.245.241	de	1.366 ms	 	 
+core21.fsn1.hetzner.com	213.239.245.237	de	0.249 ms	0.246 ms
+
+			
+3	core4.fra.hetzner.com	213.239.245.14	de	4.915 ms	4.918 ms	4.928 ms
+
+			
+4	core0.fra.hetzner.com	213.239.252.25	de	5.336 ms	 	 
+core4.fra.hetzner.com	213.239.245.33	de	5.338 ms	5.331 ms
+
+			
+5	fra-ix.geant.net	80.81.192.173	de	5.519 ms	5.490 ms	5.498 ms
+
+			
+6	ae0.mx1.poz.pl.geant.net	62.40.98.131	gb	22.273 ms	22.075 ms	 
+pionier-ias-pionier-gw-1.poz.pl.geant.net	83.97.88.122	gb	21.387 ms
+
+			
+7	21.898 ms	 	 
+z-poznan-gw3.wroclaw.10Gb.rtr.pionier.gov.pl	212.191.224.106	pl	27.182 ms	27.142 ms
+
+			
+8	rolnik2-centrum.wask.wroc.pl	156.17.254.65	pl	27.195 ms	27.289 ms	 
+z-poznan-gw3.wroclaw.10Gb.rtr.pionier.gov.pl	212.191.224.106	pl	27.580 ms
+
+			
+9	rolnik2-centrum.wask.wroc.pl	156.17.254.65	pl	27.616 ms	 	 
+wazniak-rolnik.wask.wroc.pl	156.17.254.140	pl	29.818 ms	29.815 ms
+
+			
+10	z-wask2-do-pwr2.pwrnet.pwr.wroc.pl	156.17.18.244	pl	27.661 ms	 	 
+wazniak-rolnik.wask.wroc.pl	156.17.254.140	pl	29.508 ms	29.535 ms
+
+			
+11	z-wask2-do-pwr2.pwrnet.pwr.wroc.pl	156.17.18.244	pl	28.232 ms	28.232 ms	 
+ 		pl	
+
+			
+12	 	 	 	*	*	*
+
+			
+13	 	 	 	*	*	*
+
+			
+14	 	 	 	*	*	*
+
+			
+15	 	 	 	*	*	*
+
+			
+16	 	 	 	*	*	*
+No reply for 5 hops. Assuming we reached firewall.
+#######################################################################################################################
+IP address or host name: 	
+156.17.16.194
+
+traceroute to 156.17.16.194 (156.17.16.194), 30 hops max, 60 byte packets
+
+			
+1	 	 	 	*	*	*
+
+			
+2	core22.fsn1.hetzner.com	213.239.245.241	de	0.246 ms	 	 
+core21.fsn1.hetzner.com	213.239.245.237	de	0.270 ms	 
+core22.fsn1.hetzner.com	213.239.245.241	de	0.246 ms
+
+			
+3	core0.fra.hetzner.com	213.239.252.29	de	4.904 ms	 	 
+core11.nbg1.hetzner.com	213.239.224.9	de	2.844 ms	2.835 ms
+
+			
+4	fra-ix.geant.net	80.81.192.173	de	5.220 ms	 	 
+core0.fra.hetzner.com	213.239.252.21	de	5.426 ms	 
+fra-ix.geant.net	80.81.192.173	de	5.220 ms
+
+			
+5	5.393 ms	5.593 ms	 
+ 		pl
+#############################################################################################################################
+IP address or host name: 	
+13.107.4.52
+
+traceroute to 13.107.4.52 (13.107.4.52), 30 hops max, 60 byte packets
+
+			
+1	 	 	 	*	*	*
+
+			
+2	core22.fsn1.hetzner.com	213.239.245.241	de	0.726 ms	 	 
+core21.fsn1.hetzner.com	213.239.245.237	de	0.550 ms	0.550 ms
+
+			
+3	core12.nbg1.hetzner.com	213.239.224.13	de	2.819 ms	 	 
+core5.fra.hetzner.com	213.239.224.246	de	5.026 ms	5.029 ms
+
+			
+4	core5.fra.hetzner.com	213.239.224.238	de	5.395 ms	*	*
+
+			
+5	hetzner-gw.microsoft.de	213.133.113.250	de	5.481 ms	*	 
+ 		pl	
+
+			
+6	 	 	 	*	*	*
+
+			
+7	 	 	 	*	*	*
+
+			
+8	 	 	 	*	*	*
+
+			
+9	 	 	 	*	*	*
+
+			
+10	 	 	 	*	*	*
+No reply for 5 hops. Assuming we reached firewall.
+############################################################################################################################
+IP address or host name: 	
+156.17.7.16/236618
+
+traceroute to 156.17.7.16 (156.17.7.16), 30 hops max, 60 byte packets
+
+			
+1	 	 	 	*	*	*
+
+			
+2	core21.fsn1.hetzner.com	213.239.245.237	de	0.232 ms	 	 
+core22.fsn1.hetzner.com	213.239.245.241	de	0.253 ms	 
+core21.fsn1.hetzner.com	213.239.245.237	de	0.232 ms
+
+			
+3	core11.nbg1.hetzner.com	213.239.224.9	de	2.872 ms	2.883 ms	 
+core12.nbg1.hetzner.com	213.239.245.214	de	2.853 ms
+
+			
+4	core4.fra.hetzner.com	213.239.245.245	de	5.610 ms	 	 
+fra-ix.geant.net	80.81.192.173	de	4.919 ms	 
+core4.fra.hetzner.com	213.239.245.33	de	5.382 ms
+
+			
+5	fra-ix.geant.net	80.81.192.173	de	5.426 ms	5.498 ms	5.496 ms
+
+			
+6	ae0.mx1.poz.pl.geant.net	62.40.98.131	gb	22.319 ms	22.300 ms	 
+pionier-ias-pionier-gw-1.poz.pl.geant.net	83.97.88.122	gb	21.468 ms
+
+			
+7	21.905 ms	 	 
+z-poznan-gw3.wroclaw.10Gb.rtr.pionier.gov.pl	212.191.224.106	pl	27.089 ms	 
+pionier-ias-pionier-gw-1.poz.pl.geant.net	83.97.88.122	gb	21.905 ms
+
+			
+8	z-poznan-gw3.wroclaw.10Gb.rtr.pionier.gov.pl	212.191.224.106	pl	27.532 ms	27.540 ms	 
+rolnik2-centrum.wask.wroc.pl	156.17.254.65	pl	27.110 ms
+
+			
+9	27.648 ms	 	 
+wazniak-rolnik.wask.wroc.pl	156.17.254.140	pl	28.654 ms	28.502 ms
+
+			
+10	28.530 ms	 	 
+z-wask2-do-pwr2.pwrnet.pwr.wroc.pl	156.17.18.244	pl	27.831 ms	27.572 ms
+
+			
+11	28.137 ms	 	 
+ 		pl		
+
+			
+12	math22.im.pwr.wroc.pl	156.17.7.16	pl	27.683 ms	27.683 ms	 
+ 		pl
+########################################################################################################################
