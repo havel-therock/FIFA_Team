@@ -3,10 +3,14 @@
 using namespace std;
 extern int yylex();
 %}
+%x quote
 %option noyywrap
 %%
+\<[^\"]*[a-zA-Z]+\=\"{1}			%{ECHO; BEGIN(quote);%}	
+<quote>[^\"]*   					%{ECHO; %}
+<quote>\"[^\"]*>					%{ECHO; BEGIN(INITIAL);%}
 
-\<!--([^-]|-[^-]|--+[^-\>])*-*--\>		fprintf(yyout, "KOO MEEEE NTAAARZ\n");
+\<!--([^-]|-[^-]|--+[^-\>])*-*--\>		fprintf(yyout, "");
 .                                 		ECHO;
 %%
 int main(int, char**) {

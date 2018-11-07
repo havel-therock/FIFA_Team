@@ -4,12 +4,13 @@ using namespace std;
 extern int yylex();
 bool flag = false;
 %}
-%x comment doc
+%x comment doc quote
 %option noyywrap
 %%
-\/{2}.*			;
-
-\/\*\*([^\/\n]*)$		 %{if(flag==true) ECHO; BEGIN(doc);%}
+\"[^\"]*\"			ECHO;
+\#include[ \t]*(\"|\<).*	ECHO;
+\/{2}(.|\\\n)*\n			;
+\/\*\*	 %{if(flag==true) ECHO; BEGIN(doc);%}		
 <doc>[^\*\n]*        %{if(flag==true) ECHO;%}
 <doc>\*+[^\*\/\n]*   %{if(flag==true) ECHO;%}
 <doc>\*+\/        	 %{if(flag==true) ECHO; BEGIN(INITIAL);%}	
