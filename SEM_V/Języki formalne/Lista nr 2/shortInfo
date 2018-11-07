@@ -1,0 +1,14 @@
+Jak odpalać programy:
+
+1. Pobieramy flex (sudo apt install flex)
+
+2. Z plików z rozszerzeniem .l generujemy lexer za pomocą polecenie flex nazwaZadania.l
+ 
+3. Otrzymujemy lexer (plik o nazwie lex.yy.c lub coś podobnego) i ten plik kompi
+lujemy poleceniem g++/gcc (zalezy czy kod w C++ czy C) dodając biblioteke flexa
+
+Przykładowe wywołanie:
+                g++ lex.yy.c -lfl
+4. To generuje nam a.out który normalnie uruchamiamy ./a.out
+
+
