@@ -2,7 +2,7 @@
 //  zad1.c
 //  
 //
-//  Created by Mikis Dukiel on 27.02.2018.
+//  Created by Niebieski-Kapturek on 27.02.2018.
 //
 
 #include <stdio.h>
