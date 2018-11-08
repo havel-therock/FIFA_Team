@@ -1,0 +1,10 @@
+Tablica	MergeSort-Porownania	MergeSort-Przestawienia	MergeSort-Czas	MergeSort-c/n	MergeSort-s/n	QuickSort-Porownania	QuickSort-Przestawienia	QuickSort-Czas	QuickSort-c/n	QuickSort-s/n	Dual-pivotQuickSort-Porownania	Dual-pivotQuickSort-Przestawienia	Dual-pivotQuickSort-Czas	Dual-pivotQuickSort-c/n	Dual-pivotQuickSort-s/n	RadixSort-Porownania	RadixSort-Przestawienia	RadixSort-Czas	RadixSort-c/n	RadixSort-s/n
+10	23	34	0	2	3	19	9	0	1	0	25	29	0	2	2	9	0	0	0	0
+50	226	286	0	4	5	192	80	0	3	1	271	178	0	5	3	49	0	0	0	0
+100	546	672	0.001	5	6	359	189	0	3	1	584	492	0	5	4	99	0	0	0	0
+500	3859	4488	0.002	7	8	3704	1181	0.002	7	2	4447	2959	0.001	8	5	499	0	0	0	0
+1000	8683	9976	0.005	8	9	7015	2593	0.001	7	2	11221	7307	0	11	7	999	0	0	0	0
+5000	55215	61808	0.017	11	12	50992	15539	0.021	10	3	68642	39917	0.019	13	7	4999	0	0	0	0
+10000	120475	133616	0.053	12	13	105746	33707	0.018	10	3	153778	80832	0.064	15	8	9999	0	0.003	0	0
+50000	718181	784464	0.305	14	15	650104	200252	0.165	13	4	883985	467283	0.269	17	9	49999	0	0.015	0	0
+100000	1536411	1668928	0.651	15	16	1261822	436437	0.353	12	4	1838698	1021340	0.558	18	10	99999	0	0.031	0	0
