@@ -1,2 +1,0 @@
-#!/bin/bash
-java Test $1 $2 <&0 >&1

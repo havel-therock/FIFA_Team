@@ -1,2 +1,0 @@
-#!/bin/bash
-java PriorityQueue $1 $2 <&0 >&1
