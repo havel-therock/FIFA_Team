@@ -1,0 +1,10 @@
+for file in * ; do mv "$fiel" `echo "$file" | tr '[A-Z]' '[a-z]'`; done
+
+Pêtla for pobierze nam wszystkie pliki w danym katalogu, 
+po czym poleceniem mv oraz tr zmienimy im nazwê. 
+W nawiasach kwadratowych podany jest zakres znaków jakie maj¹ zostaæ zamienione. Wystêpuje problem przy spacjach.
+
+
+rename 'y/A-Z/a-z/' *  
+
+Nie ma prblemu ze spacjami

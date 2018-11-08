@@ -1,0 +1,3 @@
+Katalog proc zawiera parametry pracy systemu oraz informacje o uruchomionych procesach. 
+Edytowaæ go mo¿e tylko u¿ytkownik "root". Za jego poœrednictwem mo¿emy sprawdziæ na przyk³ad wersjê j¹dra(# cat version).
+Zawiera równie¿ pliki z informacjami o systemie.

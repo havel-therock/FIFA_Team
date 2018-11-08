@@ -1,0 +1,8 @@
+chmod +x nazwa_pliku - daje dostêp do wyœwietlania
+
+./nazwa_pliku - uruchamianie
+
+#!/bin/bash - przekazanie wykonania(dobra praktyka)
+
+zmienne piszemy WIELKIMI literami
+

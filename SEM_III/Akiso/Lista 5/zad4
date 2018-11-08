@@ -1,0 +1,9 @@
+/tmp$ dd if=/dev/zero of=fat.img bs=1024 count=100  //wkleja do fat.img obraz partycji dev wypelnionej 0, dokladnie 1024 bity * 100 czyli 100KB
+/tmp$ mkfs.msdos fat.img
+/tmp$ mkdir -p /tmp/fs //tworzy katalog "fs"
+/tmp# mount -t msdos fat.img /tmp/fs -o umask=000,loop
+/tmp/fs$ echo "zawartosc pliku" > nazwa_pliku //tworzenie pliku
+/tmp/fs$ exit
+/tmp$ hexdump -C fat.img | less
+/tmp$ od -Ax -tx1z fat.img | less
+

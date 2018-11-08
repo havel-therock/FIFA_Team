@@ -1,0 +1,1 @@
+Katalog /dev zawiera sterowniki urz¹dzeñ. Np cdrom odpowaida za stacje dysków, console za klawiaturê
