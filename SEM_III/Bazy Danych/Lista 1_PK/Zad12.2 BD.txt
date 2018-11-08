@@ -1,0 +1,5 @@
+SELECT countrylanguage.Language
+FROM countrylanguage
+WHERE countrylanguage.IsOfficial='T'
+GROUP BY countrylanguage.Language
+HAVING COUNT(countrylanguage.IsOfficial)>=4

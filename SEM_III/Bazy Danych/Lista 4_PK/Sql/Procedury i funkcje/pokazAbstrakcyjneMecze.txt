@@ -1,0 +1,19 @@
+delimiter // 
+CREATE PROCEDURE pokazAbstrakcyjneMecze (IN log varchar(30)) 
+BEGIN
+	DECLARE powtorka varchar(50); 
+	DECLARE nazwa varchar(20);
+	SET nazwa=CONCAT(log,'_leauge');
+
+	SET powtorka = (SELECT wlasna_liga FROM uzytkownicy WHERE login=log);
+
+IF powtorka IS NOT null THEN
+SET @pol = CONCAT("SELECT * FROM v_mecze_abstrakcyjne WHERE rozgrywki='",nazwa,"'");
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+    ELSE
+    	SELECT * FROM `v_mecze_abstrakcyjne`;
+    END IF ;
+END // 
+delimiter ;

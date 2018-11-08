@@ -1,0 +1,5 @@
+SELECT co.Name, c.Name AS 'Neighbor'
+FROM country co
+INNER JOIN country c ON c.Region=co.Region
+WHERE co.Name<>c.Name AND c.Name<co.Name
+ORDER BY co.Name

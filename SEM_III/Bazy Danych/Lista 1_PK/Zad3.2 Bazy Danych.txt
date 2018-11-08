@@ -1,0 +1,4 @@
+SELECT ci.Name, c.Continent
+FROM city ci
+JOIN country c ON ci.CountryCode=c.Code
+ORDER BY C.Continent, ci.Name DESC

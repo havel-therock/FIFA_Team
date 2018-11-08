@@ -1,0 +1,9 @@
+delimiter // 
+CREATE PROCEDURE danekonta (IN log varchar(20),IN has char(50)) 
+BEGIN
+	SELECT uzytkownicy.login,uzytkownicy.poziom_dostepu,uzytkownicy.wlasna_liga,zespoly.nazwa
+    FROM uzytkownicy 
+    JOIN zespoly ON zespoly.ID=uzytkownicy.ulubiony_zespol
+    WHERE uzytkownicy.login=log AND uzytkownicy.haslo=has;
+END // 
+delimiter ;

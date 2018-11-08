@@ -1,0 +1,24 @@
+DROP PROCEDURE tworca;
+
+CALL tworca (@n)
+
+
+DELIMITER // 
+CREATE PROCEDURE tworca (IN n int) 
+BEGIN
+	DECLARE i int ;
+    SET i=0 ;
+    two: WHILE i < 1200 DO
+        	SET i = i + 1 ;
+			INSERT INTO laptopy (model, producent, procesor, matryca, typ)
+			VALUES (CONCAT('lap',i), (SELECT producenci.ID FROM producenci ORDER BY rand( ) LIMIT 1), (SELECT procesory.ID FROM procesory ORDER BY rand( ) LIMIT 1), 
+            		(SELECT matryce.ID FROM matryce ORDER BY rand( ) LIMIT 1), (SELECT FLOOR(1 + (RAND() * 3))));
+        END WHILE two;
+END 
+// 
+DELIMITER ;
+
+
+SELECT producent, procesor, matryca, typ, COUNT(*) AS 'liczba' FROM laptopy
+GROUP BY producent, procesor, matryca, typ
+HAVING liczba>2

@@ -1,0 +1,18 @@
+delimiter //
+CREATE TRIGGER history_in_log AFTER UPDATE ON pracownicy
+    FOR EACH ROW 
+    BEGIN 
+    	DECLARE czas date ;
+        SET czas=CURDATE() ;
+    	INSERT INTO log (id_zmiany,PESEL,data_zmiany,stara_wartosc,nowa_wartosc)
+			VALUES (NULL,OLD.PESEL,czas,OLD.pensja,NEW.pensja) ;
+    END //
+delimiter ;
+
+
+
+
+CREATE TABLE `lista3`.`log` 
+( `id_zmiany` INT NOT NULL AUTO_INCREMENT , `PESEL` CHAR(11) NOT NULL , 
+`data_zmiany` DATE NOT NULL , `stara_wartosc` INT NOT NULL , `nowa_wartosc` INT NOT NULL , 
+PRIMARY KEY (`id_zmiany`)) ENGINE = InnoDB;

@@ -1,0 +1,4 @@
+SELECT eucities.Name, eci.Name, (ROUND((eucities.Population*100)/eci.Population)) AS "Procent populacji"
+FROM city eucities 
+JOIN country eci ON eci.Code=eucities.CountryCode
+WHERE eci.Continent="Europe"

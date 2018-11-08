@@ -1,0 +1,3 @@
+SELECT country.Region, SUM(country.Population) AS 'Populationinregion'
+FROM country
+GROUP BY country.Region

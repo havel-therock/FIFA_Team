@@ -1,0 +1,3 @@
+SELECT c.name, ci.Name
+FROM country c
+JOIN city ci ON ci.ID=c.Capital

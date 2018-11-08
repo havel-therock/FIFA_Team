@@ -1,0 +1,4 @@
+SELECT country.HeadOfState, SUM(country.Population) AS 'Population'
+FROM country
+GROUP BY country.HeadOfState
+ORDER BY SUM(country.Population) DESC

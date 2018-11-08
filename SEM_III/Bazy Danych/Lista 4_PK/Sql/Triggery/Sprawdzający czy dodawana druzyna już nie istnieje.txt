@@ -1,0 +1,12 @@
+delimiter //
+CREATE TRIGGER zapobieganiePowtorekDruzyn BEFORE INSERT ON zespoly
+    FOR EACH ROW 
+    BEGIN
+    	DECLARE powtorka varchar(50);
+        SET powtorka = (SELECT zespoly.nazwa FROM zespoly WHERE zespoly.nazwa=NEW.nazwa);
+        IF powtorka IS NOT null THEN 
+        	SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ERROR: Druzyna istnieje';
+        END IF ;
+    END
+    //
+delimiter ;

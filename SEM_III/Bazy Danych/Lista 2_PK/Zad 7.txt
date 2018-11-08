@@ -1,0 +1,16 @@
+DELIMITER //
+CREATE FUNCTION iloproc(idpro int) RETURNS int
+BEGIN
+    DECLARE wartosc int;
+    SET wartosc=(SELECT COUNT(lap.procesor)
+                 FROM laptopy lap
+                 JOIN procesory proc ON proc.ID=lap.procesor
+                 GROUP BY lap.procesor
+                 HAVING lap.procesor=idpro);
+    RETURN wartosc;
+END //
+DELIMITER ;
+
+
+
+SELECT iloproc(int)

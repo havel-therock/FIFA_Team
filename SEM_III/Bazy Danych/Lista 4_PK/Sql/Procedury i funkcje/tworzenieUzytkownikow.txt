@@ -1,0 +1,6 @@
+delimiter // 
+CREATE PROCEDURE tworzenieUzytkownikow(IN log varchar(20),IN pas varchar(50)) 
+BEGIN
+          	INSERT INTO uzytkownicy (login,haslo,poziom_dostepu,wlasna_liga,ulubiony_zespol) VALUES (log,pas,"normalny",null,null);    
+END // 
+delimiter ;

@@ -1,0 +1,3 @@
+SELECT country.Continent, COUNT(country.Continent) as "number of countries"
+FROM country
+GROUP BY country.Continent

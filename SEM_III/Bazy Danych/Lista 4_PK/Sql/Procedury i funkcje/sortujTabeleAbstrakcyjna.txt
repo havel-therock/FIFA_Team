@@ -1,0 +1,19 @@
+delimiter // 
+CREATE PROCEDURE sortujTabeleAbstrakcyjna (IN log varchar(30),IN kol varchar(30)) 
+BEGIN
+	DECLARE nazwa varchar(50);
+	DECLARE tabela varchar(30);
+SET nazwa = (SELECT wlasna_liga FROM uzytkownicy WHERE login=log);
+
+IF nazwa IS NOT null THEN 
+	
+	SET @kol = (SELECT kol);
+    	SET @tabela = CONCAT('v_',log,'_leauge');
+        SET @pol = CONCAT('SELECT * FROM ',@tabela,' ORDER BY ',@kol,' DESC');
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+END IF;
+
+END // 
+delimiter ;

@@ -1,0 +1,5 @@
+SELECT country.Name, country.LifeExpectancy
+FROM country 
+GROUP BY country.Name
+HAVING country.LifeExpectancy>(SELECT AVG(country.LifeExpectancy) 
+                               FROM country)

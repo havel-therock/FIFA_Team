@@ -1,0 +1,10 @@
+delimiter // 
+CREATE PROCEDURE usuwanieUzytkownikow(IN log varchar(20)) 
+BEGIN
+DECLARE powtorka varchar(50);
+        SET powtorka = (SELECT login FROM uzytkownicy WHERE login=log);
+IF powtorka IS NOT null THEN 
+delete from uzytkownicy where login LIKE log;   
+END IF; 
+END // 
+delimiter ;

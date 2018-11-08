@@ -1,0 +1,154 @@
+CREATE TABLE `lista3`.`Ludzie` 
+( `PESEL` CHAR(11) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL , `imie` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL , 
+`nazwisko` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL , `data_urodzenia` DATE NOT NULL , 
+`wzrost` FLOAT UNSIGNED NOT NULL , `waga` FLOAT UNSIGNED NOT NULL , `rozmiar_buta` INT UNSIGNED NOT NULL , PRIMARY KEY (`PESEL`)) 
+ENGINE = InnoDB;
+
+
+
+CREATE TABLE `lista3`.`Pracownicy` 
+( `PESEL` CHAR(11) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL , `zawod` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL , 
+`pensja` FLOAT UNSIGNED NOT NULL , PRIMARY KEY (`PESEL`)) 
+ENGINE = InnoDB;
+
+
+INSERT INTO `ludzie` 
+(`PESEL`, `imie`, `nazwisko`, `data_urodzenia`, `wzrost`, `waga`, `rozmiar_buta`) 
+VALUES ('56122500017', 'Antoni', 'Ernest', '1956-12-25', '184', '94', '45')
+
+INSERT INTO `pracownicy` (`PESEL`, `zawod`, `pensja`) VALUES ('56122500017', 'malarz', '4000')
+
+
+INSERT INTO `ludzie` 
+(`PESEL`, `imie`, `nazwisko`, `data_urodzenia`, `wzrost`, `waga`, `rozmiar_buta`) 
+VALUES ('93031566689', 'Paul', 'Pogba', '1993-03-15', '191', '84', '46'), 
+('89050611122', 'Adam', 'Wzorzec', '1989-05-06', '177', '70', '42'), 
+('79121212120', 'Marcin', 'Mistrz', '1979-12-12', '188', '90', '46'), 
+('88082445682', 'Franciszek', 'Smuda', '1988-08-24', '168', '64', '40'), 
+('99010175396', 'Zdzis³aw', 'Manekin', '1999-01-01', '166', '62', '39')
+
+INSERT INTO `pracownicy` 
+(`PESEL`, `zawod`, `pensja`) VALUES 
+('93031566689', 'pi³karz', '400000'), ('89050611122', 'pi³karz', '200000'), 
+('79121212120', 'pi³karz', '90000'), ('88082445682', 'pi³karz', '48000'), 
+('99010175396', 'pi³karz', '321000')
+
+
+
+delimiter //
+CREATE TRIGGER pelnoletni_ludzie BEFORE INSERT ON ludzie
+    FOR EACH ROW 
+    BEGIN 
+    IF ADDDATE(CURDATE(), INTERVAL -18 YEAR) < NEW.`data_urodzenia` THEN 
+    SET NEW.`data_urodzenia`=null; 
+    END IF; 
+    IF LEFT((NEW.`PESEL`),6) <> RIGHT((NEW.`data_urodzenia`-0),6) THEN 
+    SET NEW.`PESEL`=null; 
+    END IF; 
+    END
+    //
+delimiter ;
+
+
+
+delimiter //
+CREATE TRIGGER pracownik_czlowiek BEFORE INSERT ON procownicy
+    FOR EACH ROW 
+    BEGIN 
+    DECLARE done INT DEFAULT 0;
+    DECLARE pes CHAR(11);
+    DECLARE cur CURSOR FOR SELECT PESEL FROM ludzie;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+    OPEN cur;
+    WHILE done=0 DO
+    FETCH cur INTO pes;
+    IF pes=NEW.`PESEL` THEN
+    SET done=2;
+    END IF;
+    END WHILE;
+    CLOSE cur;
+    IF done=1 THEN
+    SET NEW.`PESEL`=null;
+    END IF;
+    END
+    //
+delimiter ;
+
+
+delimiter // 
+CREATE PROCEDURE tworca_informatykow (IN n int) 
+BEGIN
+	DECLARE i int ;
+    DECLARE ur date ;
+    DECLARE pes char(11) ;
+    DECLARE im ENUM ('Piotr','Adam','Franciszek','Zenon','Dawid','Kamil','Edward','El¿bieta','Aleksandra','Olga') ;
+    DECLARE naz ENUM ('Piotrowski','Lewandowski','Drewno','Listek','D¹b','Bubr','Tapeta','Kot','Ekran','Mysz') ;
+    SET i=0 ;
+    WHILE i < 13 DO
+        	SET i = i + 1 ;
+            SET ur=ADDDATE('1900-01-01', INTERVAL (FLOOR(RAND() * datediff('1999-12-31','1900-01-01'))) DAY) ;
+            SET pes = CONCAT(RIGHT((ur-0),6),(SELECT FLOOR(RAND() * 90000) + 10000)) ;
+            SET im = (SELECT FLOOR(1 + (RAND() * 9))) ;
+            SET naz = (SELECT FLOOR(1 + (RAND() * 9))) ;
+			INSERT INTO ludzie (PESEL,imie,nazwisko,data_urodzenia,wzrost,waga,rozmiar_buta)
+			VALUES (pes,im,naz,ur,(SELECT FLOOR(130 + (RAND() * 80))),(SELECT FLOOR(50 + (RAND() * 75))),(SELECT FLOOR(36 + (RAND() * 11)))) ;
+            INSERT INTO pracownicy (PESEL,zawod,pensja)
+			VALUES (pes,'informatyk',(SELECT FLOOR(4000 + (RAND() * 7000)))) ;
+	END WHILE ;
+END // 
+delimiter ;
+
+CALL tworca_informatykow (@n)
+
+
+
+delimiter // 
+CREATE PROCEDURE tworca_reporterow (IN n int) 
+BEGIN
+	DECLARE i int ;
+    DECLARE ur date ;
+    DECLARE pes char(11) ;
+    DECLARE im ENUM ('Piotr','Adam','Ewa','Zenon','Dawid','Kamil','Edward','El¿bieta','Aleksandra','Olga') ;
+    DECLARE naz ENUM ('Milczak','Lewandowski','Drewno','Listek','D¹b','Bubr','Tapeta','Kot','Ekran','Mysz') ;
+    SET i=0 ;
+    WHILE i < 20 DO
+        	SET i = i + 1 ;
+            SET ur=ADDDATE('1900-01-01', INTERVAL (FLOOR(RAND() * datediff('1999-12-31','1900-01-01'))) DAY) ;
+            SET pes = CONCAT(RIGHT((ur-0),6),(SELECT FLOOR(RAND() * 90000) + 10000)) ;
+            SET im = (SELECT FLOOR(1 + (RAND() * 9))) ;
+            SET naz = (SELECT FLOOR(1 + (RAND() * 9))) ;
+			INSERT INTO ludzie (PESEL,imie,nazwisko,data_urodzenia,wzrost,waga,rozmiar_buta)
+			VALUES (pes,im,naz,ur,(SELECT FLOOR(130 + (RAND() * 80))),(SELECT FLOOR(50 + (RAND() * 75))),(SELECT FLOOR(36 + (RAND() * 11)))) ;
+            INSERT INTO pracownicy (PESEL,zawod,pensja)
+			VALUES (pes,'reporter',(SELECT FLOOR(2000 + (RAND() * 2500)))) ;
+	END WHILE ;
+END // 
+delimiter ;
+
+CALL tworca_reporterow (@n)
+
+
+delimiter // 
+CREATE PROCEDURE tworca_sprzedawcow (IN n int) 
+BEGIN
+	DECLARE i int ;
+    DECLARE ur date ;
+    DECLARE pes char(11) ;
+    DECLARE im ENUM ('Piotr','Adam','Ewa','Zenon','Dawid','Kamil','Edward','El¿bieta','Aleksandra','Olga') ;
+    DECLARE naz ENUM ('Milczak','Lewandowski','Drewno','Listek','D¹b','Bubr','Tapeta','Kot','Ekran','Mysz') ;
+    SET i=0 ;
+    WHILE i < 77 DO
+        	SET i = i + 1 ;
+            SET ur=ADDDATE(ADDDATE(CURDATE(), INTERVAL -65 YEAR), INTERVAL (FLOOR(RAND() * datediff('1999-12-31',ADDDATE(CURDATE(), INTERVAL -65 YEAR)))) DAY) ;
+            SET pes = CONCAT(RIGHT((ur-0),6),(SELECT FLOOR(RAND() * 90000) + 10000)) ;
+            SET im = (SELECT FLOOR(1 + (RAND() * 10))) ;
+            SET naz = (SELECT FLOOR(1 + (RAND() * 10))) ;
+			INSERT INTO ludzie (PESEL,imie,nazwisko,data_urodzenia,wzrost,waga,rozmiar_buta)
+			VALUES (pes,im,naz,ur,(SELECT FLOOR(130 + (RAND() * 80))),(SELECT FLOOR(50 + (RAND() * 75))),(SELECT FLOOR(36 + (RAND() * 11)))) ;
+            INSERT INTO pracownicy (PESEL,zawod,pensja)
+			VALUES (pes,'sprzedawca',(SELECT FLOOR(2000 + (RAND() * 2500)))) ;
+	END WHILE ;
+END // 
+delimiter ;
+
+CALL tworca_sprzedawcow (@n)

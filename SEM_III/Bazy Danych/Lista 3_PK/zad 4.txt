@@ -1,0 +1,46 @@
+delimiter // 
+CREATE PROCEDURE zad4 (IN budzet int, IN zawod char) 
+BEGIN
+	SET @budzet = (SELECT budzet) ;
+	SET @zawod = (SELECT zawod) ;
+    SET autocommit = 0;
+    START TRANSACTION ;
+    IF (@budzet-(SELECT SUM(`pracownicy`.`pensja`) FROM `pracownicy` WHERE `pracownicy`.`zawod`=@zawod)) < 0 THEN
+        SELECT 'Za ma³y bud¿et' ;
+    ELSE
+    SELECT CONCAT('********',RIGHT((`pracownicy`.`PESEL`),3)) AS 'pesel', `pracownicy`.`pensja` AS 'wyplacono' FROM `pracownicy` WHERE `pracownicy`.`zawod`=@zawod ;
+    END IF ;
+    COMMIT ;
+END // 
+delimiter ;
+
+
+
+delimiter // 
+CREATE PROCEDURE zad4 (IN budzet int, IN zawod char) 
+BEGIN
+    DECLARE done INT DEFAULT 0;
+    DECLARE pen CHAR(11);
+    DECLARE cur CURSOR FOR SELECT `pracownicy`.`pensja` FROM `pracownicy` WHERE `pracownicy`.`zawod`=zawod;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+    
+    SET autocommit = 0;
+    START TRANSACTION ;
+    OPEN cur;
+    WHILE done=0 DO
+    FETCH cur INTO pen;
+    SET budzet=budzet-pen;
+    IF budzet<0 THEN
+    SET done=2;
+    END IF;
+    END WHILE;
+    CLOSE cur;
+    
+    IF done=2 THEN
+        SELECT 'Za ma³y bud¿et'AS 'B£¥D';
+    ELSEIF done=1 THEN
+    SELECT CONCAT('********',RIGHT((`pracownicy`.`PESEL`),3)) AS 'pesel', `pracownicy`.`pensja` AS 'wyplacono' FROM `pracownicy` WHERE `pracownicy`.`zawod`=zawod ;
+    END IF ;
+    COMMIT ;
+END // 
+delimiter ;

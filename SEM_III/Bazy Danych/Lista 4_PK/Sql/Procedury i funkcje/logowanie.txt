@@ -1,0 +1,13 @@
+delimiter // 
+CREATE PROCEDURE logowanie (IN log varchar(20),IN has char(50)) 
+BEGIN
+	DECLARE x varchar(5);
+    DECLARE pas char(50);
+    SET pas = (SELECT uzytkownicy.haslo FROM uzytkownicy WHERE uzytkownicy.login=log);
+    IF pas=has THEN
+    	SELECT 'true' AS 'wynik';
+    ELSE
+    	SELECT 'false' AS 'wynik';
+    END IF;
+END // 
+delimiter ;

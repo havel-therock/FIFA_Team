@@ -1,0 +1,7 @@
+UPDATE country
+SET country.HeadOfState='Emmanuel Macron'
+WHERE country.HeadOfState='Jacques Chirac'
+
+UPDATE country
+SET country.HeadOfState='Willem-Alexander'
+WHERE country.HeadOfState='Beatrix'

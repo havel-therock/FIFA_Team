@@ -1,0 +1,15 @@
+DELIMITER //
+CREATE FUNCTION maxekran(idpro int) RETURNS decimal(8,2)
+BEGIN
+    DECLARE wartosc decimal(8,2);
+    SET wartosc=(SELECT MAX(mat.przekatna)
+                 FROM matryce mat
+                 JOIN laptopy lap ON lap.matryca=mat.ID
+                 GROUP BY lap.producent
+                 HAVING lap.producent=idpro);
+    RETURN wartosc;
+END //
+DELIMITER ;
+
+
+SELECT maxekran(int)

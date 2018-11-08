@@ -1,0 +1,5 @@
+ALTER TABLE country
+ADD  GDPgrowth int
+
+UPDATE country
+SET country.GDPgrowth = (country.GNP - country.GNPOld)

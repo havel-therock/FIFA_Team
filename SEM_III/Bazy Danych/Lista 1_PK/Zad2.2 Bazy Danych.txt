@@ -1,0 +1,3 @@
+SELECT *
+FROM city
+WHERE (city.Population > 2500) AND (city.Population < 12000)

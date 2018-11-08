@@ -1,0 +1,12 @@
+delimiter //
+CREATE TRIGGER produ BEFORE INSERT ON laptopy
+    FOR EACH ROW 
+    BEGIN 
+    IF (SELECT producenci.ID FROM producenci WHERE producenci.ID=NEW.producent)>0 THEN 
+    SET NEW.producent=(SELECT producenci.ID FROM producenci WHERE producenci.ID=NEW.producent);
+    ELSE
+    INSERT INTO producenci VALUES (NEW.producent,'','');
+    END IF;
+    END
+    //
+delimiter ;

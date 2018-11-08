@@ -1,0 +1,1 @@
+CREATE INDEX pensja_idx USING BTREE ON pracownicy (pensja);

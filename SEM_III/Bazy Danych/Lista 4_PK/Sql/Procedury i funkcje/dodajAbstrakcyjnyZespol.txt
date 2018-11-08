@@ -1,0 +1,55 @@
+delimiter //
+CREATE PROCEDURE dodajZespolAbstrakcyjny(IN klub1 varchar(50),IN log varchar(20)) 
+BEGIN
+	DECLARE rozgrywki varchar(50);
+	DECLARE ID1 int;
+	DECLARE powtorka varchar(50);
+DECLARE zespol int;
+    DECLARE done INT DEFAULT 0;
+    DECLARE pozycja INT DEFAULT 1;
+    DECLARE cur CURSOR FOR SELECT * FROM test_prepare_vw;
+ 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+
+SET rozgrywki = CONCAT(log,'_leauge');
+SET @query = CONCAT("CREATE VIEW test_prepare_vw as select ID_zespolu FROM ", rozgrywki," ORDER BY punkty DESC, bilans_bramkowy DESC");
+select @query; 
+PREPARE stmt from @query; 
+EXECUTE stmt; 
+DEALLOCATE PREPARE stmt; 
+
+
+
+
+        SET powtorka = (SELECT ID FROM zespoly WHERE nazwa=klub1);
+SET ID1 = (SELECT ID FROM zespoly where nazwa=klub1);
+
+        IF powtorka IS NOT null THEN
+	 
+
+        
+    SET @query = CONCAT('INSERT INTO ',rozgrywki,'  (ID_zespolu,rozegrane_mecze,bramki_stracone,bramki_strzelone,bilans_bramkowy,punkty,pozycja_w_tabeli) VALUES (',ID1,',0,0,0,0,0,0);'); 
+	select @query; 
+	PREPARE stmt from @query; 
+	EXECUTE stmt; 
+	DEALLOCATE PREPARE stmt;
+
+	END IF;
+
+OPEN cur;
+FETCH cur INTO zespol;
+    	WHILE done=0 DO
+            SET @zespol=(SELECT zespol);
+    		SET @pozycja=(SELECT pozycja);
+    		SET @pol = CONCAT("UPDATE ", rozgrywki ," SET pozycja_w_tabeli=",@pozycja," WHERE ID_zespolu=",@zespol);
+    		PREPARE stmt FROM @pol;
+			EXECUTE stmt;
+ 			DEALLOCATE PREPARE stmt;
+        	
+        	SET pozycja=pozycja+1;
+            FETCH cur INTO zespol;	
+    	END WHILE;
+    CLOSE cur; 
+	DROP VIEW test_prepare_vw;  
+
+    END    //
+delimiter ;

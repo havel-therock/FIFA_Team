@@ -1,0 +1,22 @@
+DELIMITER $$
+CREATE PROCEDURE pokazAbstrakcyjnyWidok (IN log CHAR(20))
+BEGIN
+
+DECLARE powtorka varchar(50);
+DECLARE nazwa varchar(20);
+SET nazwa=CONCAT(log,'_leauge');
+SET powtorka = (SELECT wlasna_liga FROM uzytkownicy WHERE login=log);
+
+IF powtorka IS NOT null THEN 
+
+SET @pol = CONCAT('SELECT * FROM v_',nazwa);
+
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+
+END IF; 
+
+END
+$$
+DELIMITER ; 

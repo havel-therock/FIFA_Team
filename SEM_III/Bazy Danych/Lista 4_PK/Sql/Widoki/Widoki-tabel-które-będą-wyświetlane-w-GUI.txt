@@ -1,0 +1,40 @@
+CREATE VIEW v_Ekstraklasa AS SELECT `ekstraklasa`.`pozycja_w_tabeli`,`zespoly`.`nazwa`,`ekstraklasa`.`rozegrane_mecze`,`ekstraklasa`.`bramki_stracone`,`ekstraklasa`.`bramki_strzelone`,`ekstraklasa`.`bilans_bramkowy`,`ekstraklasa`.`punkty`
+FROM `ekstraklasa`
+JOIN `zespoly` ON `zespoly`.`ID`=`ekstraklasa`.`ID_zespolu`
+ORDER BY `ekstraklasa`.`pozycja_w_tabeli`
+---------------------------------------------------------------------
+CREATE VIEW v_bundesliga AS SELECT `bundesliga`.`pozycja_w_tabeli`,`zespoly`.`nazwa`,`bundesliga`.`rozegrane_mecze`,`bundesliga`.`bramki_stracone`,`bundesliga`.`bramki_strzelone`,`bundesliga`.`bilans_bramkowy`,`bundesliga`.`punkty`
+FROM `bundesliga`
+JOIN `zespoly` ON `zespoly`.`ID`=`bundesliga`.`ID_zespolu`
+ORDER BY `bundesliga`.`pozycja_w_tabeli`
+---------------------------------------------------------------------
+CREATE VIEW v_la_liga AS SELECT `la_liga`.`pozycja_w_tabeli`,`zespoly`.`nazwa`,`la_liga`.`rozegrane_mecze`,`la_liga`.`bramki_stracone`,`la_liga`.`bramki_strzelone`,`la_liga`.`bilans_bramkowy`,`la_liga`.`punkty`
+FROM `la_liga`
+JOIN `zespoly` ON `zespoly`.`ID`=`la_liga`.`ID_zespolu`
+ORDER BY `la_liga`.`pozycja_w_tabeli`
+---------------------------------------------------------------------
+CREATE VIEW v_ligue_1 AS SELECT `ligue_1`.`pozycja_w_tabeli`,`zespoly`.`nazwa`,`ligue_1`.`rozegrane_mecze`,`ligue_1`.`bramki_stracone`,`ligue_1`.`bramki_strzelone`,`ligue_1`.`bilans_bramkowy`,`ligue_1`.`punkty`
+FROM `ligue_1`
+JOIN `zespoly` ON `zespoly`.`ID`=`ligue_1`.`ID_zespolu`
+ORDER BY `ligue_1`.`pozycja_w_tabeli`
+---------------------------------------------------------------------
+CREATE VIEW v_premier_leauge AS SELECT `premier_leauge`.`pozycja_w_tabeli`,`zespoly`.`nazwa`,`premier_leauge`.`rozegrane_mecze`,`premier_leauge`.`bramki_stracone`,`premier_leauge`.`bramki_strzelone`,`premier_leauge`.`bilans_bramkowy`,`premier_leauge`.`punkty`
+FROM `premier_leauge`
+JOIN `zespoly` ON `zespoly`.`ID`=`premier_leauge`.`ID_zespolu`
+ORDER BY `premier_leauge`.`pozycja_w_tabeli`
+---------------------------------------------------------------------
+CREATE VIEW v_serie_a AS SELECT `serie_a`.`pozycja_w_tabeli`,`zespoly`.`nazwa`,`serie_a`.`rozegrane_mecze`,`serie_a`.`bramki_stracone`,`serie_a`.`bramki_strzelone`,`serie_a`.`bilans_bramkowy`,`serie_a`.`punkty`
+FROM `serie_a`
+JOIN `zespoly` ON `zespoly`.`ID`=`serie_a`.`ID_zespolu`
+ORDER BY `serie_a`.`pozycja_w_tabeli`
+---------------------------------------------------------------------
+CREATE VIEW podv_mecze AS SELECT mecze.data,zespoly.nazwa,mecze.bramki_z1,mecze.bramki_z2,mecze.zespol2,mecze.rozgrywki FROM mecze
+	JOIN zespoly ON zespoly.ID=mecze.zespol1
+
+CREATE VIEW v_mecze AS SELECT z.data,z.nazwa,z.bramki_z1,z.bramki_z2,zespoly.nazwa AS 'nazwa 2',z.rozgrywki FROM zespoly
+JOIN podv_mecze z ON z.zespol2=zespoly.ID
+-----------------------------------------------------------------CREATE VIEW podv_mecze_abstrakcyjne AS SELECT mecze_abstrakcyjne.data,zespoly.nazwa,mecze_abstrakcyjne.bramki_z1,mecze_abstrakcyjne.bramki_z2,mecze_abstrakcyjne.zespol2,mecze_abstrakcyjne.rozgrywki FROM mecze_abstrakcyjne
+	JOIN zespoly ON zespoly.ID=mecze_abstrakcyjne.zespol1;
+
+CREATE VIEW v_mecze_abstrakcyjne AS SELECT z.data,z.nazwa,z.bramki_z1,z.bramki_z2,zespoly.nazwa AS 'nazwa 2',z.rozgrywki FROM zespoly
+JOIN podv_mecze_abstrakcyjne z ON z.zespol2=zespoly.ID

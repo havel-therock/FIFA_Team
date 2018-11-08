@@ -1,0 +1,42 @@
+DELIMITER $$
+CREATE PROCEDURE tworzenieAbstrakcyjnejLigi (IN log CHAR(20))
+BEGIN
+
+DECLARE powtorka varchar(50);
+DECLARE nazwa varchar(20);
+SET nazwa=CONCAT(log,'_leauge');
+SET powtorka = (SELECT wlasna_liga FROM uzytkownicy WHERE login=log);
+
+IF powtorka IS null THEN 
+
+UPDATE uzytkownicy SET wlasna_liga = nazwa WHERE login=log;
+
+
+        SET @pol = CONCAT('CREATE TABLE ',nazwa,' (
+`ID_zespolu` int(11) NOT NULL,
+  `rozegrane_mecze` int(11) NOT NULL,
+  `bramki_stracone` int(11) NOT NULL,
+  `bramki_strzelone` int(11) NOT NULL,
+  `bilans_bramkowy` int(11) NOT NULL,
+  `punkty` int(11) NOT NULL,
+  `pozycja_w_tabeli` int(11) NOT NULL,
+   FOREIGN KEY (`ID_zespolu`) REFERENCES `zespoly` (`ID`)
+);');
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+
+SET @pol = CONCAT('CREATE VIEW v_',nazwa,' AS SELECT ', nazwa,'.pozycja_w_tabeli,`zespoly`.`nazwa`, ',nazwa,'.`rozegrane_mecze`, ',nazwa,'.`bramki_stracone`, ',nazwa,'.`bramki_strzelone`, ',nazwa,'.`bilans_bramkowy`,',nazwa,'.`punkty`
+FROM ',nazwa,' JOIN `zespoly` ON `zespoly`.`ID`=',nazwa,'.`ID_zespolu`
+ORDER BY ',nazwa,'.`pozycja_w_tabeli`');
+
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+
+
+END IF; 
+
+END
+$$
+DELIMITER ; 

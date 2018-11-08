@@ -1,0 +1,81 @@
+delimiter //
+CREATE PROCEDURE ustawUlubionaDruzyne(IN klub1 varchar(50),IN klub2 varchar(50)) 
+BEGIN
+
+    DECLARE powtorka varchar(50);
+    DECLARE punktyZ1 int;
+    DECLARE punktyZ2 int;
+	DECLARE zespol int;
+    DECLARE done INT DEFAULT 0;
+    DECLARE pozycja INT DEFAULT 1;
+    DECLARE cur CURSOR FOR SELECT * FROM test_prepare_vw; 
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+    
+   SET @query = CONCAT('CREATE VIEW test_prepare_vw as select ID_zespolu from ',rozgrywki,' ORDER BY ',rozgrywki,'.`punkty` DESC,',rozgrywki,'.`bilans_bramkowy` DESC;'); 
+select @query; 
+PREPARE stmt from @query; 
+EXECUTE stmt; 
+DEALLOCATE PREPARE stmt; 
+
+
+    IF NEW.`bramki_z1` > NEW.`bramki_z2` THEN
+    	SET punktyZ1 = 3;
+        SET punktyZ2 = 0;
+    ELSEIF NEW.`bramki_z1` < NEW.`bramki_z2` THEN
+    	SET punktyZ1 = 0;
+        SET punktyZ2 = 3;
+    ELSEIF NEW.`bramki_z1` = NEW.`bramki_z2` THEN
+    	SET punktyZ1 = 1;
+        SET punktyZ2 = 1;
+    END IF;
+
+SET powtorka = (SELECT wlasna_liga FROM uzytkownicy WHERE wlasna_liga=rozgrywki);
+
+    IF powtorka IS NOT null THEN 
+    
+SET @pol = CONCAT('UPDATE ',rozgrywki,' SET rozegrane_mecze = rozegrane_mecze+1,
+        bramki_stracone = bramki_stracone+bramki_z2,
+        bramki_strzelone = bramki_strzelone+`bramki_z1`,
+        `bilans_bramkowy` = `bilans_bramkowy`+(`bramki_z1`-`bramki_z2`),
+        `punkty` = `punkty`+punktyZ1
+        WHERE `ID_zespolu`=`zespol1`;');
+
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;    
+
+SET @pol = CONCAT('UPDATE ',rozgrywki,'
+        SET `rozegrane_mecze` = `rozegrane_mecze`+1,
+        `bramki_stracone` = `bramki_stracone`+NEW.`bramki_z1`,
+        `bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z2`,
+        `bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z2`-NEW.`bramki_z1`),
+        `punkty` = `punkty`+punktyZ2
+        WHERE `ID_zespolu`=NEW.`zespol2`;');
+
+
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;    
+
+
+
+    OPEN cur;
+    	WHILE done=0 DO
+    		FETCH cur INTO zespol;
+            SET @zespol=(SELECT zespol);
+    		SET @pozycja=(SELECT pozycja);
+    		SET @pol = CONCAT('UPDATE ',rozgrywki,' SET ',rozgrywki,'.`pozycja_w_tabeli`=',@pozycja,' WHERE ',rozgrywki,'.`ID_zespolu`=',@zespol);
+    		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+ 		DEALLOCATE PREPARE stmt;
+        	IF pozycja<16 THEN
+        		SET pozycja=pozycja+1;
+            	END IF;
+    	END WHILE;
+    CLOSE cur;  
+
+    END IF;
+    DROP VIEW test_prepare_vw; 
+    END
+    //
+delimiter ;

@@ -1,0 +1,52 @@
+delimiter // 
+CREATE PROCEDURE pozycjaEkstraklasa () 
+BEGIN
+	SELECT * FROM `v_ekstraklasa`;
+END // 
+delimiter ;
+-----------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pokazBundesliga () 
+BEGIN
+	SELECT * FROM `v_bundesliga`;
+END // 
+delimiter ;
+-----------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pokazLaLiga () 
+BEGIN
+	SELECT * FROM `v_la_liga`;
+END // 
+delimiter ;
+-----------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pokazLigue1 () 
+BEGIN
+	SELECT * FROM `v_ligue_1`;
+END // 
+delimiter ;
+-----------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pokazPremierLeauge () 
+BEGIN
+	SELECT * FROM `v_premier_leauge`;
+END // 
+delimiter ;
+-----------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pokazSerieA () 
+BEGIN 
+	SELECT * FROM `v_serie_a`; 
+END // 
+delimiter ;
+------------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pokazMecze (IN roz varchar(30)) 
+BEGIN 
+	IF roz='Ekstraklasa' OR roz='La Liga' OR roz='Serie A' OR roz='Ligue 1' OR roz='Premier Leauge' OR roz='Bundesliga' THEN
+		SELECT * FROM `v_mecze` WHERE `v_mecze`.`rozgrywki`=roz;
+    ELSE
+    	SELECT * FROM `v_mecze`;
+    END IF ;
+END // 
+delimiter ;

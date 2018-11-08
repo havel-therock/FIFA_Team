@@ -1,0 +1,3 @@
+SELECT city.District, COUNT(city.District) as "number of cities"
+FROM city
+GROUP BY city.District

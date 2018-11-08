@@ -1,0 +1,30 @@
+CREATE TABLE `footbalfun`.`Zespoly` 
+( `ID` INT NOT NULL AUTO_INCREMENT , `nazwa` VARCHAR(50) NOT NULL , 
+`mijescowosc` VARCHAR(50) NOT NULL , `stadion` INT NOT NULL , 
+`liga` VARCHAR(50) NOT NULL , `trener` VARCHAR(50) NOT NULL , 
+`barwy` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+-----------------------------------------------------------------------------------
+CREATE TABLE `footbalfun`.`Stadiony` 
+( `ID` INT NOT NULL AUTO_INCREMENT , `nazwa` VARCHAR(50) NOT NULL , 
+`adres` VARCHAR(50) NOT NULL , `iloœæ_miejsc` INT NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+-----------------------------------------------------------------------------------
+CREATE TABLE `footbalfun`.`mecze` 
+(id_meczy int NOT NULL AUTO_INCREMENT, 
+data date, zespol1 int NOT NULL , bramki_z1 int NOT NULL, bramki_z2 int NOT NULL, 
+zespol2 int NOT NULL, rozgrywki varchar(30) NOT NULL, PRIMARY KEY (`id_meczy`), 
+FOREIGN KEY (`zespol1`) REFERENCES `zespoly` (`ID`)) ENGINE = InnoDB;
+-----------------------------------------------------------------------------------
+CREATE TABLE `footbalfun`.`mecze_abstrakcyjne` 
+(id_meczy int NOT NULL AUTO_INCREMENT, 
+data date, zespol1 int NOT NULL , bramki_z1 int NOT NULL, bramki_z2 int NOT NULL, 
+zespol2 int NOT NULL, rozgrywki varchar(30) NOT NULL, PRIMARY KEY (`id_meczy`), 
+FOREIGN KEY (`zespol1`) REFERENCES `zespoly` (`ID`), 
+ FOREIGN KEY (`zespol2`) REFERENCES `zespoly` (`ID`)) ENGINE = InnoDB;
+-----------------------------------------------------------------------------------
+CREATE TABLE `footbalfun`.`Ekstraklasa` 
+( `ID_zespolu` INT NOT NULL AUTO_INCREMENT , `rozegrane_mecze` int NOT NULL , 
+`bramki_stracone` int NOT NULL , `bramki_strzelone` INT NOT NULL , 
+`bilans_bramkowy` int NOT NULL , `punkty` int NOT NULL , 
+`pozycja_w_tabeli` int NOT NULL , PRIMARY KEY (`ID_zespolu`),
+FOREIGN KEY (`ID_zespolu`) REFERENCES `zespoly` (`ID`)) 
+ENGINE = InnoDB;

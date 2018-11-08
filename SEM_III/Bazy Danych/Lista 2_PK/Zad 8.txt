@@ -1,0 +1,35 @@
+delimiter //
+CREATE TRIGGER dltproc AFTER DELETE ON laptopy
+    FOR EACH ROW 
+    BEGIN 
+    IF (SELECT COUNT(laptopy.procesor) FROM laptopy GROUP BY laptopy.procesor HAVING laptopy.procesor=OLD.procesor) IS null THEN 
+    DELETE FROM procesory WHERE procesory.ID=OLD.procesor;
+    END IF ;
+    END
+    //
+delimiter ;
+
+
+delimiter //
+CREATE TRIGGER dltproc AFTER DELETE ON laptopy
+    FOR EACH ROW 
+    BEGIN 
+    IF (SELECT COUNT(laptopy.procesor) FROM laptopy GROUP BY laptopy.procesor HAVING laptopy.procesor=OLD.procesor) IS null THEN 
+    DELETE FROM procesory WHERE procesory.ID=OLD.procesor;
+    END IF ;
+    
+    IF (SELECT producenci.liczba_modeli FROM producenci WHERE producenci.ID=OLD.producent)=1 THEN 
+    UPDATE producenci 
+    SET producenci.liczba_modeli = 0 WHERE producenci.ID=OLD.producent ;
+    END IF ;
+    
+    UPDATE producenci
+	INNER JOIN (SELECT laptopy.producent, COUNT(laptopy.producent) AS liczba FROM laptopy GROUP BY laptopy.producent) AS li ON  producenci.ID=li.producent
+	SET producenci.liczba_modeli = li.liczba ;
+    
+	UPDATE producenci
+	SET producenci.liczba_modeli=0
+	WHERE liczba_modeli IS null ;
+    END
+    //
+delimiter ;

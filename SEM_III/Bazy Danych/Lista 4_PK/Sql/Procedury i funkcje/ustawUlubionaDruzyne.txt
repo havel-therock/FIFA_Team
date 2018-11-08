@@ -1,0 +1,13 @@
+delimiter // 
+CREATE PROCEDURE ustawUlubionaDruzyne(IN klub varchar(50),IN log varchar(20)) 
+BEGIN
+DECLARE powtorka varchar(50);
+        SET powtorka = (SELECT ID FROM zespoly WHERE nazwa=klub);
+        IF powtorka IS NOT null THEN 
+
+          UPDATE uzytkownicy SET ulubiony_zespol = powtorka WHERE login=log;
+
+        END IF ;
+END // 
+delimiter ;
+

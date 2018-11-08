@@ -1,0 +1,155 @@
+delimiter // 
+CREATE PROCEDURE pozycjaEkstraklasa () 
+BEGIN
+    DECLARE zespol int;
+    DECLARE done INT DEFAULT 0;
+    DECLARE pozycja INT DEFAULT 1;
+    DECLARE cur CURSOR FOR SELECT `ID_zespolu` FROM `ekstraklasa` ORDER BY `ekstraklasa`.`punkty` DESC,`ekstraklasa`.`bilans_bramkowy` DESC;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+
+    OPEN cur;
+    	WHILE done=0 DO
+    		FETCH cur INTO zespol;
+            SET @zespol=(SELECT zespol);
+    		SET @pozycja=(SELECT pozycja);
+    		SET @pol = CONCAT('UPDATE `ekstraklasa` SET `ekstraklasa`.`pozycja_w_tabeli`=',@pozycja,' WHERE `ekstraklasa`.`ID_zespolu`=',@zespol);
+    		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+ 		DEALLOCATE PREPARE stmt;
+        	IF pozycja<16 THEN
+        		SET pozycja=pozycja+1;
+            	END IF;
+    	END WHILE;
+    CLOSE cur;  
+END // 
+delimiter ;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pozycjaLaLiga () 
+BEGIN
+    DECLARE zespol int;
+    DECLARE done INT DEFAULT 0;
+    DECLARE pozycja INT DEFAULT 1;
+    DECLARE cur CURSOR FOR SELECT `ID_zespolu` FROM `la_liga` ORDER BY `la_liga`.`punkty` DESC,`la_liga`.`bilans_bramkowy` DESC;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+
+    OPEN cur;
+    	WHILE done=0 DO
+    		FETCH cur INTO zespol;
+            SET @zespol=(SELECT zespol);
+    		SET @pozycja=(SELECT pozycja);
+    		SET @pol = CONCAT('UPDATE `la_liga` SET `la_liga`.`pozycja_w_tabeli`=',@pozycja,' WHERE `la_liga`.`ID_zespolu`=',@zespol);
+    		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+ 		DEALLOCATE PREPARE stmt;
+        	IF pozycja<20 THEN
+        		SET pozycja=pozycja+1;
+            	END IF;
+    	END WHILE;
+    CLOSE cur;  
+END // 
+delimiter ;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pozycjaLigue1 () 
+BEGIN
+    DECLARE zespol int;
+    DECLARE done INT DEFAULT 0;
+    DECLARE pozycja INT DEFAULT 1;
+    DECLARE cur CURSOR FOR SELECT `ID_zespolu` FROM `ligue_1` ORDER BY `ligue_1`.`punkty` DESC,`ligue_1`.`bilans_bramkowy` DESC;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+
+    OPEN cur;
+    	WHILE done=0 DO
+    		FETCH cur INTO zespol;
+            SET @zespol=(SELECT zespol);
+    		SET @pozycja=(SELECT pozycja);
+    		SET @pol = CONCAT('UPDATE `ligue_1` SET `ligue_1`.`pozycja_w_tabeli`=',@pozycja,' WHERE `ligue_1`.`ID_zespolu`=',@zespol);
+    		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+ 		DEALLOCATE PREPARE stmt;
+        	IF pozycja<20 THEN
+        		SET pozycja=pozycja+1;
+            	END IF;
+    	END WHILE;
+    CLOSE cur;  
+END // 
+delimiter ;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pozycjaBundesliga () 
+BEGIN
+    DECLARE zespol int;
+    DECLARE done INT DEFAULT 0;
+    DECLARE pozycja INT DEFAULT 1;
+    DECLARE cur CURSOR FOR SELECT `ID_zespolu` FROM `bundesliga` ORDER BY `bundesliga`.`punkty` DESC,`bundesliga`.`bilans_bramkowy` DESC;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+
+    OPEN cur;
+    	WHILE done=0 DO
+    		FETCH cur INTO zespol;
+            SET @zespol=(SELECT zespol);
+    		SET @pozycja=(SELECT pozycja);
+    		SET @pol = CONCAT('UPDATE `bundesliga` SET `bundesliga`.`pozycja_w_tabeli`=',@pozycja,' WHERE `bundesliga`.`ID_zespolu`=',@zespol);
+    		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+ 		DEALLOCATE PREPARE stmt;
+        	IF pozycja<18 THEN
+        		SET pozycja=pozycja+1;
+            	END IF;
+    	END WHILE;
+    CLOSE cur;  
+END // 
+delimiter ;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pozycjaPremierLeauge () 
+BEGIN
+    DECLARE zespol int;
+    DECLARE done INT DEFAULT 0;
+    DECLARE pozycja INT DEFAULT 1;
+    DECLARE cur CURSOR FOR SELECT `ID_zespolu` FROM `premier_leauge` ORDER BY `premier_leauge`.`punkty` DESC,`premier_leauge`.`bilans_bramkowy` DESC;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+
+    OPEN cur;
+    	WHILE done=0 DO
+    		FETCH cur INTO zespol;
+            SET @zespol=(SELECT zespol);
+    		SET @pozycja=(SELECT pozycja);
+    		SET @pol = CONCAT('UPDATE `premier_leauge` SET `premier_leauge`.`pozycja_w_tabeli`=',@pozycja,' WHERE `premier_leauge`.`ID_zespolu`=',@zespol);
+    		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+ 		DEALLOCATE PREPARE stmt;
+        	IF pozycja<20 THEN
+        		SET pozycja=pozycja+1;
+            	END IF;
+    	END WHILE;
+    CLOSE cur;  
+END // 
+delimiter ;
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+delimiter // 
+CREATE PROCEDURE pozycjaSerieA () 
+BEGIN
+    DECLARE zespol int;
+    DECLARE done INT DEFAULT 0;
+    DECLARE pozycja INT DEFAULT 1;
+    DECLARE cur CURSOR FOR SELECT `ID_zespolu` FROM `serie_a` ORDER BY `serie_a`.`punkty` DESC,`serie_a`.`bilans_bramkowy` DESC;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+
+    OPEN cur;
+    	WHILE done=0 DO
+    		FETCH cur INTO zespol;
+            SET @zespol=(SELECT zespol);
+    		SET @pozycja=(SELECT pozycja);
+    		SET @pol = CONCAT('UPDATE `serie_a` SET `serie_a`.`pozycja_w_tabeli`=',@pozycja,' WHERE `serie_a`.`ID_zespolu`=',@zespol);
+    		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+ 		DEALLOCATE PREPARE stmt;
+        	IF pozycja<20 THEN
+        		SET pozycja=pozycja+1;
+            	END IF;
+    	END WHILE;
+    CLOSE cur;  
+END // 
+delimiter ;

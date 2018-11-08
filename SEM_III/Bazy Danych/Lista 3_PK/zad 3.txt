@@ -1,0 +1,22 @@
+delimiter // 
+CREATE PROCEDURE zad3 (IN agg char, IN kol char) 
+BEGIN
+	SET @agg = (SELECT agg) ;
+	SET @kol = (SELECT kol) ;
+    IF @agg = 'COUNT' THEN
+    SET @pol = CONCAT('SELECT ',@kol,', "',@agg,'", ',@agg,'(',@kol,') FROM `ludzie` GROUP BY ',@kol);
+    PREPARE stmt FROM @pol;
+    
+	EXECUTE stmt;
+ 
+	DEALLOCATE PREPARE stmt;
+    ELSE
+    SET @pol = CONCAT('SELECT "',@kol,'", "',@agg,'", ',@agg,'(',@kol,') FROM `ludzie`');
+    PREPARE stmt FROM @pol;
+    
+	EXECUTE stmt;
+ 
+	DEALLOCATE PREPARE stmt;
+    END IF ;
+END // 
+delimiter ;

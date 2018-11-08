@@ -1,0 +1,15 @@
+delimiter // 
+CREATE PROCEDURE czyszczenieMeczyAbstrakcyjnych()
+BEGIN
+          	truncate mecze_abstrakcyjne;
+END // 
+delimiter ;
+
+
+
+delimiter // 
+CREATE PROCEDURE czyszczenieMeczy()
+BEGIN
+          	truncate mecze;
+END // 
+delimiter ;

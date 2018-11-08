@@ -1,0 +1,45 @@
+delimiter // 
+CREATE PROCEDURE sortujTabele (IN roz varchar(30),IN kol varchar(30)) 
+BEGIN
+	DECLARE tabela varchar(30);
+	SET @kol = (SELECT kol);
+
+	IF roz='Ekstraklasa' THEN
+    	SET @tabela = 'v_ekstraklasa';
+        SET @pol = CONCAT('SELECT * FROM ',@tabela,' ORDER BY ',@kol,' DESC');
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+    ELSEIF roz='La Liga' THEN
+    	SET @tabela = 'v_la_liga';
+        SET @pol = CONCAT('SELECT * FROM ',@tabela,' ORDER BY ',@kol,' DESC');
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+    ELSEIF roz='Bundesliga' THEN
+    	SET @tabela = 'v_bundesliga';
+        SET @pol = CONCAT('SELECT * FROM ',@tabela,' ORDER BY ',@kol,' DESC');
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+    ELSEIF roz='Premier Leauge' THEN
+    	SET @tabela = 'v_premier_leauge';
+        SET @pol = CONCAT('SELECT * FROM ',@tabela,' ORDER BY ',@kol,' DESC');
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+    ELSEIF roz='Ligue 1' THEN
+    	SET @tabela = 'v_ligue_1';
+        SET @pol = CONCAT('SELECT * FROM ',@tabela,' ORDER BY ',@kol,' DESC');
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+    ELSEIF roz='Serie A' THEN
+    	SET @tabela = 'v_serie_a';
+        SET @pol = CONCAT('SELECT * FROM ',@tabela,' ORDER BY ',@kol,' DESC');
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+    END IF;
+END // 
+delimiter ;

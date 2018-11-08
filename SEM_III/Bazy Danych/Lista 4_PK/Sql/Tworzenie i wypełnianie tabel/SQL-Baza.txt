@@ -1,0 +1,213 @@
+DELIMITER $$
+CREATE PROCEDURE tworzenieLudzi ()
+BEGIN
+
+
+
+DECLARE imiona ENUM('Jan','Carlo','Pep','Diego', 'Gerardo', 'Adam', 'Jorge', 'Arsene', 'Antonio', 'Jose', 'Jurgen', 'Laurent', 'Unai', 'Manuel', 'Yupp', 'Marcelo', 'Enderson','Rafael', 'Orest', 'Roberto');
+
+DECLARE nazwiska ENUM('Di Matteo','Urban','Ancelotti', 'Guardiola', 'Martio', 'Simeone', 'Guardiola', 'Nawalka', 'Jesus', 'Wenger', 'Conte', 'Mourinho', 'Klopp', 'Blanc','Emery', 'Pellergini', 'Lenczyk', 'Benitez','Moreira','Henckes');
+
+DECLARE czlonKlub ENUM('FC','Chelsea','Real','Atletico', 'City', 'Crystal', 'Celtia', 'Anderlacht', 'Ajax', 'Celtic', 'United', 'Juventus', 'Benfica', 'Bayer', 'Bayern','Borrusia', 'Szachtar', 'Inter', 'AC', 'Slask');
+
+DECLARE miejscowosc ENUM('London','Warszawa','Wroclaw','Barcelona', 'Madryt', 'Monachium', 'Amsterdam', 'Mediolan', 'Rzym', 'Lizbona', 'Dortmund', 'Manchester', 'Liverpool', 'Glasgow', 'Donieck', 'Zagrzeb', 'Paryz', 'Sevilla', 'Monaco', 'Brimingham');
+
+DECLARE czlonStadionu ENUM('Salt Lake','Santiago Bernabeu','Camp Nou','Maracana', 'Rose', 'Alianz', 'Croke', 'Wembley', 'Old', ' San', 'Pepsi', 'Stamford', 'Reliant', 'Celtic', 'Abuja', 'Odi', 'Emirates', 'Anfield', 'Ellis', 'Imtech');
+
+DECLARE czlonStadionu2 ENUM('Arena','Stadium','Trafford','Bridge', 'Azteca', 'Azadi', 'Karno', 'de France', 'des Martys', ' Jaili', 'Siro', 'Field', 'Dageu', 'da Luz', 'de Lima', 'Azis', 'Magen', 'Estadio', 'La Costa', 'Amisto');
+
+DECLARE barwy ENUM('Biale','Czerwone','Zolte','Bialo-czerwone', 'Niebieskie', 'Zielone', 'Rozowe', 'Granatowo-czarne', 'Niebiesko-zolte', 'Seledynowe', 'Ciemno-niebieskie', 'Srebrne', 'Zlote', 'Zolto-zielone', 'Fioletowe');
+
+DECLARE adres ENUM('zamkowa 7','Football street 1','Galatery 4','Mundo 4', 'Dolling street 9', 'Pariseal 5', 'Lazienkowska 4', 'Le Lasa 2', 'Umis 89', 'Ksasae 1', 'Abaci 1', 'Ceselina 9', 'Agawning 9', 'Sely 1', 'Abbanad 3');
+
+
+
+DECLARE trener char(30);
+DECLARE i int;
+DECLARE id int;
+DECLARE klub char(30);
+DECLARE stadion char(30);
+DECLARE random int;
+SET id=0;
+
+SET i=0;
+WHILE i<20 DO
+
+SET i=i+1;
+set id=id+1;
+
+SET imiona=FLOOR(1+rand()*20);
+SET nazwiska=FLOOR(1+rand()*20);
+SET czlonKlub=FLOOR(1+rand()*20);
+SET miejscowosc=FLOOR(1+rand()*20);
+SET czlonStadionu=FLOOR(1+rand()*20);
+SET czlonStadionu2=FLOOR(1+rand()*20);
+SET barwy=FLOOR(1+rand()*15);
+
+SET trener=CONCAT(imiona,' ',nazwiska);
+SET klub=CONCAT(czlonKlub,' ',miejscowosc);
+SET stadion=CONCAT(czlonstadionu,' ',czlonstadionu2);
+SET adres=FLOOR(1+rand()*15);
+SET random = FLOOR(5000+rand()*80000);
+
+INSERT INTO stadiony (ID,nazwa,adres,ilosc_miejsc)
+VALUES (id,stadion,adres,random);
+
+INSERT INTO zespoly (ID, nazwa,mijescowosc,stadion,liga,trener,barwy)
+VALUES (id,klub,miejscowosc,id,'Ligue 1',trener,barwy);
+
+END WHILE;
+
+SET i=0;
+WHILE i<16 DO
+
+SET i=i+1;
+set id=id+1;
+
+SET imiona=FLOOR(1+rand()*20);
+SET nazwiska=FLOOR(1+rand()*20);
+SET czlonKlub=FLOOR(1+rand()*20);
+SET miejscowosc=FLOOR(1+rand()*20);
+SET czlonStadionu=FLOOR(1+rand()*20);
+SET czlonStadionu2=FLOOR(1+rand()*20);
+SET barwy=FLOOR(1+rand()*15);
+
+SET trener=CONCAT(imiona,' ',nazwiska);
+SET klub=CONCAT(czlonKlub,' ',miejscowosc);
+SET stadion=CONCAT(czlonstadionu,' ',czlonstadionu2);
+SET adres=FLOOR(1+rand()*15);
+SET random = FLOOR(5000+rand()*80000);
+
+
+INSERT INTO stadiony (ID,nazwa,adres,ilosc_miejsc)
+VALUES (id,stadion,adres,random);
+
+
+
+INSERT INTO zespoly (ID, nazwa,mijescowosc,stadion,liga,trener,barwy)
+VALUES (id,klub,miejscowosc,id,'Ekstraklasa',trener,barwy);
+
+END WHILE;
+
+SET i=0;
+WHILE i<18 DO
+
+SET i=i+1;
+set id=id+1;
+
+SET imiona=FLOOR(1+rand()*20);
+SET nazwiska=FLOOR(1+rand()*20);
+SET czlonKlub=FLOOR(1+rand()*20);
+SET miejscowosc=FLOOR(1+rand()*20);
+SET czlonStadionu=FLOOR(1+rand()*20);
+SET czlonStadionu2=FLOOR(1+rand()*20);
+SET barwy=FLOOR(1+rand()*15);
+
+SET trener=CONCAT(imiona,' ',nazwiska);
+SET klub=CONCAT(czlonKlub,' ',miejscowosc);
+SET stadion=CONCAT(czlonstadionu,' ',czlonstadionu2);
+SET adres=FLOOR(1+rand()*15);
+
+INSERT INTO stadiony (ID,nazwa,adres,ilosc_miejsc)
+VALUES (id,stadion,adres,FLOOR(5000+rand()*80000));
+
+
+
+INSERT INTO zespoly (ID, nazwa,mijescowosc,stadion,liga,trener,barwy)
+VALUES (id,klub,miejscowosc,id,'Bundesliga',trener,barwy);
+
+END WHILE;
+
+SET i=0;
+WHILE i<20 DO
+
+SET i=i+1;
+set id=id+1;
+
+SET imiona=FLOOR(1+rand()*20);
+SET nazwiska=FLOOR(1+rand()*20);
+SET czlonKlub=FLOOR(1+rand()*20);
+SET miejscowosc=FLOOR(1+rand()*20);
+SET czlonStadionu=FLOOR(1+rand()*20);
+SET czlonStadionu2=FLOOR(1+rand()*20);
+SET barwy=FLOOR(1+rand()*15);
+
+SET trener=CONCAT(imiona,' ',nazwiska);
+SET klub=CONCAT(czlonKlub,' ',miejscowosc);
+SET stadion=CONCAT(czlonstadionu,' ',czlonstadionu2);
+SET adres=FLOOR(1+rand()*15);
+
+
+INSERT INTO stadiony (ID,nazwa,adres,ilosc_miejsc)
+VALUES (id,stadion,adres,FLOOR(5000+rand()*80000));
+
+
+
+INSERT INTO zespoly (ID, nazwa,mijescowosc,stadion,liga,trener,barwy)
+VALUES (id,klub,miejscowosc,id,'La Liga',trener,barwy);
+
+END WHILE;
+
+SET i=0;
+WHILE i<20 DO
+
+SET i=i+1;
+set id=id+1;
+
+SET imiona=FLOOR(1+rand()*20);
+SET nazwiska=FLOOR(1+rand()*20);
+SET czlonKlub=FLOOR(1+rand()*20);
+SET miejscowosc=FLOOR(1+rand()*20);
+SET czlonStadionu=FLOOR(1+rand()*20);
+SET czlonStadionu2=FLOOR(1+rand()*20);
+SET barwy=FLOOR(1+rand()*15);
+
+SET trener=CONCAT(imiona,' ',nazwiska);
+SET klub=CONCAT(czlonKlub,' ',miejscowosc);
+SET stadion=CONCAT(czlonstadionu,' ',czlonstadionu2);
+SET adres=FLOOR(1+rand()*15);
+
+
+INSERT INTO stadiony (ID,nazwa,adres,ilosc_miejsc)
+VALUES (id,stadion,adres,FLOOR(5000+rand()*80000));
+
+
+
+INSERT INTO zespoly (ID, nazwa,mijescowosc,stadion,liga,trener,barwy)
+VALUES (id,klub,miejscowosc,id,'Serie A',trener,barwy);
+
+END WHILE;
+
+SET i=0;
+WHILE i<20 DO
+
+SET i=i+1;
+set id=id+1;
+
+SET imiona=FLOOR(1+rand()*20);
+SET nazwiska=FLOOR(1+rand()*20);
+SET czlonKlub=FLOOR(1+rand()*20);
+SET miejscowosc=FLOOR(1+rand()*20);
+SET czlonStadionu=FLOOR(1+rand()*20);
+SET czlonStadionu2=FLOOR(1+rand()*20);
+SET barwy=FLOOR(1+rand()*15);
+
+SET trener=CONCAT(imiona,' ',nazwiska);
+SET klub=CONCAT(czlonKlub,' ',miejscowosc);
+SET stadion=CONCAT(czlonstadionu,' ',czlonstadionu2);
+SET adres=FLOOR(1+rand()*15);
+
+
+INSERT INTO stadiony (ID,nazwa,adres,ilosc_miejsc)
+VALUES (id,stadion,adres,FLOOR(5000+rand()*80000));
+
+
+
+INSERT INTO zespoly (ID, nazwa,mijescowosc,stadion,liga,trener,barwy)
+VALUES (id,klub,miejscowosc,id,'Premier Leauge',trener,barwy);
+
+END WHILE;
+
+END
+$$
+DELIMITER ;

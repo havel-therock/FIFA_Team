@@ -1,0 +1,5 @@
+SELECT c.name, ci.Name
+FROM country c
+JOIN city ci ON ci.CountryCode=c.Code
+WHERE ci.Population>10000
+ORDER BY ci.Name

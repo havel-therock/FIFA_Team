@@ -1,0 +1,24 @@
+delimiter //
+CREATE PROCEDURE usunZespolAbstrakcyjny(IN klub1 varchar(50),IN log varchar(20)) 
+BEGIN
+	DECLARE rozgrywki varchar(50);
+	DECLARE ID1 int;
+	DECLARE powtorka varchar(50);
+
+        SET powtorka = (SELECT ID FROM zespoly WHERE nazwa=klub1);
+SET ID1 = (SELECT ID FROM zespoly where nazwa=klub1);
+
+        IF powtorka IS NOT null THEN
+	 
+	SET rozgrywki = CONCAT(log,'_leauge');
+        
+    SET @query = CONCAT('DELETE FROM ',rozgrywki, ' WHERE ID_zespolu=',ID1);
+	select @query; 
+	PREPARE stmt from @query; 
+	EXECUTE stmt; 
+	DEALLOCATE PREPARE stmt;
+
+
+	END IF;
+    END    //
+delimiter ;

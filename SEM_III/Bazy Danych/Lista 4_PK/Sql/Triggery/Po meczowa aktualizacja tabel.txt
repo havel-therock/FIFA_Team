@@ -1,0 +1,113 @@
+delimiter //
+CREATE TRIGGER poMeczuDoTabeli BEFORE INSERT ON mecze
+    FOR EACH ROW 
+    BEGIN
+    
+    DECLARE punktyZ1 int;
+    DECLARE punktyZ2 int;
+    IF NEW.`bramki_z1` > NEW.`bramki_z2` THEN
+    	SET punktyZ1 = 3;
+        SET punktyZ2 = 0;
+    ELSEIF NEW.`bramki_z1` < NEW.`bramki_z2` THEN
+    	SET punktyZ1 = 0;
+        SET punktyZ2 = 3;
+    ELSEIF NEW.`bramki_z1` = NEW.`bramki_z2` THEN
+    	SET punktyZ1 = 1;
+        SET punktyZ2 = 1;
+    END IF;
+    
+    IF NEW.`rozgrywki`='Ekstraklasa' THEN
+    	UPDATE `ekstraklasa`
+        SET `ekstraklasa`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `ekstraklasa`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z2`,
+        `ekstraklasa`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z1`,
+        `ekstraklasa`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z1`-NEW.`bramki_z2`),
+        `ekstraklasa`.`punkty` = `punkty`+punktyZ1
+        WHERE `ekstraklasa`.`ID_zespolu`=NEW.`zespol1`;
+        UPDATE `ekstraklasa`
+        SET `ekstraklasa`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `ekstraklasa`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z1`,
+        `ekstraklasa`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z2`,
+        `ekstraklasa`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z2`-NEW.`bramki_z1`),
+        `ekstraklasa`.`punkty` = `punkty`+punktyZ2
+        WHERE `ekstraklasa`.`ID_zespolu`=NEW.`zespol2`;
+    ELSEIF NEW.`rozgrywki`='Ligue 1' THEN
+    	UPDATE `ligue_1`
+        SET `ligue_1`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `ligue_1`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z2`,
+        `ligue_1`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z1`,
+        `ligue_1`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z1`-NEW.`bramki_z2`),
+        `ligue_1`.`punkty` = `punkty`+punktyZ1
+        WHERE `ligue_1`.`ID_zespolu`=NEW.`zespol1`;
+        UPDATE `ligue_1`
+        SET `ligue_1`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `ligue_1`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z1`,
+        `ligue_1`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z2`,
+        `ligue_1`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z2`-NEW.`bramki_z1`),
+        `ligue_1`.`punkty` = `punkty`+punktyZ2
+        WHERE `ligue_1`.`ID_zespolu`=NEW.`zespol2`;
+    ELSEIF NEW.`rozgrywki`='Bundesliga' THEN
+    	UPDATE `bundesliga`
+        SET `bundesliga`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `bundesliga`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z2`,
+        `bundesliga`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z1`,
+        `bundesliga`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z1`-NEW.`bramki_z2`),
+        `bundesliga`.`punkty` = `punkty`+punktyZ1
+        WHERE `bundesliga`.`ID_zespolu`=NEW.`zespol1`;
+        UPDATE `bundesliga`
+        SET `bundesliga`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `bundesliga`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z1`,
+        `bundesliga`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z2`,
+        `bundesliga`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z2`-NEW.`bramki_z1`),
+        `bundesliga`.`punkty` = `punkty`+punktyZ2
+        WHERE `bundesliga`.`ID_zespolu`=NEW.`zespol2`;
+    ELSEIF NEW.`rozgrywki`='La Liga' THEN
+    	UPDATE `la_liga`
+        SET `la_liga`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `la_liga`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z2`,
+        `la_liga`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z1`,
+        `la_liga`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z1`-NEW.`bramki_z2`),
+        `la_liga`.`punkty` = `punkty`+punktyZ1
+        WHERE `la_liga`.`ID_zespolu`=NEW.`zespol1`;
+        UPDATE `la_liga`
+        SET `la_liga`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `la_liga`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z1`,
+        `la_liga`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z2`,
+        `la_liga`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z2`-NEW.`bramki_z1`),
+        `la_liga`.`punkty` = `punkty`+punktyZ2
+        WHERE `la_liga`.`ID_zespolu`=NEW.`zespol2`;
+    ELSEIF NEW.`rozgrywki`='Serie A' THEN
+    	UPDATE `serie_a`
+        SET `serie_a`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `serie_a`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z2`,
+        `serie_a`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z1`,
+        `serie_a`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z1`-NEW.`bramki_z2`),
+        `serie_a`.`punkty` = `punkty`+punktyZ1
+        WHERE `serie_a`.`ID_zespolu`=NEW.`zespol1`;
+        UPDATE `serie_a`
+        SET `serie_a`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `serie_a`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z1`,
+        `serie_a`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z2`,
+        `serie_a`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z2`-NEW.`bramki_z1`),
+        `serie_a`.`punkty` = `punkty`+punktyZ2
+        WHERE `serie_a`.`ID_zespolu`=NEW.`zespol2`;
+    ELSEIF NEW.`rozgrywki`='Premier Leauge' THEN
+    	UPDATE `premier_leauge`
+        SET `premier_leauge`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `premier_leauge`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z2`,
+        `premier_leauge`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z1`,
+        `premier_leauge`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z1`-NEW.`bramki_z2`),
+        `premier_leauge`.`punkty` = `punkty`+punktyZ1
+        WHERE `premier_leauge`.`ID_zespolu`=NEW.`zespol1`;
+        UPDATE `premier_leauge`
+        SET `premier_leauge`.`rozegrane_mecze` = `rozegrane_mecze`+1,
+        `premier_leauge`.`bramki_stracone` = `bramki_stracone`+NEW.`bramki_z1`,
+        `premier_leauge`.`bramki_strzelone` = `bramki_strzelone`+NEW.`bramki_z2`,
+        `premier_leauge`.`bilans_bramkowy` = `bilans_bramkowy`+(NEW.`bramki_z2`-NEW.`bramki_z1`),
+        `premier_leauge`.`punkty` = `punkty`+punktyZ2
+        WHERE `premier_leauge`.`ID_zespolu`=NEW.`zespol2`;
+    END IF;
+    
+    END
+    //
+delimiter ;

@@ -1,0 +1,12 @@
+delimiter //
+CREATE TRIGGER sprawdzaniePoprawnosciLoginu BEFORE INSERT ON uzytkownicy
+    FOR EACH ROW 
+    BEGIN
+    	DECLARE powtorka varchar(50);
+        SET powtorka = (SELECT uzytkownicy.login FROM uzytkownicy WHERE uzytkownicy.login=NEW.login);
+        IF powtorka IS NOT null THEN 
+        	SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ERROR: Taki login juz istnieje';
+        END IF ;
+    END
+    //
+delimiter ;

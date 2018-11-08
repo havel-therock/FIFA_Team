@@ -1,0 +1,7 @@
+CREATE VIEW v_produ AS
+	SELECT produ.nazwa, produ.siedziba, lap.model
+	FROM producenci produ
+	JOIN laptopy lap ON lap.producent=produ.ID
+
+
+DELETE FROM laptopy WHERE laptopy.producent=10 //dla Japoni//

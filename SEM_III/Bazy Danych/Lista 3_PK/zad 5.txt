@@ -1,0 +1,33 @@
+SELECT MIN(`pensja`) FROM `pracownicy` WHERE `pracownicy`.`zawod`='malarz'
+
+
+SELECT MIN(`pensja`) FROM `pracownicy` WHERE `pracownicy`.`zawod`=(SELECT pra.zawod
+FROM `pracownicy` pra
+JOIN (SELECT COUNT(`zawod`) AS 'zli', `zawod` FROM `pracownicy` GROUP BY `zawod`) cou ON cou.zawod=pra.zawod
+WHERE cou.zli=(SELECT MIN(cou.zli)
+FROM `pracownicy` pra
+JOIN (SELECT COUNT(`zawod`) AS 'zli', `zawod` FROM `pracownicy` GROUP BY `zawod`) cou ON cou.zawod=pra.zawod))
+
+
+SELECT AVG(`pensja`) FROM `pracownicy` 
+JOIN `ludzie` ON `pracownicy`.`PESEL`=`ludzie`.`PESEL`
+WHERE LEFT(`ludzie`.`data_urodzenia`,4)=(SELECT MAX(LEFT(`ludzie`.`data_urodzenia`,4)) FROM `pracownicy` 
+JOIN `ludzie` ON `pracownicy`.`PESEL`=`ludzie`.`PESEL`)
+GROUP BY `pracownicy`.`PESEL`
+
+SELECT AVG(`pensja`), MIN(`zawod`) FROM `pracownicy`
+GROUP BY `pracownicy`.`PESEL`
+ORDER BY LEFT(`pracownicy`.`PESEL`,4) DESC
+LIMIT 5
+
+
+SELECT AVG(`pensja`) FROM `pracownicy`
+JOIN `ludzie` ON `ludzie`.`PESEL`=`pracownicy`.`PESEL`
+WHERE `pracownicy`.`zawod`='informatyk' AND `ludzie`.`imie`='Dawid' AND `ludzie`.`nazwisko`='Listek'
+GROUP BY `pracownicy`.`PESEL`
+
+
+SELECT AVG(`pensja`) FROM `pracownicy`
+JOIN `ludzie` ON `ludzie`.`PESEL`=`pracownicy`.`PESEL`
+WHERE `pracownicy`.`zawod`='sprzedawca' AND `ludzie`.`imie`='Dawid' AND `ludzie`.`nazwisko`='Listek'
+GROUP BY `pracownicy`.`PESEL`

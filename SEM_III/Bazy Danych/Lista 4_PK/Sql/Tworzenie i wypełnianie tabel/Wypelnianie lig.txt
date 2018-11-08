@@ -1,0 +1,42 @@
+delimiter // 
+CREATE PROCEDURE wypelnianieLig() 
+BEGIN
+  DECLARE done INT DEFAULT 0;
+  DECLARE l varchar(30);
+  DECLARE i int;
+  DECLARE p int;
+  DECLARE cur CURSOR FOR SELECT `ID`,`liga` FROM `zespoly`;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+
+  OPEN cur;
+  	WHILE done=0 DO
+    	FETCH cur INTO i,l;
+        IF l='Ekstraklasa' THEN
+        	SET p=1;
+        	INSERT INTO ekstraklasa VALUES (i,0,0,0,0,0,p);
+            SET p=p+1;
+        ELSEIF l='Ligue 1' THEN
+        	SET p=1;
+        	INSERT INTO ligue_1 VALUES (i,0,0,0,0,0,p);
+            SET p=p+1;
+        ELSEIF l='Bundesliga' THEN
+        	SET p=1;
+        	INSERT INTO bundesliga VALUES (i,0,0,0,0,0,p);
+            SET p=p+1;
+        ELSEIF l='La Liga' THEN
+        	SET p=1;
+        	INSERT INTO la_liga VALUES (i,0,0,0,0,0,p);
+            SET p=p+1;
+        ELSEIF l='Serie A' THEN
+        	SET p=1;
+        	INSERT INTO serie_a VALUES (i,0,0,0,0,0,p);
+            SET p=p+1;
+        ELSEIF l='Premier Leauge' THEN
+        	SET p=1;
+        	INSERT INTO premier_leauge VALUES (i,0,0,0,0,0,p);
+            SET p=p+1;
+        END IF;
+    END WHILE;
+  CLOSE cur;
+END // 
+delimiter ;

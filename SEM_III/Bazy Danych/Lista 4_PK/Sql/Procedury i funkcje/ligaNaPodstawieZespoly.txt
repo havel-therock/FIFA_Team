@@ -1,0 +1,7 @@
+delimiter //
+CREATE PROCEDURE ligaZespolu(IN klub1 varchar(50))
+BEGIN
+	 	 
+    SELECT liga FROM zespoly where nazwa=klub1;
+END    //
+delimiter ;

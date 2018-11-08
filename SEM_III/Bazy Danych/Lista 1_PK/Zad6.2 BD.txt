@@ -1,0 +1,6 @@
+SELECT lan.Name, COUNT(clan.IsOfficial) AS 'UnoficialLanguage'
+FROM country lan
+JOIN countrylanguage clan ON clan.CountryCode=lan.Code
+WHERE clan.IsOfficial='F'
+GROUP BY lan.Name
+HAVING COUNT(clan.IsOfficial) > 1

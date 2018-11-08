@@ -1,0 +1,16 @@
+delimiter //
+CREATE TRIGGER matryce_ogr BEFORE INSERT ON matryce
+    FOR EACH ROW 
+    BEGIN 
+    IF NEW.sRGB>=100 THEN 
+    SET NEW.sRGB=null; 
+    END IF; 
+    IF NEW.aRGB>=100 THEN 
+    SET NEW.aRGB=null; 
+    END IF;
+    IF NEW.aRGB>NEW.sRGB THEN 
+    SET NEW.sRGB=null; 
+    END IF;
+    END
+    //
+delimiter ;

@@ -1,0 +1,28 @@
+DELIMITER $$
+CREATE PROCEDURE usuwanieAbstrakcyjnejLigi (IN log CHAR(20))
+BEGIN
+
+DECLARE nazwa varchar(50);
+SET nazwa = (SELECT wlasna_liga FROM uzytkownicy WHERE login=log);
+
+IF nazwa IS NOT null THEN 
+
+UPDATE uzytkownicy SET wlasna_liga = null WHERE login=log;
+
+DROP table nazwa;
+SET @pol = CONCAT('DROP TABLE ',nazwa);
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+
+SET @pol = CONCAT('DROP VIEW v_',nazwa);
+		PREPARE stmt FROM @pol;
+		EXECUTE stmt;
+		DEALLOCATE PREPARE stmt;
+
+
+END IF; 
+
+END
+$$
+DELIMITER ; 

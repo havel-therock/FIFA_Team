@@ -1,0 +1,5 @@
+Backup:
+mysqldump -u root -p lista3 > backup.sql
+
+Import:
+mysql -u root -p lista3 < backup.sql

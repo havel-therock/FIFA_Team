@@ -1,0 +1,12 @@
+delimiter // 
+CREATE PROCEDURE informacjeOStadionie (IN arena varchar(50)) 
+BEGIN
+DECLARE powtorka varchar(50);
+        SET powtorka = (SELECT nazwa FROM stadiony WHERE nazwa=arena);
+        IF powtorka IS NOT null THEN 
+	SELECT  zespoly.nazwa, stadiony.nazwa, stadiony.adres, stadiony.ilosc_miejsc FROM stadiony JOIN zespoly ON stadiony.ID=zespoly.stadion WHERE stadiony.nazwa=arena;
+    
+        END IF ;
+
+END // 
+delimiter ;

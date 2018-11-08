@@ -1,0 +1,8 @@
+SELECT co.Name, co.IndepYear, c.Name AS 'Capitol', cl.Language, co.SurfaceArea, co.Region
+FROM country co
+INNER JOIN city c ON c.ID=co.Capital
+INNER JOIN countrylanguage cl ON co.Code=cl.CountryCode
+WHERE cl.IsOfficial='T' AND co.IndepYear>0
+GROUP BY co.Name
+ORDER BY co.IndepYear
+LIMIT 5

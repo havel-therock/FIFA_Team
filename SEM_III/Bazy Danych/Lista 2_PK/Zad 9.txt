@@ -1,0 +1,7 @@
+CREATE VIEW v_lap AS
+	SELECT lap.model, lap.typ, proc.rdzenie, proc.czestotliwosc, mat.przekatna, mat.sRGB
+	FROM laptopy lap
+	JOIN procesory proc ON proc.ID=lap.procesor
+	JOIN matryce mat ON mat.ID=lap.matryca
+	JOIN producenci produ ON produ.ID=lap.producent
+	WHERE produ.siedziba<>'USA'
