@@ -36,6 +36,11 @@
 					$_SESSION['logged'] = true;
 					
 					unset($_SESSION['error']);
+					$_SESSION['ID'] = $row['ID'];
+					$_SESSION['imie'] = $row['imie'];
+					$_SESSION['nazwisko'] = $row['nazwisko'];
+					$_SESSION['num_konta'] = $row['numer_konta'];
+					$_SESSION['stan_konta'] = $row['stan_konta'];
 					$result->free();
 					header('Location: home.php');
 				}

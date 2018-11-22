@@ -29,7 +29,7 @@
                             echo 'user';
                             $row = $result->fetch_assoc();
                             if($login == $row['identyfikator']) {
-                                echo 'weszło';
+                                // echo 'weszło';
                                 unset($_SESSION['error']);
                                 $nowe_haslo = random_str(10);
                                 $hash_haslo = password_hash($nowe_haslo, PASSWORD_DEFAULT);

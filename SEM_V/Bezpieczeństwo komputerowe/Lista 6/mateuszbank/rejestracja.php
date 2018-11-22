@@ -1,10 +1,10 @@
 <?php
 	session_start();
 	
-	// if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
-	// 	header('Location: home.php');
-	// 	exit();
-    // }
+	if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+		header('Location: home.php');
+		exit();
+    }
 ?> 
 <!DOCTYPE html>
 <html lang="pl">
@@ -131,7 +131,7 @@
 				if(!$result) {
 					throw new Exception($connect_database->error);
 				}
-				
+                
 				$num_nick = $result->num_rows;
 				if($num_nick > 0) {
 					$validation = false;
@@ -145,14 +145,58 @@
                         $new_rand = rand(0, 9);
                         $numer_konta .= $new_rand;
                     }
-					if($connect_database->query("INSERT INTO uzytkownicy VALUES(NULL, '$login', '$haslo', '$email', '$imie', '$nazw', '$numer_konta')")) {
-						$_SESSION['registered'] = true;
+					if($connect_database->query("INSERT INTO uzytkownicy VALUES(NULL, '$login', '$haslo', '$email', '$imie', '$nazw', '$numer_konta', 22222.50)")) {
+                        $_SESSION['registered'] = true;
+                        unset($_SESSION['error']);
+
+                        $to = $email;
+                        $subject = "Przypomnienie hasła - mateuszBank";
+                        $message = "
+                        <html>
+                        <head>
+                        <title>Przypomnienie hasła - mateuszBank</title>
+                        </head>
+                        <body>
+                        <p>mateuszBank</p>
+                        <p>Witaj".$imie." ".$nazw.". Cieszymy się, że wybrałeś nasz bank! Życzymy miłego użytkowania.</p>
+                        <table>
+                        <tr>
+                        <th>Dane</th>
+                        </tr>
+                        <tr>
+                        <td>Imie</td>
+                        <td>Nazwisko</td>
+                        <td>Numer konta</td>
+                        <td>E-mail</td>
+                        </tr>
+                        <tr>
+                        <td>".$imie."</td>
+                        <td>".$nazw."</td>
+                        <td>".$numer_konta."</td>
+                        <td>".$email."</td>
+                        </tr>
+                        </table>
+                        <p>Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać.</p>
+                        </body>
+                        </html>
+                        ";
+                        
+                        // Always set content-type when sending HTML email
+                        $headers = "MIME-Version: 1.0" . "\r\n";
+                        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                        // More headers
+                        $headers .= 'From: mateuszBank <mati1003@onet.pl>' . "\r\n";
+                        mail($to, $subject, $message, $headers);
 						header('Location: witaj.php');
 					}
 					else {
 						throw new Exception($connect_database->error);
 					}
-				}
+                }
+                else {
+                    header('Location: rejestracja.php');
+                    $connect_database->close();
+                }
 				
 				$connect_database->close();
 			}

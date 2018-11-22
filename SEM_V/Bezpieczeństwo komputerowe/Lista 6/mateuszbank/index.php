@@ -4,7 +4,7 @@
 	if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
 		header('Location: home.php');
 		exit();
-	}
+    }
 ?> 
 <!DOCTYPE html>
 <html lang="pl">

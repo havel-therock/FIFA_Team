@@ -12,7 +12,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="description" content="Logowanie do serwisu transakcyjnego MateuszBanku" />
+        <meta name="description" content="Zapomniałeś swojego hasła? Wygeneruj nowe hasło do swojego konta." />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -46,7 +46,7 @@
                 width="107" height="40" alt="Link do gł&#243;wnej strony mateuszBank">
         </a>
         <br/><br/>
-        <h1>Przypominanie hasła</h1>
+        <h1>Wygeneruj nowe hasło do swojego konta</h1>
         <br/>
         <form name="signForm" action="przypomnij.php" method="post" style="margin-left:20px;">
             <div class="inputs">
@@ -59,7 +59,7 @@
             </div>
             <div class="inputs">
                 <br/>
-                <input type="submit" value="Przypomnij" /> <br/>
+                <input type="submit" value="Wygeneruj" /> <br/>
             </div>
         </form>
         <div class="inputs">
