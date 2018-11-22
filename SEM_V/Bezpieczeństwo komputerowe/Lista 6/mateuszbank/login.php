@@ -20,9 +20,6 @@
         $haslo = $_POST['pass'];
 		
         $login = htmlentities($login, ENT_QUOTES, "UTF-8");
-        
-		
-		// $sql = "SELECT * FROM uzytkownicy WHERE identyfikator='$login' AND haslo='$haslo'";
 		
 		if($result = $polaczenie->query(
 		sprintf("SELECT * FROM uzytkownicy WHERE identyfikator='%s'",
