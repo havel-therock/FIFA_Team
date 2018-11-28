@@ -1,0 +1,27 @@
+Hejka-naklejka!
+
+Hmm...
+Otwieramy w taki sposób:
+make (ENTER)
+./kalkulator (ENTER)
+
+Czyścimy pliki:
+make clean (ENTER)
+
+Funkcjonalności:
+Kalkulator                    - jest
+W bizonie                     - jest
+Infixowe wprowadzanie         - jest
+Output w notacji polskiej     - jest
+Komentarz                     - jest
+Nowa linia                    - jest (z warmingiem)
+Obsługa dzielenia przez zero  - jest (w tej wersji do poprawy - sam wypróbuj)
+
+Wersja:
+v.1.0 
+
+Specjalnie nie wrzucam następnych wersji, bo to już zostało pieszczenie wizualne i fajnie,
+jakbyśmy zrobili to na swój własny, oryginalny sposób...
+
+Pozdrawiam Bankowców
+Niebieski
