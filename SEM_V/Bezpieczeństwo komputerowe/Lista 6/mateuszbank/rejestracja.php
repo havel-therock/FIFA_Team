@@ -2,7 +2,7 @@
 	session_start();
 	
 	if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
-		header('Location: home.php');
+		header('Location: https://mateuszbank.pl/home.php');
 		exit();
     }
 ?> 
@@ -31,7 +31,7 @@
     <script src="scripts/validRejestr.js"></script>
 </head>
 <body>
-<a href="index.php">
+<a href="https://mateuszbank.pl/index.php">
     <img class="header-left" src="images/gold-piggy.jpg"
          width="107" height="40" alt="Link do gł&#243;wnej strony mateuszBank">
 </a>
@@ -113,7 +113,8 @@
                 $nazw   = $_POST['nazwisko'];
 
 				// Whether email already exists?
-				$result = $connect_database->query("SELECT id FROM uzytkownicy WHERE email='$email'");
+                $result = $connect_database->query(sprintf("SELECT id FROM uzytkownicy WHERE email='%s'",
+                mysqli_real_escape_string($connect_database, $email)));
 				
 				if(!$result) {
 					throw new Exception($connect_database->error);
@@ -126,7 +127,8 @@
 				}
 				
 				// Whether login already exists?
-				$result = $connect_database->query("SELECT id FROM uzytkownicy WHERE identyfikator='$login'");
+                $result = $connect_database->query(sprintf("SELECT id FROM uzytkownicy WHERE identyfikator='%s'", 
+                mysqli_real_escape_string($connect_database, $login)));
 				
 				if(!$result) {
 					throw new Exception($connect_database->error);
@@ -149,16 +151,17 @@
                         $_SESSION['registered'] = true;
                         unset($_SESSION['error']);
 
+                        $style = 'style="font-size: 9px;"';
                         $to = $email;
-                        $subject = "Przypomnienie hasła - mateuszBank";
+                        $subject = "Założenie konta - mateuszBank";
                         $message = "
                         <html>
                         <head>
-                        <title>Przypomnienie hasła - mateuszBank</title>
+                        <title>Założenie konta - mateuszBank</title>
                         </head>
                         <body>
                         <p>mateuszBank</p>
-                        <p>Witaj".$imie." ".$nazw.". Cieszymy się, że wybrałeś nasz bank! Życzymy miłego użytkowania.</p>
+                        <p>Witaj ".$imie." ".$nazw.". Cieszymy się, że wybrałeś nasz bank! Życzymy miłego użytkowania.</p>
                         <table>
                         <tr>
                         <th>Dane</th>
@@ -176,7 +179,7 @@
                         <td>".$email."</td>
                         </tr>
                         </table>
-                        <p>Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać.</p>
+                        <p ".$style.">Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać.</p>
                         </body>
                         </html>
                         ";
@@ -187,14 +190,14 @@
                         // More headers
                         $headers .= 'From: mateuszBank <mati1003@onet.pl>' . "\r\n";
                         mail($to, $subject, $message, $headers);
-						header('Location: witaj.php');
+						header('Location: https://mateuszbank.pl/witaj.php');
 					}
 					else {
 						throw new Exception($connect_database->error);
 					}
                 }
                 else {
-                    header('Location: rejestracja.php');
+                    header('Location: https://mateuszbank.pl/rejestracja.php');
                     $connect_database->close();
                 }
 				

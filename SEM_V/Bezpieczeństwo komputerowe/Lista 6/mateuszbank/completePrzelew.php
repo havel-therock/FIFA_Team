@@ -2,12 +2,12 @@
     session_start();
     
     if(!isset($_SESSION['logged'])) {
-        header('Location: index.php');
+        header('Location: https://mateuszbank.pl/index.php');
         exit();
     }
 	
 	if(!isset($_SESSION['przelew'])) {
-		header('Location: home.php');
+		header('Location: https://mateuszbank.pl/home.php');
 		exit();
 	}
 	elseif($_SESSION['przelew'] == true) {
@@ -15,7 +15,7 @@
     }
     else {
         unset($_SESSION['przelew']);
-        header('Location: home.php');
+        header('Location: https://mateuszbank.pl/home.php');
 		exit();
     }
 ?>
@@ -53,7 +53,7 @@
 
 	<h1><?php echo $_SESSION['message_przelew']; ?></h1><br/>
 	
-	<p><a href="home.php"><img class="header-left" src="images/gold-piggy.jpg"
+	<p><a href="https://mateuszbank.pl/home.php"><img class="header-left" src="images/gold-piggy.jpg"
          width="107" height="40" alt="Link do gł&#243;wnej strony mateuszBank"><br/>Przejdź do swojego konta</a></p>
 
 </body>

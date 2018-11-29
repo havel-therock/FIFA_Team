@@ -2,7 +2,7 @@
     session_start();
 	
 	if(!isset($_SESSION['logged'])) {
-		header('Location: index.php');
+		header('Location: https://mateuszbank.pl/index.php');
 		exit();
     }
     
@@ -12,12 +12,13 @@
     $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);	
 
     if($polaczenie->connect_errno!=0) {
-        header('Location: logout.php');
+        header('Location: https://mateuszbank.pl/logout.php');
         exit();
     }
     else {
         $num_konta = $_SESSION['num_konta'];
-        $result = $polaczenie->query("SELECT stan_konta FROM uzytkownicy WHERE numer_konta = '$num_konta'");
+        $result = $polaczenie->query(sprintf("SELECT stan_konta FROM uzytkownicy WHERE numer_konta = '%s'", 
+        mysqli_real_escape_string($polaczenie, $num_konta)));
         $result = $result->fetch_assoc();
         $_SESSION['stan_konta'] = $result['stan_konta'];
     }
@@ -31,6 +32,9 @@
     <meta name="description" content="Logowanie do serwisu transakcyjnego MateuszBanku" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scripts/activeNumber.js"></script>
 
     <title>mateuszBank - zalogowany</title>
     <style>
@@ -53,9 +57,9 @@
 </head>
 <body>
 Witamy w banku, biednym banku.
-<a href="formPay.php"><button>Utwórz przelew</button></a>
-<a href="historiaPrzelewow.php"><button>Sprawdź historię przelewów</button></a>
-<a href="logout.php"><button>Wyloguj</button></a>
+<a href="https://mateuszbank.pl/formPay.php"><button>Utwórz przelew</button></a>
+<a href="https://mateuszbank.pl/historiaPrzelewow.php"><button>Sprawdź historię przelewów</button></a>
+<a href="https://mateuszbank.pl/logout.php"><button>Wyloguj</button></a>
 <br />
 <br />
 <table>

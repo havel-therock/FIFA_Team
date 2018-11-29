@@ -3,12 +3,12 @@
     session_start();
 
     if(!isset($_SESSION['logged'])) {
-        header('Location: index.php');
+        header('Location: https://mateuszbank.pl/index.php');
         exit();
     }
 
     if(!isset($_SESSION['ID'])) {
-        header('Location: index.php');
+        header('Location: https://mateuszbank.pl/index.php');
         exit();
     }
 
@@ -18,7 +18,7 @@
 	
 	if($polaczenie->connect_errno!=0) {
         echo "ERROR ".$polaczenie->connect_errno." Opis: ".$polaczenie->connect_error;
-        header('Location: index.php');
+        header('Location: https://mateuszbank.pl/index.php');
 		exit();
     }
     else {
@@ -29,7 +29,7 @@
         }
         else {
             $_SESSION['error_hist'] = 'Nie można połączyć się z serwisem. Proszę spróbować później lub skontaktować się z obsługą.';
-            header('Location: home.php');
+            header('Location: https://mateuszbank.pl/home.php');
             exit();
         }
     }
@@ -44,6 +44,9 @@
     <meta name="description" content="Logowanie do serwisu transakcyjnego MateuszBanku" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scripts/changerHist.js"></script>
 
     <title>mateuszBank - zalogowany</title>
     <style>
@@ -68,8 +71,21 @@
     <img class="header-left" src="images/gold-piggy.jpg"
          width="107" height="40" alt="Link do gł&#243;wnej strony mateuszBank">
 
-<a href="home.php"><button>Powróć</button></a>
-<a href="logout.php"><button>Wyloguj</button></a>
+<a href="https://mateuszbank.pl/home.php"><button>Powróć</button></a>
+<a href="https://mateuszbank.pl/logout.php"><button>Wyloguj</button></a>
+<br />
+<br />
+<table>
+    <tr style="float: right;">
+        <td><?php echo $_SESSION['imie'] ?></td>
+        <td><?php echo $_SESSION['nazwisko'] ?></td>
+        <td>Numer konta</td>
+        <td><?php echo $_SESSION['num_konta'] ?></td>
+        <td>Stan konta</td>
+        <td><?php echo $_SESSION['stan_konta'] ?></td>
+        <td>PLN</td>
+    </tr>
+</table>
 <br />
 <br />
 <table>

@@ -2,7 +2,7 @@
 	session_start();
 	
 	if(!isset($_SESSION['registered'])) {
-		header('Location: index.php');
+		header('Location: https://mateuszbank.pl/index.php');
 		exit();
 	}
 	else {
@@ -43,7 +43,7 @@
 
 	<h1>"Dziękujemy za rejestracje. Możesz już przejść do swojego konta. W najbliższym czasie przyjdzie e-mail z potwierdzeniem.</h1><br/>
 	
-	<p><a href="index.php"><img class="header-left" src="images/gold-piggy.jpg"
+	<p><a href="https://mateuszbank.pl/index.php"><img class="header-left" src="images/gold-piggy.jpg"
          width="107" height="40" alt="Link do gł&#243;wnej strony mateuszBank"><br/>Zaloguj się na swoje konto</a></p>
 
 </body>

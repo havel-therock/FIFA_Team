@@ -2,7 +2,7 @@
     session_start();
 	
 	if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
-		header('Location: index.php');
+		header('Location: https://mateuszbank.pl/index.php');
 		exit();
 	}
 ?>
@@ -41,7 +41,7 @@
 
     </head>
     <body>
-        <a href="index.php">
+        <a href="https://mateuszbank.pl/index.php">
             <img class="header-left" src="images/gold-piggy.jpg"
                 width="107" height="40" alt="Link do gł&#243;wnej strony mateuszBank">
         </a>

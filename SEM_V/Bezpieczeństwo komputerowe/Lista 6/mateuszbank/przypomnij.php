@@ -13,7 +13,7 @@
                 echo 'polaczenie';
                 if($polaczenie->connect_errno!=0) {
                     echo "ERROR ".$polaczenie->connect_errno." Opis: ".$polaczenie->connect_error;
-                    header('Location: przypomnijHaslo.php');
+                    header('Location: https://mateuszbank.pl/przypomnijHaslo.php');
                     exit();
                 }
                 else {
@@ -34,6 +34,7 @@
                                 $nowe_haslo = random_str(10);
                                 $hash_haslo = password_hash($nowe_haslo, PASSWORD_DEFAULT);
 
+                                $style = 'style="font-size: 9px;"';
                                 $to = $_POST['email'];
                                 $subject = "Przypomnienie hasła - mateuszBank";
                                 $message = "
@@ -52,6 +53,7 @@
                                 <td>".$nowe_haslo."</td>
                                 </tr>
                                 </table>
+                                <p ".$style.">Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać.</p>
                                 </body>
                                 </html>
                                 ";
@@ -65,31 +67,31 @@
                         
                                 if($mail) {
                                     if($polaczenie->query("UPDATE uzytkownicy SET haslo = '$hash_haslo' WHERE email = '$to'")) {
-                                        header('Location: przypomnijHaslo.php');
+                                        header('Location: https://mateuszbank.pl/przypomnijHaslo.php');
                                     }
                                     else {
                                         echo 'coś';
                                         throw new Exception($polaczenie->error);
                                     }
                                     $_SESSION['complete'] = '<p style="color: green;">Wiadomość została wysłana. Sprawdź swoją pocztę mailową.</p>';
-                                    header('Location: przypomnijHaslo.php');
+                                    header('Location: https://mateuszbank.pl/przypomnijHaslo.php');
                                 }
                                 else {
                                     $_SESSION['error'] = '<p style="color: red;">Nie powiodło się wysłanie. Problem z serwisem. Proszę spróbować ponownie lub skontaktować się z pracownikiem</p>';
-                                    header('Location: przypomnijHaslo.php');
+                                    header('Location: https://mateuszbank.pl/przypomnijHaslo.php');
                                 }
 
                                 $result->free();
                             }
                             else {
                                 $_SESSION['error'] = '<p style="color: red">Nieprawidłowe dane!</p>';
-                                header('Location: przypomnijHaslo.php');
+                                header('Location: https://mateuszbank.pl/przypomnijHaslo.php');
                             }
                         }
                         else {
                             
                             $_SESSION['error'] = '<p style="color: red">Nieprawidłowe dane!</p>';
-                            header('Location: przypomnijHaslo.php');
+                            header('Location: https://mateuszbank.pl/przypomnijHaslo.php');
                         }
                     }
                     else {
@@ -105,12 +107,12 @@
         }
         else {
             $_SESSION['error'] = '<p style="color: red">Nieprawidłowe dane!</p>';
-            header('Location: przypomnijHaslo.php');
+            header('Location: https://mateuszbank.pl/przypomnijHaslo.php');
         }
     }
     else {
         $_SESSION['error'] = '<p style="color: red">Nieprawidłowe dane!</p>';
-        header('Location: przypomnijHaslo.php');
+        header('Location: https://mateuszbank.pl/przypomnijHaslo.php');
     }
 ?>
 
