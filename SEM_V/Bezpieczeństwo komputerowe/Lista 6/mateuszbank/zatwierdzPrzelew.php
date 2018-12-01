@@ -38,8 +38,8 @@
     <meta content="D9Y4W4263xjNCGgi56bNTqBUhTr29hK1feixJcYA7hkfGBYxwFoyimouWCeP2J5zczA+ECHJTZbPqbKPIv89KnMt8aJJx6dmbkKz0H5lOs/XvHVy78wZPzgZ5gDIMRnMOV6jrK5p5wKAoll3IFUNrPX4bWE5/HLIUL/MzvxnXTS/rWbE" name="__AjaxRequestVerificationToken">
         <link type="text/css" rel="stylesheet" href="./zatwierdzPrzelew_files/veneziaCss.built.css">
     <title>Przelew - Płatności - mBank serwis transakcyjny</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="scripts/saveJSON.js"></script>
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scripts/saveJSON.js"></script> -->
 </head>
 <body class="lifting" style="">
 <link rel="Stylesheet" type="text/css" href="./zatwierdzPrzelew_files/Adv(1)">

@@ -21,7 +21,7 @@
     <title>Przelew - Płatności - mBank serwis transakcyjny</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="scripts/validPrzelew.js"></script>
-    <script type="text/javascript" src="scripts/changerNum.js"></script>
+    <!-- <script type="text/javascript" src="scripts/changerNum.js"></script> -->
 </head>
 <body class="lifting" style="">
 <link rel="Stylesheet" type="text/css" href="./przelew_files/Adv(1)">
