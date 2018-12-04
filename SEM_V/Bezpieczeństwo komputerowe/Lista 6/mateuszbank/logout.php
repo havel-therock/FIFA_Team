@@ -4,6 +4,8 @@
         
     session_unset();
 
-    header('Location: index.php');
+    echo "<script>sessionStorage.clear();</script>";
+
+    header('Location: https://mateuszbank.pl/index.php');
 
 ?>

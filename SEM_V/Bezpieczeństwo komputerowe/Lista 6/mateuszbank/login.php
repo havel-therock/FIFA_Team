@@ -2,7 +2,7 @@
 	session_start();
 	
 	if((!isset($_POST['userID'])) || (!isset($_POST['pass']))) {
-		header('Location: index.php');
+		header('Location: https://mateuszbank.pl/index.php');
 		exit();
 	}
 	
@@ -12,7 +12,7 @@
 	
 	if($polaczenie->connect_errno!=0) {
         echo "ERROR ".$polaczenie->connect_errno." Opis: ".$polaczenie->connect_error;
-        header('Location: index.php');
+        header('Location: https://mateuszbank.pl/index.php');
 		exit();
     }
 	else {
@@ -39,17 +39,17 @@
 					$_SESSION['num_konta'] = $row['numer_konta'];
 					$_SESSION['stan_konta'] = $row['stan_konta'];
 					$result->free();
-					header('Location: home.php');
+					header('Location: https://mateuszbank.pl/home.php');
 				}
 				else {
 					$_SESSION['error'] = '<p style="color: red">Nieprawidłowe dane logowania Haslo!</p>';
-					header('Location: index.php');
+					header('Location: https://mateuszbank.pl/index.php');
 				}
 			}
 			else {
 				
 				$_SESSION['error'] = '<p style="color: red">Nieprawidłowe dane logowania!</p>';
-				header('Location: index.php');
+				header('Location: https://mateuszbank.pl/index.php');
 			}
         }
         else {

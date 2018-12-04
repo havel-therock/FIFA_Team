@@ -2,11 +2,11 @@
     session_start();
         
     if(!isset($_SESSION['logged'])) {
-        header('Location: index.php');
+        header('Location: https://mateuszbank.pl/index.php');
         exit();
     }
     if(!isset($_SESSION['P_toAccount'])) {
-        header('Location: home.php');
+        header('Location: https://mateuszbank.pl/home.php');
         exit();
     }
 
@@ -16,7 +16,7 @@
 
     if($polaczenie->connect_errno!=0) {
         $_SESSION['error_server'] = "ERROR ".$polaczenie->connect_errno." Opis: ".$polaczenie->connect_error;
-        header('Location: formPay.php');
+        header('Location: https://mateuszbank.pl/formPay.php');
         exit();
     }
     else {
@@ -36,7 +36,7 @@
 
         if($stan < 0.0) {
             $_SESSION['error_kwota'] = 'Brak wystarczających środków na przelew. Twój stan konta to '.$_SESSION['stan_konta'].' PLN.';
-            header('Location: formPay.php');
+            header('Location: https://mateuszbank.pl/formPay.php');
             $polaczenie->close();
             exit();
         }
@@ -47,20 +47,20 @@
                 // OK
                 $_SESSION['przelew'] = true;
                 $_SESSION['message_przelew'] = "Zlecony przelew został wykonany pomyślnie. Jego status to OCZEKIWANIE. Proszę czekać na zatwierdzenie przelewu.";
-                header('Location: completePrzelew.php');
+                header('Location: https://mateuszbank.pl/completePrzelew.php');
             }
             else {
                 // USUŃ ZAKSIĘGOWANIE
                 $polaczenie->query("DELETE FROM przelewy WHERE data = '$data' AND id_nad = '$id_nad' AND num_konta_odb = '$num_konta_odb'");
                 $_SESSION['przelew'] = true;
                 $_SESSION['message_przelew'] = "Nie udało się wykonać przelewu, problemy techniczne. Proszę spróbować później lub skontaktować się z obsługą.";
-                header('Location: completePrzelew.php');
+                header('Location: https://mateuszbank.pl/completePrzelew.php');
             }
         }
         else {
             $_SESSION['przelew'] = true;
             $_SESSION['message_przelew'] = "Nie udało się wykonać przelewu, problemy techniczne. Proszę spróbować później lub skontaktować się z obsługą.";
-            header('Location: completePrzelew.php');
+            header('Location: https://mateuszbank.pl/completePrzelew.php');
         }
         $polaczenie->close();
     }

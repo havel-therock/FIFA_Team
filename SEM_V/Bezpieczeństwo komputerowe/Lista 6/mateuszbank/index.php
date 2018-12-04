@@ -2,7 +2,7 @@
 	session_start();
 	
 	if(isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
-		header('Location: home.php');
+		header('Location: https://mateuszbank.pl/home.php');
 		exit();
     }
 ?> 
@@ -84,13 +84,13 @@
     </div>
     <br/>
     <div>
-        <a href="rejestracja.php">
+        <a href="https://mateuszbank.pl/rejestracja.php">
         <input type="button" class="btn" style="background-color: #f39100;" value="Zarejestruj w mateuszBanku"/>
         </a>
     </div>
     <br/>
     <div>
-        <a href="przypomnijHaslo.php">
+        <a href="https://mateuszbank.pl/przypomnijHaslo.php">
         <input type="button" class="btn" style="background-color: #0077bd;" value="Przypomnij hasło"/>
         </a>
     </div>

