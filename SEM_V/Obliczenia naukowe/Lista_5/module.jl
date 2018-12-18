@@ -152,6 +152,11 @@ function gaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l::I
     return sparse(x), error
 end
 
+function gaussianEliminationWithPivot(A::SparseMatrixCSC, b::SparseVector, n::Int64, l::Int64)
+    x, error = doGaussianElimination(copy(A), copy(b), n, l, true, true)
+    return sparse(x), error
+end
+
 function writeVector(vector::SparseVector, filepath::String)
 # function that saves the received vector to a text file (*.txt)
     open(filepath, "w") do FILE
