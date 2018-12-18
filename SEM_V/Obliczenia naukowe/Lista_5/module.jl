@@ -137,7 +137,7 @@ function doGaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l:
     if(boolSolve)
         x = backwardSubstitution(U, b, n, l)
         return x, 0
-    else 
+    else # nie działa odwrotnie
         for i in 1:n
             L[i, i] = 1.0
         end
@@ -148,7 +148,7 @@ end
 
 function gaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l::Int64) 
 # function calling the Gaussian Elimination method without Pivot
-    x, error = doGaussianElimination(copy(A), copy(b), n, l, false, false)
+    x, error = doGaussianElimination(copy(A), copy(b), n, l, false, true)
     return sparse(x), error
 end
 
