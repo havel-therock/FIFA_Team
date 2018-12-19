@@ -8,8 +8,8 @@ export  matcond, blockmat
 		# Function generates a random square matrix A of size n with
 		# a given condition number c.	
 		# Inputs:
-		#	n: size of matrix A, n>1
-		#	c: condition of matrix A, c>= 1.0	
+		# 	n: size of matrix A, n>1
+		# 	c: condition of matrix A, c>= 1.0	
 		#
 		# Usage: matcond (10, 100.0);
 		#
@@ -31,7 +31,7 @@ export  matcond, blockmat
 		# matrix in a text file.
 		# Inputs:
 		#	n: size of block matrix A, n>1
-		# l: size of inner matrices Ak, n mod l =0 (n is  divisible by l)
+		# 	l: size of inner matrices Ak, n mod l =0 (n is  divisible by l)
 		#	ck: condition of inner matrix Ak, ck>= 1.0	
 		# outputfile: name of the output text file
 		#

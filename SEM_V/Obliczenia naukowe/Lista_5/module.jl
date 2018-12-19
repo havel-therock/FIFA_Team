@@ -137,7 +137,7 @@ function doGaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l:
     if(boolSolve)
         x = backwardSubstitution(U, b, n, l)
         return x, 0
-    else # nie działa odwrotnie
+    else # nie działa odwrotnie do podpunktu 2 
         for i in 1:n
             L[i, i] = 1.0
         end
