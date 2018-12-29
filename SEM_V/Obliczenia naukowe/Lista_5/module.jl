@@ -74,14 +74,27 @@ function backwardSubstitution(U::SparseMatrixCSC, b::SparseVector, n::Int64, l::
         # range = (row - 2 * l > 1 ? row - 2 * l : 1) : (row + 2 * l > n ? n : row + 2 * l)
         for column in columnRange(row, n, l)
             # for column in range
-            s = s- U[row, column] * x[column]
+            s = s - U[row, column] * x[column]
         end
         x[row] = s / U[row, row]
     end
     return x
 end
 
-function doGaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l::Int64, boolPivot::Bool, boolSolve::Bool) 
+function forwardSubstitution(L::SparseMatrixCSC, b::SparseVector, n::Int64, l::Int64)
+    x = spzeros(n)
+    for row in 1:n
+        s = b[row]
+        for column in columnRange(row, row - 1, l)
+            # for column in range
+            s = s - L[row, column] * x[column]
+        end
+        x[row] = s / L[row, row]
+    end
+    return x
+end
+
+function doGaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l::Int64, boolPivot::Bool, boolLU::Bool) 
 # function solving the Ax = b system using the Gaussian Elimination method
     # perform Gaussian Elimination - bottom left triangle filled with zeros
     L = spzeros(n, n)
@@ -117,6 +130,9 @@ function doGaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l:
             zeroValue = U[k, k]
             emptyMatrix = []
             println("ERROR: U[" + k + ", " + k + "] = " + zeroValue + " < epsilon for Float64")
+            if(boolLU)
+                return (emptyMatrix, emptyMatrix), 1
+            end
             return emptyMatrix, 1
         end
 
@@ -134,26 +150,26 @@ function doGaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l:
         end
     end
 
-    if(boolSolve)
-        x = backwardSubstitution(U, b, n, l)
-        return x, 0
-    else # nie działa odwrotnie do podpunktu 2 
+    if(boolLU)
         for i in 1:n
             L[i, i] = 1.0
         end
         return (L, U), 0
+    else # nie działa odwrotnie do podpunktu 2 
+        x = backwardSubstitution(U, b, n, l)
+        return x, 0
     end
 
 end
 
 function gaussianElimination(A::SparseMatrixCSC, b::SparseVector, n::Int64, l::Int64) 
 # function calling the Gaussian Elimination method without Pivot
-    x, error = doGaussianElimination(copy(A), copy(b), n, l, false, true)
+    x, error = doGaussianElimination(copy(A), copy(b), n, l, false, false)
     return sparse(x), error
 end
 
 function gaussianEliminationWithPivot(A::SparseMatrixCSC, b::SparseVector, n::Int64, l::Int64)
-    x, error = doGaussianElimination(copy(A), copy(b), n, l, true, true)
+    x, error = doGaussianElimination(copy(A), copy(b), n, l, true, false)
     return sparse(x), error
 end
 
@@ -164,6 +180,27 @@ function writeVector(vector::SparseVector, filepath::String)
             @printf(FILE, "%0.15f\n", n)
         end
     end
+end
+
+function distributionLU(A::SparseMatrixCSC, n::Int64, l::Int64)
+# function calling the Gaussian Elimination method without Pivot that determines the distribution of LU of matrix A
+    b = spzeros(n)
+    (L, U), error = doGaussianElimination(copy(A), copy(b), n, l, false, true)
+    return (L, U), error
+end
+
+function distributionLUWithPivot(A::SparseMatrixCSC, n::Int64, l::Int64)
+# function calling the Gaussian Elimination method with Pivot that determines the distribution of LU of matrix A
+    b = spzeros(n)
+    (L, U), error = doGaussianElimination(copy(A), copy(b), n, l, true, true)
+    return (L, U), error
+end
+
+function solutionFromLUMatrices(L::SparseMatrixCSC, U::SparseMatrixCSC, b::SparseVector, n::Int64, l::Int64)
+# function calculating pivot y and then pivot x using calculated LU matrices
+   y = forwardSubstitution(copy(L), b, n, l)
+   x = backwardSubstitution(copy(U), y, n, l) 
+   return x
 end
 
 
