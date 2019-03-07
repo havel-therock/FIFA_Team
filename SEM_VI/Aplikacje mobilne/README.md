@@ -3,4 +3,4 @@
 
 ## Listy zadań wykonywanych w Android Studio w języku Kotlin
 
-[Lista nr 1](https://github.com/havel-therock/FIFA_Team/tree/master/SEM_VI/Aplikacje%20mobilne/Lista1)
+* [Lista nr 1](https://github.com/havel-therock/FIFA_Team/tree/master/SEM_VI/Aplikacje%20mobilne/Lista1)
