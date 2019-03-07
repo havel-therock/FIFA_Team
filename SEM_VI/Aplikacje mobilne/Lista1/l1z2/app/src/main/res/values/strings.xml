@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Szubienica</string>
+    <string name="prawie_wisielec_1_0">Prawie Wisielec 1.0</string>
+    <string name="losuj_has_o">Losuj hasło</string>
+    <string name="wynik">Wynik</string>
+    <string name="wpisz_liter">Wpisz literę</string>
+    <string name="wylosuj_has_o">Wylosuj hasło</string>
+    <string name="sprawd">SPRAWDŹ</string>
+    <string name="has_o">HASŁO</string>
+</resources>
