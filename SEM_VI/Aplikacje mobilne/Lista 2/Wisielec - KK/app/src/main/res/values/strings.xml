@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Wisielec</string>
+    <string-array name="slownik">
+        <item>komputer</item>
+        <item>informatyka</item>
+        <item>gżegżółka</item>
+        <item>rydwan</item>
+        <item>uczucie</item>
+        <item>pogubiony</item>
+        <item>płuco</item>
+        <item>złotousty</item>
+        <item>szampan</item>
+        <item>wybacz</item>
+    </string-array>
+</resources>
