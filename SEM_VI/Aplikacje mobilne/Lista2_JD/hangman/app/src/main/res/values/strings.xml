@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">hangman</string>
+    <string name="has_o">has_o</string>
+    <string name="check">check</string>
+    <string name="randWor">randWord</string>
+    <string-array name="words">
+        <item>komputer</item>
+        <item>zgadywanka</item>
+        <item>zmywarka</item>
+        <item>matematyka</item>
+        <item>informatyka</item>
+        <item>fizyka</item>
+        <item>przyroda</item>
+        <item>techonologia</item>
+        <item>xiaomi</item>
+    </string-array>
+</resources>
+
