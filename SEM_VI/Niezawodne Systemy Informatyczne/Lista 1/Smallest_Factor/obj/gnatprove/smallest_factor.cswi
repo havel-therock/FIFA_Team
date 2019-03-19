@@ -1,0 +1,7 @@
+20190318220828
+-c
+-x
+ada
+-gnatA
+-gnatc
+-gnates=C:\Users\Jakub\Desktop\NSI\Smallest_Factor\obj\gnatprove\113e24c1.tmp

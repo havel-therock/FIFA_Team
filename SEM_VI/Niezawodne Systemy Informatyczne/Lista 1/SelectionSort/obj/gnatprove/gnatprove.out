@@ -1,0 +1,23 @@
+Summary of SPARK analysis
+=========================
+
+------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow   Interval   CodePeer   Provers   Justified   Unproved
+------------------------------------------------------------------------------------------------------
+Data Dependencies                 .           .          .          .         .           .          .
+Flow Dependencies                 .           .          .          .         .           .          .
+Initialization                    5           5          .          .         .           .          .
+Non-Aliasing                      .           .          .          .         .           .          .
+Run-time Checks                   .           .          .          .         .           .          .
+Assertions                        .           .          .          .         .           .          .
+Functional Contracts              .           .          .          .         .           .          .
+LSP Verification                  .           .          .          .         .           .          .
+------------------------------------------------------------------------------------------------------
+Total                             5    5 (100%)          .          .         .           .          .
+
+
+Analyzed 1 unit
+in unit selection, 2 subprograms and packages out of 3 analyzed
+  Selection at selection.ads:1 skipped
+  Selection.Sort at selection.ads:8 flow analyzed (0 errors, 0 checks and 0 warnings)
+  Selection.Sorted at selection.ads:3 flow analyzed (0 errors, 0 checks and 0 warnings)

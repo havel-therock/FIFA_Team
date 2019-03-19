@@ -1,0 +1,188 @@
+{
+  "spark": [
+    {
+      "name": "Selection",
+      "sloc": [
+        {
+          "file": "selection.ads",
+          "line": 1
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Selection.Sorted",
+      "sloc": [
+        {
+          "file": "selection.ads",
+          "line": 3
+        }
+      ],
+      "spark": "all"
+    },
+    {
+      "name": "Selection.Sort",
+      "sloc": [
+        {
+          "file": "selection.ads",
+          "line": 8
+        }
+      ],
+      "spark": "all"
+    }
+  ],
+  "flow": [
+    {
+      "file": "selection.adb",
+      "line": 9,
+      "col": 13,
+      "rule": "UNINITIALIZED",
+      "severity": "info",
+      "entity": {
+        "name": "Selection.Sort",
+        "sloc": [
+          {
+            "file": "selection.ads",
+            "line": 8
+          }
+        ]
+      },
+      "check_tree": {
+      },
+      "tracefile": "selection__flow__60.trace",
+      "how_proved": "flow"
+    },
+    {
+      "file": "selection.adb",
+      "line": 13,
+      "col": 10,
+      "rule": "UNINITIALIZED",
+      "severity": "info",
+      "entity": {
+        "name": "Selection.Sort",
+        "sloc": [
+          {
+            "file": "selection.ads",
+            "line": 8
+          }
+        ]
+      },
+      "check_tree": {
+      },
+      "tracefile": "selection__flow__61.trace",
+      "how_proved": "flow"
+    },
+    {
+      "file": "selection.adb",
+      "line": 15,
+      "col": 21,
+      "rule": "UNINITIALIZED",
+      "severity": "info",
+      "entity": {
+        "name": "Selection.Sort",
+        "sloc": [
+          {
+            "file": "selection.ads",
+            "line": 8
+          }
+        ]
+      },
+      "check_tree": {
+      },
+      "tracefile": "selection__flow__62.trace",
+      "how_proved": "flow"
+    },
+    {
+      "file": "selection.adb",
+      "line": 16,
+      "col": 21,
+      "rule": "UNINITIALIZED",
+      "severity": "info",
+      "entity": {
+        "name": "Selection.Sort",
+        "sloc": [
+          {
+            "file": "selection.ads",
+            "line": 8
+          }
+        ]
+      },
+      "check_tree": {
+      },
+      "tracefile": "selection__flow__63.trace",
+      "how_proved": "flow"
+    },
+    {
+      "file": "selection.adb",
+      "line": 16,
+      "col": 21,
+      "rule": "UNINITIALIZED",
+      "severity": "info",
+      "entity": {
+        "name": "Selection.Sort",
+        "sloc": [
+          {
+            "file": "selection.ads",
+            "line": 8
+          }
+        ]
+      },
+      "check_tree": {
+      },
+      "tracefile": "selection__flow__64.trace",
+      "how_proved": "flow"
+    }
+  ],
+  "assumptions": [
+    {
+      "assumptions": [
+      ],
+      "claim": {
+        "predicate": "CLAIM_EFFECTS",
+        "arg": {
+          "name": "Selection.Sorted",
+          "sloc": [
+            {
+              "file": "selection.ads",
+              "line": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "assumptions": [
+        {
+          "predicate": "CLAIM_EFFECTS",
+          "arg": {
+            "name": "Selection.Sorted",
+            "sloc": [
+              {
+                "file": "selection.ads",
+                "line": 3
+              }
+            ]
+          }
+        }
+      ],
+      "claim": {
+        "predicate": "CLAIM_EFFECTS",
+        "arg": {
+          "name": "Selection.Sort",
+          "sloc": [
+            {
+              "file": "selection.ads",
+              "line": 8
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "timings": {
+    "marking": 3.35707009071484E-04,
+    "globals (basic)": 3.42123006703332E-04,
+    "globals/properties (advanced)": 9.21164988540113E-04,
+    "flow analysis": 4.39114402979612E-03
+  }
+}
